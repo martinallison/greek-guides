@@ -1,3 +1,3 @@
 # Greek guides
 
-Some guides to help learning modern Greek.
+Some guides to help learn modern Greek.
