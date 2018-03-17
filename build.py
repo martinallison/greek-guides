@@ -1,0 +1,108 @@
+#! /usr/bin/env python
+
+import errno
+import os
+import shutil
+import subprocess
+import sys
+
+import jinja2
+import mistune
+
+
+def markdown(text, fragment=False, **kwargs):
+    m = mistune.markdown(text, **kwargs)
+    
+    if fragment:
+        m = m.replace("<p>", "").replace("</p>", "").strip("\n")
+
+    return m
+
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+loader = jinja2.FileSystemLoader([here, os.path.join(here, "src")])
+jinja = jinja2.Environment(loader=loader)
+
+jinja.globals.update(markdown=markdown)
+
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
+
+
+def empty(dir):
+    for filename in os.listdir(dir):
+        filepath = os.path.join(dir, filename)
+        try:
+            shutil.rmtree(filepath)
+        except OSError:
+            os.remove(filepath)
+
+
+def render(src, dst):
+    dst_dir = os.path.dirname(dst)
+    mkdir_p(dst_dir)
+
+    template = jinja.get_template(src)
+    html = template.render()
+    
+    with open(dst, "w") as f:
+        f.write(html)
+
+
+def copy(src, dst):
+    subprocess.run(["cp", "-r", src, dst], check=True)
+
+
+def run_from_dict(fn, arg_pairs_as_dict):
+    for k, v in arg_pairs_as_dict.items():
+        sys.stdout.write(" • {} → {}\n".format(k, v))
+        fn(k, v)
+
+
+def run(fn, args):
+    sys.stdout.write(" • {}\n".format(args))
+    fn(args)
+
+
+def main(conf):
+    sys.stdout.write("Building...\n\n")
+
+    for fn, args in conf.items():
+        process = fn.__name__.capitalize()
+        sys.stdout.write("{}ing...\n".format(process))
+
+        if isinstance(args, dict):
+            run_from_dict(fn, args)
+        else:
+            run(fn, args)
+
+        sys.stdout.write("Done {}ing\n\n".format(process))
+
+    sys.stdout.write("Done building\n")
+
+
+conf = {
+    empty: "docs",
+    render: {
+        "src/index.html": "docs/index.html",
+        "src/about/index.html": "docs/about/index.html",
+        "src/alphabet/index.html": "docs/alphabet/index.html",
+    },
+    copy: {
+        "src/img": "docs/img",
+        "src/404.md": "docs/404.md",
+        "src/404.html": "docs/404.html",
+    }
+}
+
+
+if __name__ == "__main__":
+    main(conf)
