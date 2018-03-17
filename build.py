@@ -19,6 +19,22 @@ def markdown(text, fragment=False, **kwargs):
     return m
 
 
+def url_factory(prefix):
+    """Allow different `url` function for prod and dev"""
+
+    def url(path):
+        """Because the site is hosted on martinallison.github.io/greek-guides, we need to
+        prefix the URL properly.
+        """
+        if path.startswith("/greek-guides"):
+            return path
+
+        joiner = "" if path.startswith("/") else "/"
+        return joiner.join([prefix, path])
+
+    return url
+
+
 here = os.path.abspath(os.path.dirname(__file__))
 
 loader = jinja2.FileSystemLoader([here, os.path.join(here, "src")])
@@ -72,7 +88,9 @@ def run(fn, args):
     fn(args)
 
 
-def main(conf):
+def main(conf, is_prod=False):
+    jinja.globals.update(url=url_factory("/greek-guides" if is_prod else ""))
+
     sys.stdout.write("Building...\n\n")
 
     for fn, args in conf.items():
@@ -105,4 +123,8 @@ conf = {
 
 
 if __name__ == "__main__":
-    main(conf)
+    is_prod = False
+    if len(sys.argv) > 1:
+        is_prod = sys.argv[1] == "--prod"
+
+    main(conf, is_prod=is_prod)
