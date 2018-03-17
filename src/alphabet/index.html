@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}{{ super() }} &middot; Alphabet{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Alphabetti spaghetti</h1>
+
+        <p class="emoji">Ω 🍝 Ω</p>
+
+        <p>The first thing to learn about Greek is its crazy alphabet. This guide’ll take
+           you through what it looks like and how the letters (and certain letter
+           combinations) are pronounced. Here’s what it looks like:</p>
+
+        <figure>
+            <p>α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω</p>
+            <p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω</p>
+
+            <figcaption>
+                The full Greek alphabet (lowercase and uppercase)
+            </figcaption>
+        </figure>
+
+        <p>If you’re going on holiday for a week, you’ll survive without being able to
+           read Greek characters (most things in tourist places are also signed in Latin
+           characters) but people will impressed and confused if you can read them, so give
+           it a go!</p>
+    </section>
+
+    <section>
+        <h2>Pronunciation</h2>
+
+        <p>It looks scary at first, but actually most Greek sounds exist in English or are
+           easy to approximate. Greek pronunciation is also really <em>really</em>
+           consistent, so once you’ve learned which letters and combinations map to each
+           sound, you can read anything.</p>
+
+        <p>We’ve grouped similar letters together for easier digestion.</p>
+
+        {% macro pronunciation_table(mapping) -%}
+            <dl>
+            {% for greek, english in mapping %}
+                <dt>{{ greek }}</dt> <dd>{{ markdown(english, fragment=True) }}</dd>
+            {% endfor %}
+            </dl>
+        {%- endmacro %}
+
+        <h3>Vowels</h3>
+
+        <p>All of these letters have sounds made in English. Easy!</p>
+
+        {% set vowels = [
+            ("α", "c**a**t"),
+            ("ε, αι", "f**e**rry"),
+            ("ι, η, υ, ει, οι", "s**ea**t"),
+            ("ο, ω", "f**o**rm"),
+            ("ου", "s**ou**p"),
+        ] %}
+        {{ pronunciation_table(vowels) }}
+
+        <h3>Teethy</h3>
+
+        <p>These are sounds you make with your teeth. We have all of these sounds in
+           English too.</p>
+        
+        {% set teethy = [
+            ("δ", "**th**en"),
+            ("θ", "**th**anks"),
+            ("σ, ς", "**s**ea (ς is used as the final letter of a word)"),
+            ("τ", "**t**eam"),
+        ] %}
+        {{ pronunciation_table(teethy) }}
+
+        <h3>Lipsy</h3>
+
+        <p>These sounds are made by putting your lips together and, guess what, they also
+           all have direct English equivalents!</p>
+
+        {% set lipsy = [
+            ("β", "**v**et"),
+            ("μ", "**m**ark"),
+            ("π", "**p**ie"),
+            ("φ", "**f**ar"),
+        ] %}
+        {{ pronunciation_table(lipsy) }}
+
+        <h3>Throaty</h3>
+
+        <p>These ones are slightly harder for English speakers since their sounds are made
+           using the throat. Scottish and French people have these ones fairly easy, though.</p>
+
+        {% set throaty = [
+            ("γ", "**g**ame but softer, a bit like the way French people say 'r'"),
+            ("κ", "**c**ar"),
+            ("χ", "**h**eart but more raspy, like a Scottish lo**ch**"),
+        ] %}
+        {{ pronunciation_table(throaty) }}
+        
+        <h3>Tonguey</h3>
+
+        <p>Another set of easy letters, these are all made with the tongue touching the top
+           of your mouth.</p>
+
+        {% set tonguey = [
+            ("λ", "**l**amp"),
+            ("ν", "**n**et"),
+            ("ρ", "**r**ing but slightly rolled"),
+        ] %}
+        {{ pronunciation_table(tonguey) }}
+        
+        <h3>Doubles</h3>
+
+        <p>Letters that make double sounds. Z is a special case (see the note), but the
+           other two are just combinations of two letters you already know!</p>
+
+        {% set doubles = [
+            ("ζ", "**z**ed"),
+            ("ξ", "ta**x**i"),
+            ("ψ", "li**ps**"),
+        ] %}
+        {{ pronunciation_table(doubles) }}
+
+        <h3>Combinations</h3>
+
+        <p>These are other combinations of letters that don't really fit into the
+           categories above.</p>
+
+        {% set combinations = [
+            ("γκ, γγ", "**g**oat"),
+            ("μπ", "**b**ull"),
+            ("ντ", "**d**oor"),
+            ("τζ", "between po**ds** and **j**ob"),
+            ("τσ", "i**ts**y"),
+        ] %}
+        {{ pronunciation_table(combinations) }}
+
+    </section>
+{% endblock %}

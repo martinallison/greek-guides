@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ super() }} &middot; 404{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>We can't find that page</h1>
+
+        <p>We've looked everywhere, but it seems like Maggie mustn't have written it yet. Go
+           <a href="/">home</a> instead?</p>
+    </section>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Learn Greek{% endblock %}</title>
+        <link rel="stylesheet" href="/main.css">
+        <meta name="viewport" content="width=device-width">
+    </head>
+
+    <body>
+        <div class="middle">
+        {% block body %}
+        {% endblock %}
+        </div>
+        <footer class="middle">
+            <a href="/">home</a> &middot;
+            <a href="/about">about</a> &middot;
+            <a href="mailto:martinallison@gmail.com">contact</a>
+        </footer>
+    </body>
+</html>
