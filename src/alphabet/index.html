@@ -68,6 +68,8 @@
             ("θ", "**th**anks"),
             ("σ, ς", "**s**ea (ς is used as the final letter of a word)"),
             ("τ", "**t**eam"),
+            ("τζ", "between po**ds** and **j**ob"),
+            ("τσ", "i**ts**y"),
         ] %}
         {{ pronunciation_table(teethy) }}
 
@@ -78,9 +80,10 @@
 
         {% set lipsy = [
             ("β", "**v**et"),
-            ("μ", "**m**ark"),
+            ("μ", "**m**oon"),
+            ("μπ", "**b**ull"),
             ("π", "**p**ie"),
-            ("φ", "**f**ar"),
+            ("φ", "**f**lag"),
         ] %}
         {{ pronunciation_table(lipsy) }}
 
@@ -91,6 +94,7 @@
 
         {% set throaty = [
             ("γ", "**g**ame but softer, a bit like the way French people say 'r'"),
+            ("γκ, γγ", "**g**oat"),
             ("κ", "**c**ar"),
             ("χ", "**h**eart but more raspy, like a Scottish lo**ch**"),
         ] %}
@@ -104,6 +108,7 @@
         {% set tonguey = [
             ("λ", "**l**amp"),
             ("ν", "**n**et"),
+            ("ντ", "**d**oor"),
             ("ρ", "**r**ing but slightly rolled"),
         ] %}
         {{ pronunciation_table(tonguey) }}
@@ -119,20 +124,5 @@
             ("ψ", "li**ps**"),
         ] %}
         {{ pronunciation_table(doubles) }}
-
-        <h3>Combinations</h3>
-
-        <p>These are other combinations of letters that don't really fit into the
-           categories above.</p>
-
-        {% set combinations = [
-            ("γκ, γγ", "**g**oat"),
-            ("μπ", "**b**ull"),
-            ("ντ", "**d**oor"),
-            ("τζ", "between po**ds** and **j**ob"),
-            ("τσ", "i**ts**y"),
-        ] %}
-        {{ pronunciation_table(combinations) }}
-
     </section>
 {% endblock %}
