@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}Learn Greek{% endblock %}</title>
-        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="{{ url('/main.css') }}">
         <meta name="viewport" content="width=device-width">
     </head>
 
@@ -13,8 +13,8 @@
         {% endblock %}
         </div>
         <footer class="middle">
-            <a href="/">home</a> &middot;
-            <a href="/about">about</a> &middot;
+            <a href="{{ url('/') }}">home</a> &middot;
+            <a href="{{ url('/about') }}">about</a> &middot;
             <a href="mailto:martinallison@gmail.com">contact</a>
         </footer>
     </body>
