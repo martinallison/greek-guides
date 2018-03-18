@@ -1,0 +1,5 @@
+{% macro pronunciation_defs(mapping) -%}
+    {% for greek, english in mapping %}
+        <dt>{{ greek }}</dt> <dd>{{ markdown(english, fragment=True) }}</dd>
+    {% endfor %}
+{%- endmacro %}
