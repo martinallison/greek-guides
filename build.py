@@ -110,9 +110,9 @@ def main(conf, is_prod=False):
 conf = {
     empty: "docs",
     render: {
-        "src/index.html": "docs/index.html",
-        "src/about/index.html": "docs/about/index.html",
-        "src/alphabet/index.html": "docs/alphabet/index.html",
+        "src/home.html": "docs/index.html",
+        "src/about.html": "docs/about/index.html",
+        "src/alphabet.html": "docs/alphabet/index.html",
     },
     copy: {
         "src/img": "docs/img",
