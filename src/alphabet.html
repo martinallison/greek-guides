@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block title %}{{ super() }} &middot; Alphabet{% endblock %}
 
@@ -21,46 +22,51 @@
             </figcaption>
         </figure>
 
-        <p>If you’re going on holiday for a week, you’ll survive without being able to
-           read Greek characters (most things in tourist places are also signed in Latin
-           characters) but people will impressed and confused if you can read them, so give
-           it a go!</p>
+        <p>If you’re going on holiday for a week, you’ll have no problem if you can’t read Greek
+           characters&mdash;but people will be impressed and confused if you can. Give it a go!</p>
     </section>
 
     <section>
         <h2>Pronunciation</h2>
 
-        <p>It looks scary at first, but actually most Greek sounds exist in English or are
-           easy to approximate. Greek pronunciation is also really <em>really</em>
-           consistent, so once you’ve learned which letters and combinations map to each
-           sound, you can read anything.</p>
+        <p>The different characters look scary at first, but actually they mostly all produce
+           sounds that exist in English, or are easy to approximate. The pronunciation of each
+           letter or combination is also <em>really</em> consistent, so once you’ve learned which
+           letters and combinations map to each sound, you can pronounce anything.</p>
 
-        <p>We’ve grouped similar letters together for easier digestion.</p>
-
-        {% macro pronunciation_table(mapping) -%}
-            <dl>
-            {% for greek, english in mapping %}
-                <dt>{{ greek }}</dt> <dd>{{ markdown(english, fragment=True) }}</dd>
-            {% endfor %}
-            </dl>
-        {%- endmacro %}
+        <p>Here we’ve grouped them into similar types and sounds and mapped them to their English
+           equivalents.</p>
 
         <h3>Vowels</h3>
 
-        <p>All of these letters have sounds made in English. Easy!</p>
+        <p>All of these letters have sounds made in English. Easy.</p>
 
-        {% set vowels = [
-            ("α", "c**a**t"),
-            ("ε, αι", "f**e**rry"),
-            ("ι, η, υ, ει, οι", "s**ea**t"),
-            ("ο, ω", "f**o**rm"),
-            ("ου", "s**ou**p"),
-        ] %}
-        {{ pronunciation_table(vowels) }}
+        <div>
+            {% set vowels = [
+                ("α", "c**a**t"),
+                ("ε, αι", "f**e**rry"),
+                ("ι, η, υ, ει, οι", "m**ee**t"),
+                ("ο, ω", "f**o**rm"),
+                ("ου", "l**oo**p"),
+            ] %}
+            <dl>
+                {{ macros.pronunciation_defs(vowels) }}
+            </dl>
+
+            <aside>
+                <p>Notice there are quite a few vowels that have the same sound. The number of ways
+                   to write ‘ee’ can even confuse native Greeks when it comes to spelling!</p>
+
+                <p>Also note that some combinations of letters don't make the sounds you'd expect,
+                   like ‘οι’, which you’d expect to be ‘oee’ (this doesn’t just apply to vowels,
+                   either). For now, it might help to learn each combination as if it was just one
+                   letter.</p>
+            </aside>
+        </div>
 
         <h3>Teethy</h3>
 
-        <p>These are sounds you make with your teeth. We have all of these sounds in
+        <p>These are sounds you make with your teeth. We have most of these sounds in
            English too.</p>
         
         {% set teethy = [
@@ -71,35 +77,51 @@
             ("τζ", "between po**ds** and **j**ob"),
             ("τσ", "i**ts**y"),
         ] %}
-        {{ pronunciation_table(teethy) }}
+        <dl>
+            {{ macros.pronunciation_defs(teethy) }}
+        </dl>
 
         <h3>Lipsy</h3>
 
         <p>These sounds are made by putting your lips together and, guess what, they also
-           all have direct English equivalents!</p>
+           all have direct English equivalents.</p>
 
         {% set lipsy = [
+            ("αυ", "**av**ersion or **af**luent"),
+            ("ευ", "**Ev**erest or **eff**ect"),
             ("β", "**v**et"),
             ("μ", "**m**oon"),
             ("μπ", "**b**ull"),
             ("π", "**p**ie"),
             ("φ", "**f**lag"),
         ] %}
-        {{ pronunciation_table(lipsy) }}
+        <dl>
+            {{ macros.pronunciation_defs(lipsy) }}
+        </dl>
 
         <h3>Throaty</h3>
 
         <p>These ones are slightly harder for English speakers since their sounds are made
-           using the throat. Scottish and French people have these ones fairly easy, though.</p>
+           using the throat. Scottish and French people are sorted, though.</p>
 
         {% set throaty = [
-            ("γ", "**g**ame but softer, a bit like the way French people say 'r'"),
+            ("γ", "**g**ame, but softer, a bit like the French ‘r’"),
             ("γκ, γγ", "**g**oat"),
             ("κ", "**c**ar"),
-            ("χ", "**h**eart but more raspy, like a Scottish lo**ch**"),
+            ("χ", "**h**eart, but more raspy, like Scottish lo**ch**"),
         ] %}
-        {{ pronunciation_table(throaty) }}
-        
+        <dl>
+            {{ macros.pronunciation_defs(throaty) }}
+        </dl>
+
+        <aside>
+            <p>The letters γ and χ have an extra rule. If γ comes before an ‘ee’ or an ‘e’
+               sound, then it becomes more like <strong>yea</strong>r and <strong>ye</strong>s,
+               respectively. If χ comes before those sounds then it's pronounced as if there’s a
+               y in between it and the vowel, e.g. <strong>hyee</strong> and <strong>hye</strong>.
+            </p>
+        </aside>
+
         <h3>Tonguey</h3>
 
         <p>Another set of easy letters, these are all made with the tongue touching the top
@@ -109,20 +131,36 @@
             ("λ", "**l**amp"),
             ("ν", "**n**et"),
             ("ντ", "**d**oor"),
-            ("ρ", "**r**ing but slightly rolled"),
+            ("ρ", "**r**ing, but slightly rolled"),
         ] %}
-        {{ pronunciation_table(tonguey) }}
+        <dl>
+            {{ macros.pronunciation_defs(tonguey) }}
+        </dl>
         
         <h3>Doubles</h3>
 
-        <p>Letters that make double sounds. Z is a special case (see the note), but the
-           other two are just combinations of two letters you already know!</p>
+        <p>These are letters that effectively stand for two letters. Ζ is included since it
+           historically came from the combination of ‘σδ’ together.</p>
 
         {% set doubles = [
             ("ζ", "**z**ed"),
             ("ξ", "ta**x**i"),
             ("ψ", "li**ps**"),
         ] %}
-        {{ pronunciation_table(doubles) }}
+        <dl>
+            {{ macros.pronunciation_defs(doubles) }}
+        </dl>
+    </section>
+
+    <section>
+        <h2>That's it</h2>
+
+        <p>As far as individual letters and sounds go, that's pretty much everything there is to
+           the alphabet and sounds in Greek for practical use.</p>
+
+        <p>If you continue on with learning and speaking Greek, you'll discover that there's still
+           a little more to learn about pronunciation depending on word stress, but we'll see that
+           later on. For now, though, with practice, you'll be able to pronounce 95%+ of all Greek
+           words!</p>
     </section>
 {% endblock %}
