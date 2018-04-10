@@ -1,33 +1,47 @@
-@charset "UTF-8";
+@keyframes fade-in-out {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 125%;
   margin: 0;
   text-decoration-skip: ink;
   -webkit-text-decoration-skip: ink;
   text-decoration-skip-ink: auto; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     html {
       font-size: 150%; } }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif; }
 
 h1 {
+  font-size: 2rem;
   text-align: center;
   margin-top: 4.2rem;
   margin-bottom: 2.1rem; }
 
 h1 + p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-top: 2.1rem;
   margin-bottom: 2.1rem; }
+  @media only screen and (min-width: 780px) {
+    h1 + p {
+      font-size: 2rem; } }
   h1 + p.emoji {
     letter-spacing: 0.5rem; }
 
 h2 {
   font-size: 1.5rem;
+  margin-top: 2.1rem;
+  margin-bottom: 2.1rem; }
+
+h3 {
   margin-top: 2.1rem;
   margin-bottom: 2.1rem; }
 
@@ -39,50 +53,153 @@ a {
   a:visited {
     color: #000; }
 
-figure {
-  color: #555;
-  border-radius: 5px;
-  padding: 1rem;
-  text-align: center; }
-  figure p {
-    margin: 0.5rem auto;
-    text-align: center; }
-  figure p:first-child {
-    margin-top: 0; }
-  figure p:last-child {
-    margin-bottom: 0; }
-  figure figcaption {
-    font-weight: bold;
-    font-size: 0.75rem; }
-
-dl {
-  margin-left: 1rem; }
-  dl strong {
-    font-weight: 900; }
-
-dd, dt {
-  display: inline;
-  line-height: 2rem; }
-
-dt::after {
-  content: " → "; }
-
-dd {
-  margin: 0; }
-  dd::after {
-    content: "";
-    display: block; }
-
 footer {
   text-align: center;
   margin-top: 4.2rem;
   margin-bottom: 2.1rem; }
+
+table {
+  box-sizing: border-box;
+  max-width: 100%;
+  border-spacing: 0;
+  font-size: 0.75rem;
+  margin: 1rem 0; }
+
+th, td {
+  box-sizing: border-box;
+  border-bottom: 5px solid #fdeeee;
+  padding: 0.75rem 0.5rem;
+  text-align: center; }
+  @media only screen and (max-width: 780px) {
+    th, td {
+      padding: 0.5rem 0.1rem; } }
+
+td {
+  border-bottom-width: 3px;
+  max-width: 10rem; }
+
+tr:last-child td {
+  border-bottom: 0; }
+
+aside {
+  box-sizing: border-box;
+  margin-top: 1rem;
+  font-size: 0.75rem; }
+  aside *:first-child {
+    margin-top: 0; }
+  aside *:last-child {
+    margin-bottom: 0; }
+
+th[aria-label="Romanisation"]::after {
+  content: "Roman."; }
+  @media only screen and (min-width: 780px) {
+    th[aria-label="Romanisation"]::after {
+      content: "Romanisation"; } }
+
+th[aria-label="Pronunciation"]::after {
+  content: "Sound"; }
+
+.hide {
+  display: none; }
+
+.show {
+  display: auto; }
+
+.note {
+  display: flex;
+  align-items: flex-end;
+  overflow: visible;
+  padding: 0; }
+  .note > div:first-child {
+    box-sizing: border-box;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 1rem; }
+  .note .title-container {
+    text-align: center; }
+  .note .title {
+    display: inline-block;
+    font-variant: all-small-caps;
+    visibility: hidden; }
+  .note .title::after {
+    content: "Note";
+    font-weight: bold;
+    font-variant: all-small-caps;
+    visibility: visible; }
+
+.note.maggie .title::after {
+  content: "Maggie says"; }
+.note.maggie .title {
+  background-image: url("/greek-guides/img/maggie.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2.1rem;
+  line-height: 2.1rem;
+  padding-left: 2.6rem;
+  visibility: visible; }
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .note.maggie .title {
+    background-image: url("/greek-guides/img/maggie@2x.png"); } }
+
+.note.martin .title::after {
+  content: "Martin says"; }
+.note.martin .title {
+  background-image: url("/greek-guides/img/martin.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2.1rem;
+  line-height: 2.1rem;
+  padding-left: 2.6rem; }
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .note.martin .title {
+    background-image: url("/greek-guides/img/martin@2x.png"); } }
+
+.left {
+  float: left; }
+
+.left.space {
+  margin-right: 2.1rem; }
+
+.right {
+  float: right; }
+
+.right.space {
+  margin-right: 2.1rem; }
+
+@media only screen and (min-width: 780px) {
+  .half {
+    width: 50%; } }
+
+@media only screen and (max-width: 780px) {
+  .half.space {
+    margin: 0; } }
+@media only screen and (min-width: 780px) {
+  .half.space {
+    width: calc(50% - (2.1rem / 2)); } }
+
+@media only screen and (min-width: 780px) {
+  .half.space + .half {
+    width: calc(50% - (2.1rem / 2)); } }
+
+.clear {
+  clear: both; }
+
+.contain-floats {
+  display: table;
+  overflow: hidden; }
+
+.centered {
+  margin-right: auto;
+  margin-left: auto; }
 
 .middle {
   max-width: 800px;
   width: 90%;
   margin-right: auto;
   margin-left: auto; }
+
+.middle.wider {
+  max-width: 960px; }
 
 .guides {
   margin-top: 2.1rem;
@@ -94,7 +211,7 @@ footer {
   width: 47%;
   margin-right: 6%;
   box-sizing: border-box; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     .guides > div {
       width: 31.25%;
       margin-right: 3%; } }
@@ -110,7 +227,7 @@ footer {
 .guide:nth-child(0n+2) {
   margin-right: 0; }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 780px) {
   .guide:nth-child(0n+2) {
     margin-right: 3%; }
 
@@ -126,7 +243,7 @@ footer {
   align-content: center;
   justify-content: center;
   box-sizing: border-box; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     .guide-icon {
       height: 200px; } }
   .guide-icon p {
@@ -137,8 +254,24 @@ footer {
   display: block;
   width: 10rem;
   margin: 4.2rem auto; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 780px) {
     .faces {
       width: 14em; } }
+
+@media only screen and (max-width: 350px) {
+  td.long-text {
+    font-size: 0.66rem; } }
+
+td.listen div {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem; }
+  td.listen div img {
+    height: 0.75rem;
+    width: 0.75rem; }
+
+.fade-in-out {
+  animation: fade-in-out 2s infinite; }
 
 /*# sourceMappingURL=main.css.map */
