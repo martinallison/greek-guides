@@ -9,6 +9,12 @@ import sys
 import jinja2
 import mistune
 
+import data
+
+
+def get_all(module):
+    return {k: getattr(module, k) for k in module.__all__}
+
 
 def markdown(text, fragment=False, **kwargs):
     m = mistune.markdown(text, **kwargs)
@@ -26,7 +32,7 @@ def url_factory(prefix):
         """Because the site is hosted on martinallison.github.io/greek-guides, we need to
         prefix the URL properly.
         """
-        if path.startswith("/greek-guides"):
+        if path.startswith(prefix):
             return path
 
         joiner = "" if path.startswith("/") else "/"
@@ -41,6 +47,7 @@ loader = jinja2.FileSystemLoader([here, os.path.join(here, "src")])
 jinja = jinja2.Environment(loader=loader)
 
 jinja.globals.update(markdown=markdown)
+jinja.globals.update(get_all(data))
 
 
 def mkdir_p(path):
@@ -90,12 +97,13 @@ def run(fn, args):
 
 def main(conf, is_prod=False):
     jinja.globals.update(url=url_factory("/greek-guides" if is_prod else ""))
+    jinja.globals.update(is_prod=is_prod)
 
     sys.stdout.write("Building...\n\n")
 
     for fn, args in conf.items():
-        process = fn.__name__.capitalize()
-        sys.stdout.write("{}ing...\n".format(process))
+        process = fn.__name__
+        sys.stdout.write("{}ing...\n".format(process.capitalize()))
 
         if isinstance(args, dict):
             run_from_dict(fn, args)
@@ -115,7 +123,9 @@ conf = {
         "src/alphabet.html": "docs/alphabet/index.html",
     },
     copy: {
+        "src/js": "docs/js",
         "src/img": "docs/img",
+        "src/audio": "docs/audio",
         "src/404.md": "docs/404.md",
         "src/404.html": "docs/404.html",
     }
