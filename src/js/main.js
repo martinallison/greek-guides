@@ -1,45 +1,48 @@
-(function(document) {
-    /**
-     * Reeeaaaally rough way of wiring up the speaker buttons to playing the correct
-     * audio files.
-     */
-    var audioButtons = document.querySelectorAll("[data-play]");
-    var audioElements = document.querySelectorAll("audio");
+import Vue from "vue";
 
-    audioElements.forEach(function(el) {
-        /**
-         * For each audio element, if it has a corresponding button, replace it with
-         * an ear emoji while the audio plays, switching it back to the button when
-         * the audio is done.
-         */
-        var ear = document.createElement("span");
-        ear.innerText = "👂";
 
-        var button = document.querySelector("[data-play='" + el.id + "'");
+window.urlPrefix = "";
 
-        if (!!button) {
-            el.addEventListener("playing", function() {
-                button.classList.add("hide");
-                ear = button.parentNode.appendChild(ear);
-            });
-            el.addEventListener("ended", function() {
-                button.classList.remove("hide");
-                ear = button.parentNode.removeChild(ear);
-            });
+
+const globals = {
+    getUrl: path => window.urlPrefix + path
+}
+
+
+globals.install = function() {
+    Object.defineProperty(Vue.prototype, "$g", {
+        get() { return globals }
+    })
+}
+
+
+const Listen = {
+    name: "listen",
+    props: ["word"],
+    data: () => {
+        return {
+            playing: false
         }
-    });
+    },
+    template: `
+        <div>
+            <audio ref="audio"
+                :src="$g.getUrl('/audio/' + word + '.m4a')"
+                v-on:playing="playing = true"
+                v-on:ended="playing = false">
+            </audio>
+            <span v-if="playing">👂</span>
+            <a v-if="!playing" href="#" @click.prevent="$refs.audio.play()">
+                <img :src="$g.getUrl('/img/audio.svg')" class="listen"
+                    :alt="'listen to pronunciation of ' + word">
+            </a>
+        </div>
+    `
+};
 
-    audioButtons.forEach(function(el) {
-        /**
-         * Hook up each 'button' to play the corresponding audio.
-         */
-        el.addEventListener("click", function(e) {
-            e.preventDefault();
-            var audio = document.getElementById(el.dataset.play);
+Vue.use(globals);
+Vue.component("listen", Listen);
 
-            if (!!audio) {
-                audio.play();
-            }
-        });
-    });
-}(document));
+new Vue({
+    el: "#content",
+});
