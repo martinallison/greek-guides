@@ -1,6 +1,6 @@
-all: html css
+all: html js css
 
-prod: html_prod css_prod
+prod: html_prod js_prod css_prod
 
 html:
 	./build.py
@@ -12,7 +12,13 @@ css:
 	sass src/scss/main-dev.scss:docs/main.css --watch
 
 css_prod:
-	sass src/scss/main.scss:docs/main.css --watch
+	sass src/scss/main.scss:docs/main.css
+
+js:
+	npm run dev
+
+js_prod:
+	npm run build
 
 server:
 	(cd docs && python -m http.server)
