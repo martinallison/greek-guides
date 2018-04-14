@@ -408,3 +408,12 @@ td.listen div {
 .fade-in-out {
     animation: fade-in-out 2s infinite;
 }
+
+.no-underline {
+    display: inline-block;
+    text-decoration: none;
+}
+
+footer .no-underline {
+    margin-right: 0.25rem;
+}
