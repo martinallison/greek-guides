@@ -96,7 +96,9 @@ def run(fn, args):
 
 
 def main(conf, is_prod=False):
-    jinja.globals.update(url=url_factory("/greek-guides" if is_prod else ""))
+    url_prefix = "/greek-guides" if is_prod else ""
+    jinja.globals.update(url_prefix=url_prefix)
+    jinja.globals.update(url=url_factory(url_prefix))
     jinja.globals.update(is_prod=is_prod)
 
     sys.stdout.write("Building...\n\n")

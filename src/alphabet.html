@@ -52,9 +52,7 @@
                     <td>{{ letter.romanisation }}</td>
                     <td{% if letter.pronunciation|length > 25 %} class="long-text"{% endif %}
                         >{{ markdown(letter.pronunciation, fragment=True) }}</td>
-                    <td class="listen"><div><a href="#" data-play="{{ letter.romanised_name }}"><img
-                        src="{{ url('/img/audio.svg') }}"
-                        alt="listen to {{ letter.romanised_name }} pronunciation"></div></td>
+                    <td class="listen"><listen word="{{ letter.romanised_name }}"></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -138,16 +136,4 @@
         <p>After you start to get the hang of recognising the letters, head to the next guide to
             learn how to read words and start pronouncing them like a native!</p>
     </section>
-
-    {% for letter in alphabet.letters %}
-    {% set audio_url = "/audio/" + letter.romanised_name + ".m4a" %}
-    <audio id="{{ letter.romanised_name }}" src="{{ url(audio_url) }}"></audio>
-    {% endfor %}
-
-    {# TODO: waiting for files
-    {% for digraph in alphabet.digraphs %}
-    {% set audio_url = "/audio/" + digraph.romanised_name + ".m4a" %}
-    <audio id="{{ digraph.romanisation }}" src="{{ url(audio_url) }}"></audio>
-    {% endfor %}
-    #}
 {% endblock %}

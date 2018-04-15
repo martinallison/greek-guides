@@ -17,3 +17,6 @@ __pycache__/
 
 # sass stuff
 .sass-cache/
+
+# js
+node_modules/
