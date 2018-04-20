@@ -29,7 +29,7 @@ class Alphabet:
     letter_defs = {
         "α": ("άλφα", "alpha", "c**a**t", "a"),
         "β": ("βήτα", "vita", "**v**et", "v"),
-        "γ": ("γάμμα", "gamma", "sometimes like French ‘**r**’, sometimes **y**es", "g or y"),
+        "γ": ("γάμμα", "gamma", "sometimes like French ‘**r**’, sometimes **y**es", "g"),
         "δ": ("δέλτα", "delta", "**th**en", "d"),
         "ε": ("έψιλον", "epsilon", "f**e**rry", "e"),
         "ζ": ("ζήτα", "zita", "**z**ed", "z"),
@@ -48,7 +48,7 @@ class Alphabet:
         "τ": ("ταυ", "taf", "**t**eam", "t"),
         "υ": ("ύψιλον", "ypsilon", "m**ee**t", "y"),
         "φ": ("φι", "phi", "**f**lag", "ph"),
-        "χ": ("χι", "chi", "**h**eart, but more raspy, like Scottish ‘loch’", "ch"),
+        "χ": ("χι", "chi", "**h**eart, but more raspy, like Scottish ‘lo**ch**’", "ch"),
         "ψ": ("ψι", "psi", "li**ps**", "ps"),
         "ω": ("ωμέγα", "omega", "f**o**rm", "o"),
     }
