@@ -125,7 +125,6 @@ conf = {
         "src/alphabet.html": "docs/alphabet/index.html",
     },
     copy: {
-        "src/js": "docs/js",
         "src/img": "docs/img",
         "src/audio": "docs/audio",
         "src/404.md": "docs/404.md",
