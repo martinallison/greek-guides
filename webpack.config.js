@@ -19,10 +19,10 @@ module.exports = {
       },      {
         test: /\.vue$/,
         loader: 'vue-loader',
+        // TODO: add SASS loader
         options: {
           loaders: {
           }
-          // other vue-loader options go here
         }
       },
       {

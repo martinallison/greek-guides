@@ -2,23 +2,23 @@
 
 {% block title %}{{ super() }}{% endblock %}
 
+{% block body_class %}home{% endblock %}
+
 {% block body %}
     <section>
         <h1>Learn Greek!</h1>
 
-        <p class="emoji">🇬🇷 🔱 💃🏻 ☀️ 🛥️</p>
+        <p class="emoji-heading">🇬🇷 🔱 💃🏻 ☀️ 🛥️</p>
 
-        <p>Hello! Welcome to Greek guides: a bunch of small, concise guides to learning the
-            Modern Greek language.</p>
+        <p>Hello! Welcome to Greek guides: a bunch of guides to learning the Modern Greek
+            language.</p>
 
-        <p>It’s not a language people typically learn (and there are only 13ish million speakers),
-            so there’s not much out there for people wanting to give it a go, either for
-            holidaying, because of a Greek partner, or just because it sounds and looks nice.</p>
+        <p>Modern Greek isn’t a language people typically learn (and there are only 13ish million
+            speakers), so there’s not much out there if you want to give it a go without needing to
+            know about linguistic stuff.</p>
 
         <p>That’s why <a href="{{ url('/about') }}">we</a>, Maggie (a native Greek) and Martin
-            (someone who's learning Greek), decided to put these guides together. We're not
-            linguists, so each guide is simple and practical rather than 100% linguistically
-            technically accurate.</p>
+            (someone who's learning Greek), decided to put these more practical guides together.</p>
 
         <p>We hope you like them! Give us feedback or ask us questions
             <a href="mailto:martinallison@gmail.com">here</a>.</p>
@@ -27,14 +27,27 @@
     <section>
         <h2>Basics</h2>
 
-        <p>Where to start with Greek, and enough to be able to impress some Greeks if you go
-            on holiday.</p>
+        <p>Learn the alphabet, how to pronounce things and enough to be able to impress some
+            Greeks if you go on holiday.</p>
 
-        <div class="guides">
-            <div>
+        <aside class="note-inline">
+            <p><span class="note-inline-title">Note on romanisation:</span> you’ll see the word
+            <i>romanisation</i> a lot in the guides in this section.</p>
+
+            <p>This just shows how Greek text can be written using equivalent (kind of) letters
+                from the Latin (English) alphabet. E.g., the Greek word <i>μαμά</i> is romanised
+                as <i>mama</i>.</p>
+
+            <p>When introducing a Greek word, we’ll write its romanisation in brackets along with
+                its meaning: <i>μαμά</i> (<i>mama</i>—‘mum’). After this section we’ll drop the
+                romanisation part.</p>
+        </aside>
+
+        <div class="guide-grid container v-margin-sml">
+            <div class="guide-item">
                 <a href="{{ url('/alphabet') }}">
-                    <div class="guide-icon">
-                        <p>α&mdash;ω</p>
+                    <div class="guide-icon bordered shadowed">
+                        <p>α—ω</p>
                     </div>
                     <h3>Alphabet</h3>
                 </a>

@@ -1,8 +1,8 @@
 {% macro note(who=None) -%}
-    <aside class="note{% if who %} {{ who }}{% endif %}">
-        <div>
-            <div class="title-container">
-                <p class="title" aria-label="Note"></p>
+    <aside class="note v-margin-med{% if who %} note-person note-{{ who }}{% endif %}">
+        <div class="note-inner">
+            <div class="text-centered">
+                <p class="note-title" aria-label="Note"></p>
             </div>
 {%- endmacro %}
 
@@ -10,3 +10,46 @@
         </div>
     </aside>
 {%- endmacro %}
+
+{% macro pronunciation_table(letters) %}
+    <thead>
+        <th>Letter</th>
+        <th class="lrg-only">Name</th>
+        <th aria-label="Romanisation"></th>
+        <th aria-label="Pronunciation" colspan="2"></th>
+    </thead>
+    <tbody>
+        {% for letter in letters %}
+        {% set audio = url("/audio/alphabet/" + letter.romanised_name + ".m4a") %}
+        <tr>
+            <td>
+                {{ letter.upper }} • {{ letter.lower }}
+                <span class="collapsed-letter-name sml-only">
+                    {{ letter.name }} ({{ letter.romanised_name }})
+                </span>
+            </td>
+            <td class="lrg-only">{{ letter.name }} ({{ letter.romanised_name }})</td>
+            <td>{{ letter.romanisation }}</td>
+            <td{% if letter.pronunciation|length > 25 %} class="text-sml"{% endif %}>
+                    {{ markdown(letter.pronunciation, fragment=True) }}
+            </td>
+            <td>
+                <gr-listen class="sml" word="{{ letter.romanised_name }}" audio-url="{{ audio }}">
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+{% endmacro %}
+
+
+{% macro example(greek, romanisation, meaning, audio="") %}
+    <div class="example shadowed">
+        <span class="example-greek">{{ greek }}
+            {% if audio %}
+                <gr-listen class="sml example-audio" audio-url="{{ url(audio) }}" word="{{ romanisation }}">
+            {% endif %}
+        </span>
+        <span class="example-romanisation">({{ romanisation }})</span>
+        <span class="example-meaning">{{ meaning }}</span>
+    </div>
+{% endmacro %}

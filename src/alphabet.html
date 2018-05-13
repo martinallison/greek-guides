@@ -8,132 +8,185 @@
     <section>
         <h1>Alphabetti spaghetti</h1>
 
-        <p class="emoji">Ω 🍝 Ω</p>
+        <p class="emoji-heading">Ω 🍝 Ω</p>
 
-        <p>The first and most obvious thing about Greek for English speakers is that it uses
-            a different alphabet. This can make it look mysterious and unknowable at first, but
-            you might already recognise some letters.</p>
+        <p>The most obvious thing about Greek is that it uses a different alphabet. Whereas
+            English uses the Latin alphabet, Greek uses… well, the Greek one. Learning it is the
+            gateway to reading and speaking Greek.</p>
 
-        <p>Some letters might be familiar from maths, various Greek-style yoghurt branding (where
-            they’re totally abused!) or just because they look like some from the Latin
-            alphabet—the alphabet used for English.</p>
+        <h2>Overview</h2>
 
-        <p>The reason some letters look similar is that the Latin alphabet is eventually derived
-            from various historic Greek ones. This might seem weird since some of the ‘same’
-            letters look so different, or vice-versa, but at one time in history
-            <a href="https://en.wikipedia.org/wiki/Latin_script">it all made sense</a>.</p>
+        <p>The Greek alphabet has only 24 letters. Here they are, upper- and lowercase, in order:</p>
+
+        <figure class="alphabet bordered shadowed v-margin-med v-padding-med h-margin-none">
+            <p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω</p>
+            <p>α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ,ς τ υ φ χ ψ ω</p>
+        </figure>
+
+        <p>At first it might look confusing, but some of the letters are probably recognisable
+            already.</p>
+
+        <p>Some look the same as their English (Latin) counterparts, some you might recognise if
+            you do maths or science things, and some you’ve probably seen being misused on
+            Greek-style yoghurt packaging.</p>
+
+        <p>Others look more mysterious: what on earth is a Ξ, or a Ψ? Well, we’ll demystify them
+            and the rest of the letters of the alphabet in small groups.</p>
     </section>
 
     <section>
-        <h2>The alphabet</h2>
+        <h2>α ε κ μ τ</h2>
 
-        <p>The Greek alphabet only has 24 letters to learn, and many of them make sounds familiar
-            to English speakers (especially anyone that know Spanish or Italian). Here they are in
-            order, with their name, romanisation and <strong>basic</strong> pronunciation:</p>
+        <p>Let’s start with the easy letters. These are letters that look (their uppercase
+            forms at least) and sound like their English ‘equivalents’. Listen to Maggie say
+            the basic pronunciation and name for each letter below.</p>
 
-        {{ macros.note() }}
-            <p>Some letters have more than one pronunciation or romanisation. Don’t worry
-                about that for now—we’ll go over detailed pronunciation in the next guide.</p>
-        {{ macros.endnote() }}
-
-        <table class="centered">
-            <thead>
-                <th>Letter</th>
-                <th>Name</th>
-                <th aria-label="Romanisation"></th>
-                <th aria-label="Pronunciation"></th>
-                <th aria-label="Listen">&nbsp;</th>
-            </thead>
-            <tbody>
-                {% for letter in alphabet.letters %}
-                <tr>
-                    <td>{{ letter.upper }} • {{ letter.lower }}</td>
-                    <td>{{ letter.name }} ({{ letter.romanised_name }})</td>
-                    <td>{{ letter.romanisation }}</td>
-                    <td{% if letter.pronunciation|length > 25 %} class="long-text"{% endif %}
-                        >{{ markdown(letter.pronunciation, fragment=True) }}</td>
-                    <td class="listen"><listen word="{{ letter.romanised_name }}"></td>
-                </tr>
-                {% endfor %}
-            </tbody>
+        <table class="centered v-margin-med">
+            {{ macros.pronunciation_table(alphabet.group_1) }}
         </table>
 
+        <p>With just these five letters, you can already say some Greek words!</p>
 
-        {{ macros.note(who="maggie") }}
-            <p>See how there are two lowercase letters for σίγμα (<i>sigma</i>): ⟨σ⟩ and ⟨ς⟩?
-                These are the same letter, pronounced the same, but ⟨ς⟩ is used instead of ⟨σ⟩
-                <strong>only</strong> if it’s the last letter of a word.</p>
-
-            <p>Examples: καφές (<i>kafes</i>—coffee), not καφέσ; σκύλος (<i>skilos</i>—dog)
-                not σκύλοσ.</p>
-        {{ macros.endnote() }}
+        <figure class="examples h-margin-none">
+            {% for example in alphabet.examples_1 %}
+                {{ macros.example(
+                    example.greek,
+                    example.romanisation,
+                    example.meaning,
+                    audio=example.audio) }}
+            {% endfor %}
+        </figure>
+        
+        <p>(In general don’t worry about trying to remember the the example words right now.)</p>
     </section>
 
     <section>
-        <h2>Letter combinations</h2>
+        <h2>β ζ ι λ ο</h2>
 
-        <p>You might notice that, so far, there are some sounds common to English that are missing
-            in Greek: <strong>b</strong>us, <strong>d</strong>oor and <strong>g</strong>ame, amongst
-            others. These sounds do exist in Greek (more or less), but they’re written with two
-            letters rather than one.</p>
-
-        <p>The following table shows those and other letter combinations (although not 100%
-            correct, we’ll call them <em>digraphs</em> from now on) that produce sounds you might
-            not expect:</p>
-
-        <table class="centered">
-            <thead>
-                <th>Digraph</th>
-                <th aria-label="Romanisation"></th>
-                <th aria-label="Pronunciation"></th>
-                {#<th aria-label="Listen">&nbsp;</th>#}
-            </thead>
-            <tbody>
-                {% for digraph in alphabet.digraphs %}
-                <tr>
-                    <td>{{ digraph.lower }}</td>
-                    <td>{{ digraph.romanisation }}</td>
-                    <td{% if digraph.pronunciation|length > 25 %} class="long-text"{% endif %}
-                        >{{ markdown(digraph.pronunciation, fragment=True) }}</td>
-                    {# TODO: waiting for files
-                        <td><a href="#" data-play="{{ digraph.romanisation }}"><img
-                            src="{{ url('/img/audio.svg') }}" class="listen"
-                            alt="listen to {{ digraph.romanisation }} pronunciation"></a></td>#}
-                </tr>
-                {% endfor %}
-            </tbody>
+        <table class="centered v-margin-med">
+            {{ macros.pronunciation_table(alphabet.group_2) }}
         </table>
 
-        <aside><p><strong>Note:</strong> ⟨ηυ⟩ and ⟨υι⟩ are extremely rare.</p></aside>
+        <p>With these and the previous letters combined, you can now read around 1000 Greek
+            words, including:</p>
 
-        <p>Try thinking of these digraphs as one sound. For example, think of ⟨ει⟩ as the sound
-            ‘ee’, rather than as the two letters ⟨ε + ι⟩. (Though we’ll see at some point that
-            it’s not quite that simple in a small number of cases.)</p>
+        <figure class="examples h-margin-none">
+            {% for example in alphabet.examples_2 %}
+                {{ macros.example(
+                    example.greek,
+                    example.romanisation,
+                    example.meaning,
+                    audio=example.audio) }}
+            {% endfor %}
+        </figure>
     </section>
 
     <section>
-        <h2>Romanisation</h2>
+        <h2>δ ν π σ ω</h2>
 
-        <p>The tables above include the romanisation for each letter and digraph. This simply
-            shows how Greek letters can be transcribed in the Latin alphabet.</p>
+        <table class="centered v-margin-med">
+            {{ macros.pronunciation_table(alphabet.group_3) }}
+        </table>
 
-        <p>Romanisation has little to do with pronunciation in some cases (δέλτα—<i>delta</i>—is
-            romanised as ⟨d⟩, but not pronounced as such) but it’s a pretty good mechanism for
-            getting used to recognising individual Greek letters.</p>
+        <p>Notice <i>σίγμα</i> has two lowercase letters: ⟨σ, ς⟩. The only difference is
+            that ⟨ς⟩ is used in place of ⟨σ⟩ as the last letter in a word. E.g.:
+            <i>καλό<strong>ς</strong></i> instead of <i>καλό<strong>σ</strong></i>,
+            <i>πω<strong>ς</strong></i> instead of <i>πω<strong>σ</strong></i>, etc.</p>
 
-        <p>When it comes to reading words, though, it’s better to get used to seeing and reading
-            the Greek letters, and not rely on the romanisations. After the first few guides,
-            we’ll do away with the romanisations when we introduce new Greek words.</p>
+        <p>Many Greek first-person verb forms end in ⟨ω⟩, so whenever you want to say that you do
+            (or don’t do) something, you’ll be using this letter (which is quite a lot of the
+            time) and so knowing it unlocks the ability to use Greek verbs:</p>
+
+        <figure class="examples h-margin-none">
+            {% for example in alphabet.examples_3 %}
+                {{ macros.example(
+                    example.greek,
+                    example.romanisation,
+                    example.meaning,
+                    audio=example.audio) }}
+            {% endfor %}
+        </figure>
+    </section>
+
+    <section>
+        <h2>η θ φ υ</h2>
+
+        <table class="centered v-margin-med">
+            {{ macros.pronunciation_table(alphabet.group_4) }}
+        </table>
+
+        <p>Now we’ve seen all seven vowels, notice that three make the exact same ‘ee’ sound:
+            ⟨η, ι, υ⟩ and two the exact same ‘o’ sound: ⟨ο, ω⟩.</p>
+
+        <figure class="examples h-margin-none">
+            {% for example in alphabet.examples_4 %}
+                {{ macros.example(
+                    example.greek,
+                    example.romanisation,
+                    example.meaning,
+                    audio=example.audio) }}
+            {% endfor %}
+        </figure>
+    </section>
+
+    <section>
+        <h3>γ ξ ρ χ ψ</h3>
+
+        <p>The last and trickiest group has some sounds that are a little difficult for English
+            speakers to pronounce—especially those of ⟨γ, χ⟩.</p>
+
+        <table class="centered v-margin-med">
+            {{ macros.pronunciation_table(alphabet.group_5) }}
+        </table>
+
+        <p><i>Γάμμα</i> (⟨γ⟩) and <i>χι</i> (⟨χ⟩) are hard for English speakers to pronounce.
+            If you’re finding it tricky, you can approximate ⟨γ⟩ with a normal ‘g’, and
+            ⟨χ⟩ with an ‘h’ sound.</p>
+
+        <p>There are a few other pronunciation details for ⟨γ, χ⟩ (and ⟨κ⟩ too), but even with
+            just the basic pronunciation you can have a go at saying a great deal of Greek
+            words. Some final ones to add to the list:</p>
+
+        <figure class="examples h-margin-none">
+            {% for example in alphabet.examples_5 %}
+                {{ macros.example(
+                    example.greek,
+                    example.romanisation,
+                    example.meaning,
+                    audio=example.audio)
+                }}
+            {% endfor %}
+        </figure>
     </section>
 
     <section>
         <h2>Done</h2>
 
-        <p>That’s pretty much it for the Greek alphabet. After some practice, you’ll be able to
-            make pretty good guesses at how to pronounce many Greek words—but that’s not all
-            there is to pronunciation.</p>
+        <p>Hopefully the strange letters now seem less mysterious: they mostly just represent
+            sounds that already exist in English.</p>
 
-        <p>After you start to get the hang of recognising the letters, head to the next guide to
-            learn how to read words and start pronouncing them like a native!</p>
+        <p>After some practice you’ll be able to recognise them, and disassociate them from
+            letters they might look like in English. At some point when you look at a Greek word,
+            it’ll just be <em>Greek</em>.</p>
+
+        <p>Until then, here’s a summary of things it’s useful to remember while practicing:
+            <ul>
+                <li><strong>⟨β⟩ is ‘v’</strong>, not ‘b’</li>
+                <li><strong>⟨ν⟩ is ‘n’</strong>, not ‘v’</li>
+                <li><strong>⟨ω⟩ is ‘o’</strong>, not ‘w’</li>
+                <li>⟨ς⟩ is used instead of ⟨σ⟩ if it’s the last letter in a word</li>
+                <li>⟨ω⟩ is a very common verb ending</li>
+                <li><strong>⟨η⟩ is ‘ee’</strong>, not ‘h’ or ‘n’</li>
+                <li><strong>⟨υ⟩ is ‘ee’</strong>, not ‘u’ or ‘y’</li>
+                <li>If you struggle with pronouncing ⟨γ⟩, use ‘g’</li>
+                <li>If you struggle with pronouncing ⟨χ⟩, use ‘h’</li>
+            </ul>
+        </p>
+
+        <hr>
+
+        <p>You might have noticed that there are no Greek letters for ‘b‘, ‘d’ or hard ‘g’ sounds
+            (among others). In the next guide, we’ll see how Greek uses two-letter combinations
+            to make those (and other) sounds.</p>
     </section>
 {% endblock %}
