@@ -1,0 +1,31 @@
+@mixin retina {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        @content;
+    }
+}
+
+@mixin before($dim) {
+    @media only screen and (max-width: $dim) {
+        @content;
+    }
+}
+
+@mixin between($dim_1, $dim_2) {
+    @media only screen and (min-width: $dim_1 + 1) and (max-width: $dim_2 - 1) {
+        @content;
+    }
+}
+
+@mixin after($dim) {
+    @media only screen and (min-width: $dim) {
+        @content;
+    }
+}
+
+@function border($colour: $colour-border, $width: 1px) {
+    @return $width solid #{$colour};
+}
+
+@function shadow() {
+    @return 0 2px 4px rgba(0, 0, 0, 0.1);
+}

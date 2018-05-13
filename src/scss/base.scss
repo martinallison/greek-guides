@@ -1,0 +1,139 @@
+html {
+    -webkit-text-decoration-skip: ink;
+    color: $colour-dark;
+    font-family: $font-body;
+    font-size: 125%;
+    margin: 0;
+    text-decoration-skip-ink: auto;
+    text-decoration-skip: ink;
+
+    @include after($media-med) {
+        font-size: 150%;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-heading;
+}
+
+h1 {
+    font-size: $text-x-lrg;
+    margin: $space-lrg 0 $space-med 0;
+    text-align: center;
+}
+
+h1 + p {
+    font-size: $text-lrg;
+    margin: $space-med 0;
+    text-align: center;
+
+    @include after($media-med) {
+        font-size: $text-x-lrg;
+    }
+
+    &.emoji-heading {
+        letter-spacing: $space-x-sml;
+    }
+}
+
+h2 {
+    font-size: $text-lrg;
+    margin: $space-med 0 $space-sml 0;
+}
+
+h3 {
+    margin: $space-med 0 $space-sml 0;
+}
+
+p, li {
+    line-height: 1.5;
+}
+
+a {
+    color: $colour-dark;
+
+    &:visited {
+        color: $colour-dark;
+    }
+}
+
+footer {
+    margin: $space-lrg 0 $space-med 0;
+    text-align: center;
+}
+
+table {
+    border-spacing: 0;
+    box-sizing: border-box;
+    margin: $space-med 0;
+    max-width: 100%;
+
+    @include after($media-sml) {
+        font-size: $text-med;
+    }
+}
+
+thead {
+    border-radius: 5px;
+    box-shadow: shadow();
+}
+
+th {
+    border-top: border();
+    border-bottom: border();
+}
+
+th:first-child {
+    border-left: border();
+    border-radius: 5px 0 0 5px;
+}
+
+th:last-child {
+    border-right: border();
+    border-radius: 0 5px 5px 0;
+}
+
+th, td {
+    box-sizing: border-box;
+    padding: $space-x-sml $space-x-sml - 0.11rem;
+    text-align: center;
+
+    @include after($media-sml) {
+        padding: $space-sml;
+    }
+}
+
+td {
+    max-width: 10rem;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+aside {
+    box-sizing: border-box;
+    margin-top: $space-sml;
+
+    *:first-child {
+        margin-top: 0;
+    }
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+i {
+    border-radius: 5px;
+    padding: $text-adjustment $space-x-sml - $text-adjustment;
+    background: rgba($colour-accent, .08);
+}
+
+hr {
+    border: none;
+    border-bottom: border();
+    box-shadow: shadow();
+    width: 10%;
+    margin: $space-med auto
+}

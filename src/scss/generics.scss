@@ -1,0 +1,107 @@
+$space-sizes: (
+    none: 0,
+    x-sml: $space-x-sml,
+    sml: $space-sml,
+    med: $space-med,
+    lrg: $space-lrg
+);
+
+$text-sizes: (
+    x-sml: $text-x-sml,
+    sml: $text-sml,
+    med: $text-med,
+    lrg: $text-lrg
+);
+
+@each $size, $var in $space-sizes {
+    .v-margin-#{$size} {
+        margin-top: $var;
+        margin-bottom: $var;
+    }
+
+    .h-margin-#{$size} {
+        margin-left: $var;
+        margin-right: $var;
+    }
+
+    .v-padding-#{$size} {
+        padding-top: $var;
+        padding-bottom: $var;
+    }
+
+    .h-padding-#{$size} {
+        padding-right: $var;
+        padding-left: $var;
+    }
+};
+
+@each $size, $var in $text-sizes {
+    .text-#{$size} {
+        font-size: $var;
+    }
+
+    .#{$size} {
+        width: $var;
+        height: $var;
+    }
+};
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.centered {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container {
+    overflow: auto;
+    clear: both;
+}
+
+.bordered {
+    border: border();
+}
+
+.sml-only {
+    @include after($media-sml) {
+        display: none;
+    }
+}
+
+.lrg-only {
+    @include before($media-sml) {
+        display: none;
+    }
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.emoji-icon-left {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.emoji-icon-right {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+.shadowed {
+    box-shadow: shadow();
+}

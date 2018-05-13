@@ -1,419 +1,292 @@
-$sml: 780px;
-$x-sml: 350px;
+@import "colours";
+@import "fonts";
+@import "mixins";
+@import "sizes";
 
-$body: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-$heading: Poppins, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+@import "generics";
+@import "base";
 
-$s-biggest: 2rem;
-$s-bigger: 1.5rem;
-$s-content: 1rem;
-$s-note: 0.75rem;
-$s-tiny: 0.66rem;
 
-$m-big: 4.2rem;
-$m-med: 2.1rem;
-$m-sml: 1rem;
-$m-tiny: 0.5rem;
+.main-col {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    width: 90%;
+}
 
-@mixin retina {
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-        @content;
+.main-nav {
+    font-family: $font-heading;
+    font-weight: bold;
+
+    .home & {
+        display: none;
     }
 }
 
-@mixin before($dim) {
-    @media only screen and (max-width: $dim) {
-        @content;
-    }
-}
-
-@mixin between($dim_1, $dim_2) {
-    @media only screen and (min-width: $dim_1 + 1) and (max-width: $dim_2 - 1) {
-        @content;
-    }
-}
-
-@mixin after($dim) {
-    @media only screen and (min-width: $dim) {
-        @content;
-    }
-}
-
-@keyframes fade-in-out { 
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-}
-  
-html {
-    font-family: $body;
-    font-size: 125%;
-    margin: 0;
-    text-decoration-skip: ink;
-    -webkit-text-decoration-skip: ink;
-    text-decoration-skip-ink: auto;
-
-    @include after($sml) {
-        font-size: 150%;
-    }
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: $heading;
-}
-
-h1 {
-    font-size: $s-biggest;
-    text-align: center;
-    margin-top: $m-big;
-    margin-bottom: $m-med;
-}
-
-h1 + p {
-    font-size: $s-bigger;
-    text-align: center;
-    margin-top: $m-med;
-    margin-bottom: $m-med;
-
-    @include after($sml) {
-        font-size: $s-biggest;
-    }
-
-    &.emoji {
-        letter-spacing: $m-tiny;
-    }
-}
-
-h2 {
-    font-size: $s-bigger;
-    margin-top: $m-med;
-    margin-bottom: $m-med;
-}
-
-h3 {
-    margin-top: $m-med;
-    margin-bottom: $m-med;
-}
-
-p {
-    line-height: 1.5;
-}
-
-a {
-    color: #000;
-
-    &:visited {
-        color: #000;
-    }
-}
-
-footer {
-    text-align: center;
-    margin-top: $m-big;
-    margin-bottom: $m-med;
-}
-
-
-table {
-    box-sizing: border-box;
-    max-width: 100%;
-    border-spacing: 0;
-    font-size: $s-note;
-    margin: $m-sml 0;
-}
-
-th, td {
-    box-sizing: border-box;
-    border-bottom: 5px solid #fdeeee;
-    padding: $m-tiny * 1.5 $m-tiny;
+.alphabet {
+    border-radius: 5px;
+    font-weight: bold;
+    padding: $space-sml;
     text-align: center;
 
-    @include before($sml) {
-        padding: $m-tiny 0.1rem;
+    @include after($media-sml) {
+        font-size: $text-sml - $text-adjustment;
+    }
+
+    @include after($media-med) {
+        font-size: $text-med;
+    }
+
+    p {
+        line-height: 1;
     }
 }
 
-td {
-    border-bottom-width: 3px;
-    max-width: 10rem;
-}
-
-tr:last-child td {
-    border-bottom: 0;
-}
-
-aside {
-    box-sizing: border-box;
-    margin-top: $m-sml;
-    font-size: $s-note;
-
-    *:first-child {
-        margin-top: 0;
-    }
-
-    *:last-child {
-        margin-bottom: 0;
-    }
-}
-
-th[aria-label="Romanisation"]::after {
+[aria-label="Romanisation"]::after {
     content: "Roman.";
 
-    @include after($sml) {
+    @include after($media-med) {
         content: "Romanisation";
     }
 }
 
-th[aria-label="Pronunciation"]::after {
+[aria-label="Pronunciation"]::after {
     content: "Sound";
 }
 
-.hide {
-    display: none;
+.collapsed-letter-name {
+    font-size: $text-sml;
+    font-weight: bold;
+    margin-top: $space-x-sml;
+
+    @include before($media-sml) {
+        display: block;
+    }
 }
 
-.show {
-    display: auto;
+.note-inline {
+    border-left: border($colour-bright, 10px);
+    padding-left: $space-sml;
+    color: rgba($colour-dark, .85);
+
+    .note-inline-title {
+        font-weight: bold;
+        font-variant: all-small-caps;
+    }
 }
 
 .note {
-    display: flex;
     align-items: flex-end;
+    display: flex;
     overflow: visible;
     padding: 0;
 
-    & > div:first-child {
-        box-sizing: border-box;
-        border: 1px solid #333;
+   .note-inner {
         border-radius: 5px;
-        padding: $m-sml;
+        border: border();
+        box-sizing: border-box;
+        padding: $space-sml;
     }
 
-    .title-container {
-        text-align: center;
-    }
-
-    .title {
+    .note-title {
         display: inline-block;
         font-variant: all-small-caps;
         visibility: hidden;
     }
 
-    .title::after {
+    .note-title::after {
         content: "Note";
-        font-weight: bold;
         font-variant: all-small-caps;
+        font-weight: bold;
         visibility: visible;
     }
 }
 
-.note.maggie {
-    .title::after {
+.note-person {
+
+    .note-title {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: $space-med;
+        line-height: $space-med;
+        padding-left: $space-med + $space-x-sml;
+        visibility: visible;
+    }
+}
+
+.note-maggie {
+    .note-title::after {
         content: "Maggie says";
     }
 
-    .title {
+    .note-title {
         background-image: url("#{$url-prefix}/img/maggie.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: $m-med;
-        line-height: $m-med;
-        padding-left: $m-med + $m-tiny;
-        visibility: visible;
     }
 
     @include retina {
-        .title {
+        .note-title {
             background-image: url("#{$url-prefix}/img/maggie@2x.png");
         }
     }
 }
 
-.note.martin {
-    .title::after {
+.note-martin {
+    .note-title::after {
         content: "Martin says";
     }
 
-    .title {
+    .note-title {
         background-image: url("#{$url-prefix}/img/martin.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: $m-med;
-        line-height: $m-med;
-        padding-left: $m-med + $m-tiny;
     }
 
     @include retina {
-        .title {
+        .note-title {
             background-image: url("#{$url-prefix}/img/martin@2x.png");
         }
     }
 }
 
-.left {
-    float: left;
-}
+.guide-grid .guide-item {
+    $gutter: $space-x-sml;
 
-.left.space {
-    margin-right: $m-med;
-}
-
-.right {
-    float: right;
-}
-
-.right.space {
-    margin-right: $m-med;
-}
-
-.half {
-    @include after($sml) {
-        width: 50%;
-    }
-}
-
-.half.space {
-    @include before($sml) {
-        margin: 0;
-    }
-
-    @include after($sml) {
-        width: calc(50% - (#{$m-med} / 2));
-    }
-}
-
-.half.space + .half {
-    @include after($sml) {
-        width: calc(50% - (#{$m-med} / 2));
-    }
-}
-
-.clear {
-    clear: both;
-}
-
-.contain-floats {
-    display: table;
-    overflow: hidden;
-}
-
-.centered {
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.middle {
-    max-width: 800px;
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.middle.wider {
-    max-width: 960px;
-}
-
-.guides {
-    margin-top: $m-med;
-    overflow: auto;
-    clear: both;
-}
-
-.guides > div {
-    float: left;
-    width: 47%;
-    margin-right: 6%;
     box-sizing: border-box;
+    float: left;
+    margin-right: $gutter;
+    width: calc(50% - #{$gutter});
 
-    @include after($sml) {
-        width: 31.25%;
-        margin-right: 3%;
+    @include after($media-med) {
+        width: calc(25% - #{$gutter});
     }
 
+    &:nth-child(n+2) {
+        margin-right: 0;
+    }
+
+    &:nth-child(n+3) {
+        margin-right: $gutter;
+    }
+
+    @include after($media-med) {
+        &:nth-child(n+2) {
+            margin-right: $gutter;
+        }
+
+        &:nth-child(n+4) {
+            margin-right: 0;
+        }
+    }
+}
+
+.guide-item {
     a {
         text-decoration: none;
     }
 
     h3 {
-        font-size: 1rem;
+        font-size: $text-sml;
+        margin: $space-x-sml 0;
         text-align: center;
         text-transform: uppercase;
-        margin-top: 0.666rem;
-        margin-bottom: 0.666rem;
-    }
-}
-
-.guide:nth-child(0n+2) {
-    margin-right: 0;
-}
-
-@include after($sml) {
-    .guide:nth-child(0n+2) {
-        margin-right: 3%;
-    }
-    .guide:nth-child(0n+3) {
-        margin-right: 0;
     }
 }
 
 .guide-icon {
-    width: 100%;
-    height: 125px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
     align-content: center;
-    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
     box-sizing: border-box;
+    display: flex;
+    height: 125px;
+    justify-content: center;
+    width: 100%;
 
-    @include after($sml) {
+    @include after($media-med) {
         height: 200px;
     }
 
     p {
-        font-size: $s-biggest;
+        font-size: $text-lrg;
         margin: 0;
     }
 }
 
 .faces {
     display: block;
+    margin: $space-lrg auto;
     width: 10rem;
-    margin: $m-big auto;
 
-    @include after($sml) {
+    @include after($media-med) {
         width: 14em;
     }
 }
 
-td.long-text {
-    @include before($x-sml) {
-        font-size: $s-tiny;
+.examples {
+    $gutter: $space-sml;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -$gutter;
+    margin-top: $space-med;
+    margin-bottom: $space-med - $gutter;
+}
+
+.example {
+    $gutter: $space-sml;
+
+    border-radius: 5px;
+    border: border();
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-bottom: $gutter;
+    margin-left: $gutter;
+    width: calc(50% - #{$gutter});
+    min-width: 5rem;
+
+    @include after($media-sml) {
+        width: calc(25% - #{$gutter});
     }
-}
 
-td.listen div {
-    font-size: $s-note;
-    line-height: $s-note;
-    width: $s-note;
-    height: $s-note;
-
-    img {
-        height: $s-note;
-        width: $s-note;
+    @include after($media-med) {
+        width: auto;
     }
-}
 
-.fade-in-out {
-    animation: fade-in-out 2s infinite;
-}
+    .example-greek, .example-romanisation, .example-meaning {
+        display: block;
+        text-align: center;
+    }
 
-.no-underline {
-    display: inline-block;
-    text-decoration: none;
-}
+    .example-greek {
+        padding: $space-sml + 0.5rem $space-sml 0 $space-sml;
+        position: relative;
+    }
 
-footer .no-underline {
-    margin-right: 0.25rem;
+    .example-greek, .example-meaning {
+        font-weight: bold;
+    }
+
+    .example-romanisation {
+        font-size: $text-sml;
+        margin-bottom: $space-x-sml;
+        opacity: 0.6;
+        padding: 0 $space-sml;
+    }
+
+    .example-meaning {
+        align-items: center;
+        border-radius: 0 0 4px 4px;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        padding: $space-sml;
+    }
+
+    .example-audio {
+        display: inline-block;
+        left: 8px;
+        position: absolute;
+        top: 8px;
+    }
 }
