@@ -31,7 +31,7 @@
             <td class="lrg-only">{{ letter.name }} ({{ letter.romanised_name }})</td>
             <td>{{ letter.romanisation }}</td>
             <td{% if letter.pronunciation|length > 25 %} class="text-sml"{% endif %}>
-                    {{ markdown(letter.pronunciation, fragment=True) }}
+                {{ markdown(letter.pronunciation, fragment=True) }}
             </td>
             <td>
                 <gr-listen class="sml" word="{{ letter.romanised_name }}" audio-url="{{ audio }}">
