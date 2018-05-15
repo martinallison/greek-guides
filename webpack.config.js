@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: './src/js/main.js',
@@ -18,18 +19,24 @@ module.exports = {
         ],
       },
       {
+        test: /\.s[a|c]ss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
-        // TODO: add SASS loader
-        options: {
-          loaders: {
-          }
-        }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: file => (
+          /node_modules/.test(file) &&
+          !/\.vue\.js/.test(file)
+        )
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -40,6 +47,7 @@ module.exports = {
       }
     ]
   },
+  plugins: [new VueLoaderPlugin()],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
