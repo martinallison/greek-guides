@@ -79,7 +79,7 @@ $text-sizes: (
 }
 
 .lrg-only {
-    @include before($media-sml) {
+    @include before($media-med) {
         display: none;
     }
 }
