@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import sys
 
+import click
 import jinja2
 import mistune
 
@@ -95,7 +96,9 @@ def run(fn, args):
     fn(args)
 
 
-def main(conf, is_prod=False):
+@click.command()
+@click.option("-p", "--prod", "is_prod", is_flag=True)
+def main(is_prod):
     url_prefix = "/greek-guides" if is_prod else ""
     jinja.globals.update(url_prefix=url_prefix)
     jinja.globals.update(url=url_factory(url_prefix))
@@ -134,8 +137,4 @@ conf = {
 
 
 if __name__ == "__main__":
-    is_prod = False
-    if len(sys.argv) > 1:
-        is_prod = sys.argv[1] == "--prod"
-
-    main(conf, is_prod=is_prod)
+    main()
