@@ -18,7 +18,7 @@
 
         <p>The Greek alphabet has only 24 letters. Here they are, upper- and lowercase, in order:</p>
 
-        <figure class="alphabet bordered shadowed v-margin-med v-padding-med h-margin-none">
+        <figure class="alphabet bordered shadowed v-margin-m v-padding-m">
             <p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω</p>
             <p>α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ,ς τ υ φ χ ψ ω</p>
         </figure>
@@ -41,13 +41,13 @@
             forms at least) and sound like their English ‘equivalents’. Listen to Maggie say
             the basic pronunciation and name for each letter below.</p>
 
-        <table class="centered v-margin-med">
+        <table class="centered v-margin-m">
             {{ macros.pronunciation_table(alphabet.group_1) }}
         </table>
 
         <p>With just these five letters, you can already say some Greek words!</p>
 
-        <figure class="examples h-margin-none">
+        <figure class="examples">
             {% for example in alphabet.examples_1 %}
                 {{ macros.example(
                     example.greek,
@@ -63,14 +63,14 @@
     <section>
         <h2>β ζ ι λ ο</h2>
 
-        <table class="centered v-margin-med">
+        <table class="centered v-margin-m">
             {{ macros.pronunciation_table(alphabet.group_2) }}
         </table>
 
         <p>With these and the previous letters combined, you can now read around 1000 Greek
             words, including:</p>
 
-        <figure class="examples h-margin-none">
+        <figure class="examples">
             {% for example in alphabet.examples_2 %}
                 {{ macros.example(
                     example.greek,
@@ -84,7 +84,7 @@
     <section>
         <h2>δ ν π σ ω</h2>
 
-        <table class="centered v-margin-med">
+        <table class="centered v-margin-m">
             {{ macros.pronunciation_table(alphabet.group_3) }}
         </table>
 
@@ -97,7 +97,7 @@
             (or don’t do) something, you’ll be using this letter (which is quite a lot of the
             time) and so knowing it unlocks the ability to use Greek verbs:</p>
 
-        <figure class="examples h-margin-none">
+        <figure class="examples">
             {% for example in alphabet.examples_3 %}
                 {{ macros.example(
                     example.greek,
@@ -111,14 +111,14 @@
     <section>
         <h2>η θ φ υ</h2>
 
-        <table class="centered v-margin-med">
+        <table class="centered v-margin-m">
             {{ macros.pronunciation_table(alphabet.group_4) }}
         </table>
 
         <p>Now we’ve seen all seven vowels, notice that three make the exact same ‘ee’ sound:
             ⟨η, ι, υ⟩ and two the exact same ‘o’ sound: ⟨ο, ω⟩.</p>
 
-        <figure class="examples h-margin-none">
+        <figure class="examples">
             {% for example in alphabet.examples_4 %}
                 {{ macros.example(
                     example.greek,
@@ -135,7 +135,7 @@
         <p>The last and trickiest group has some sounds that are a little difficult for English
             speakers to pronounce—especially those of ⟨γ, χ⟩.</p>
 
-        <table class="centered v-margin-med">
+        <table class="centered v-margin-m">
             {{ macros.pronunciation_table(alphabet.group_5) }}
         </table>
 
@@ -147,7 +147,7 @@
             just the basic pronunciation you can have a go at saying a great deal of Greek
             words. Some final ones to add to the list:</p>
 
-        <figure class="examples h-margin-none">
+        <figure class="examples">
             {% for example in alphabet.examples_5 %}
                 {{ macros.example(
                     example.greek,

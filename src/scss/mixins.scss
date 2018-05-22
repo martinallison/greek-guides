@@ -22,6 +22,36 @@
     }
 }
 
+@mixin s-only {
+    @include before($media-s) {
+        @content;
+    }
+}
+
+@mixin m-down {
+    @include before($media-m) {
+        @content;
+    }
+}
+
+@mixin m-only {
+    @include between($media-s, $media-m) {
+        @content;
+    }
+}
+
+@mixin m-up {
+    @include after($media-s) {
+        @content;
+    }
+}
+
+@mixin l-only {
+    @include after($media-m) {
+        @content;
+    }
+}
+
 @function border($colour: $colour-border, $width: 1px) {
     @return $width solid #{$colour};
 }

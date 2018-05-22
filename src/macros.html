@@ -1,5 +1,5 @@
 {% macro note(who=None) -%}
-    <aside class="note v-margin-med{% if who %} note-person note-{{ who }}{% endif %}">
+    <aside class="section note{% if who %} note-person note-{{ who }}{% endif %}">
         <div class="note-inner">
             <div class="text-centered">
                 <p class="note-title" aria-label="Note"></p>
@@ -14,7 +14,7 @@
 {% macro pronunciation_table(letters) %}
     <thead>
         <th>Letter</th>
-        <th class="lrg-only">Name</th>
+        <th class="l-only">Name</th>
         <th aria-label="Romanisation"></th>
         <th aria-label="Pronunciation" colspan="2"></th>
     </thead>
@@ -24,17 +24,17 @@
         <tr>
             <td>
                 {{ letter.upper }} • {{ letter.lower }}
-                <span class="collapsed-letter-name sml-only">
+                <div class="collapsed-letter-name m-down">
                     {{ letter.name }} ({{ letter.romanised_name }})
-                </span>
+                </div>
             </td>
-            <td class="lrg-only">{{ letter.name }} ({{ letter.romanised_name }})</td>
+            <td class="l-only">{{ letter.name }} ({{ letter.romanised_name }})</td>
             <td>{{ letter.romanisation }}</td>
-            <td{% if letter.pronunciation|length > 25 %} class="text-sml"{% endif %}>
+            <td{% if letter.pronunciation|length > 25 %} class="text-s"{% endif %}>
                 {{ markdown(letter.pronunciation, fragment=True) }}
             </td>
             <td>
-                <gr-listen class="sml" word="{{ letter.romanised_name }}" audio-url="{{ audio }}">
+                <gr-listen class="s" word="{{ letter.romanised_name }}" audio-url="{{ audio }}">
             </td>
         </tr>
         {% endfor %}
@@ -46,7 +46,7 @@
     <div class="example shadowed">
         <span class="example-greek">{{ greek }}
             {% if audio %}
-                <gr-listen class="sml example-audio" audio-url="{{ url(audio) }}" word="{{ romanisation }}">
+                <gr-listen class="s example-audio" audio-url="{{ url(audio) }}" word="{{ romanisation }}">
             {% endif %}
         </span>
         <span class="example-romanisation">({{ romanisation }})</span>

@@ -1,5 +1,4 @@
-@import "colours";
-@import "fonts";
+@import "theme";
 @import "mixins";
 @import "sizes";
 
@@ -26,26 +25,25 @@
 .alphabet {
     border-radius: 5px;
     font-weight: bold;
-    padding: $space-sml;
+    padding: $space-s;
     text-align: center;
 
-    @include after($media-sml) {
-        font-size: $text-sml - $text-adjustment;
+    @include s-only {
+        font-size: $text-s - $text-adjustment;
     }
 
-    @include after($media-med) {
-        font-size: $text-med;
-    }
-
-    p {
-        line-height: 1;
+    @include m-up {
+        font-size: $text-m;
+        p {
+            line-height: 1;
+        }
     }
 }
 
 [aria-label="Romanisation"]::after {
     content: "Roman.";
 
-    @include after($media-med) {
+    @include m-up {
         content: "Romanisation";
     }
 }
@@ -55,18 +53,14 @@
 }
 
 .collapsed-letter-name {
-    font-size: $text-sml;
+    font-size: $text-s;
     font-weight: bold;
-    margin-top: $space-x-sml;
-
-    @include before($media-sml) {
-        display: block;
-    }
+    margin-top: $space-xs;
 }
 
 .note-inline {
     border-left: border($colour-bright, 10px);
-    padding-left: $space-sml;
+    padding-left: $space-s;
     color: rgba($colour-dark, .85);
 
     .note-inline-title {
@@ -85,7 +79,7 @@
         border-radius: 5px;
         border: border();
         box-sizing: border-box;
-        padding: $space-sml;
+        padding: $space-s;
     }
 
     .note-title {
@@ -107,9 +101,9 @@
     .note-title {
         background-repeat: no-repeat;
         background-size: contain;
-        height: $space-med;
-        line-height: $space-med;
-        padding-left: $space-med + $space-x-sml;
+        height: $space-m;
+        line-height: $space-m;
+        padding-left: $space-m + $space-xs;
         visibility: visible;
     }
 }
@@ -147,14 +141,14 @@
 }
 
 .guide-grid .guide-item {
-    $gutter: $space-x-sml;
+    $gutter: $space-xs;
 
     box-sizing: border-box;
     float: left;
     margin-right: $gutter;
     width: calc(50% - #{$gutter});
 
-    @include after($media-med) {
+    @include l-only {
         width: calc(25% - #{$gutter});
     }
 
@@ -166,7 +160,7 @@
         margin-right: $gutter;
     }
 
-    @include after($media-med) {
+    @include l-only {
         &:nth-child(n+2) {
             margin-right: $gutter;
         }
@@ -183,8 +177,8 @@
     }
 
     h3 {
-        font-size: $text-sml;
-        margin: $space-x-sml 0;
+        font-size: $text-s;
+        margin: $space-xs 0;
         text-align: center;
         text-transform: uppercase;
     }
@@ -200,39 +194,39 @@
     justify-content: center;
     width: 100%;
 
-    @include after($media-med) {
+    @include l-only {
         height: 200px;
     }
 
     p {
-        font-size: $text-lrg;
+        font-size: $text-l;
         margin: 0;
     }
 }
 
 .faces {
     display: block;
-    margin: $space-lrg auto;
+    margin: $space-l auto;
     width: 10rem;
 
-    @include after($media-med) {
+    @include l-only {
         width: 14em;
     }
 }
 
 .examples {
-    $gutter: $space-sml;
+    $gutter: $space-s;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: -$gutter;
-    margin-top: $space-med;
-    margin-bottom: $space-med - $gutter;
+    margin-top: $space-m;
+    margin-bottom: $space-m - $gutter;
 }
 
 .example {
-    $gutter: $space-sml;
+    $gutter: $space-s;
 
     border-radius: 5px;
     border: border();
@@ -245,11 +239,11 @@
     width: calc(50% - #{$gutter});
     min-width: 5rem;
 
-    @include after($media-sml) {
+    @include m-only {
         width: calc(25% - #{$gutter});
     }
 
-    @include after($media-med) {
+    @include l-only {
         width: auto;
     }
 
@@ -259,7 +253,7 @@
     }
 
     .example-greek {
-        padding: $space-sml + 0.5rem $space-sml 0 $space-sml;
+        padding: $space-s + 0.5rem $space-s 0 $space-s;
         position: relative;
     }
 
@@ -268,10 +262,10 @@
     }
 
     .example-romanisation {
-        font-size: $text-sml;
-        margin-bottom: $space-x-sml;
+        font-size: $text-s;
+        margin-bottom: $space-xs;
         opacity: 0.6;
-        padding: 0 $space-sml;
+        padding: 0 $space-s;
     }
 
     .example-meaning {
@@ -280,7 +274,7 @@
         display: flex;
         flex: 1;
         justify-content: center;
-        padding: $space-sml;
+        padding: $space-s;
     }
 
     .example-audio {

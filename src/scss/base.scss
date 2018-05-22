@@ -7,7 +7,11 @@ html {
     text-decoration-skip-ink: auto;
     text-decoration-skip: ink;
 
-    @include after($media-med) {
+    * {
+        box-sizing: border-box;
+    }
+
+    @include m-up {
         font-size: 150%;
     }
 }
@@ -17,32 +21,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: $text-x-lrg;
-    margin: $space-lrg 0 $space-med 0;
+    font-size: $text-xl;
+    margin: $space-l 0 $space-m 0;
     text-align: center;
 }
 
 h1 + p {
-    font-size: $text-lrg;
-    margin: $space-med 0;
+    font-size: $text-l;
+    margin: $space-m 0;
     text-align: center;
 
-    @include after($media-med) {
-        font-size: $text-x-lrg;
+    @include l-only {
+        font-size: $text-xl;
     }
 
     &.emoji-heading {
-        letter-spacing: $space-x-sml;
+        letter-spacing: $space-xs;
     }
 }
 
 h2 {
-    font-size: $text-lrg;
-    margin: $space-med 0 $space-sml 0;
+    font-size: $text-l;
+    margin: $space-m 0 $space-s 0;
 }
 
 h3 {
-    margin: $space-med 0 $space-sml 0;
+    margin: $space-m 0 $space-s 0;
 }
 
 p, li {
@@ -58,18 +62,17 @@ a {
 }
 
 footer {
-    margin: $space-lrg 0 $space-med 0;
+    margin: $space-l 0 $space-m 0;
     text-align: center;
 }
 
 table {
     border-spacing: 0;
     box-sizing: border-box;
-    margin: $space-med 0;
-    max-width: 100%;
+    margin: $space-m 0;
 
-    @include after($media-sml) {
-        font-size: $text-med;
+    @include s-only {
+        width: 100%;
     }
 }
 
@@ -95,11 +98,11 @@ th:last-child {
 
 th, td {
     box-sizing: border-box;
-    padding: $space-x-sml $space-x-sml - 0.11rem;
+    padding: $space-xs $space-xs - 0.11rem;
     text-align: center;
 
-    @include after($media-sml) {
-        padding: $space-sml;
+    @include m-up {
+        padding: $space-s;
     }
 }
 
@@ -113,7 +116,7 @@ tr:last-child td {
 
 aside {
     box-sizing: border-box;
-    margin-top: $space-sml;
+    margin-top: $space-s;
 
     *:first-child {
         margin-top: 0;
@@ -126,7 +129,7 @@ aside {
 
 i {
     border-radius: 5px;
-    padding: $text-adjustment $space-x-sml - $text-adjustment;
+    padding: $text-adjustment $space-xs - $text-adjustment;
     background: rgba($colour-accent, .08);
 }
 
@@ -135,5 +138,10 @@ hr {
     border-bottom: border();
     box-shadow: shadow();
     width: 10%;
-    margin: $space-med auto
+    margin: $space-m auto
+}
+
+figure {
+    margin-left: 0;
+    margin-right: 0;
 }

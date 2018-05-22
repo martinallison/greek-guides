@@ -1,15 +1,18 @@
-$media-med: 780px;
-$media-sml: 350px;
+// Anything over $media-m is "large"
+$media-m: 780px;
+// Anything over $media-s and under $media-m is "medium"
+// Anything under $media-s is "small"
+$media-s: 540px;
 
-$text-x-lrg: 2rem;
-$text-lrg: 1.5rem;
-$text-med: 1rem;
-$text-sml: 0.75rem;
-$text-x-sml: 0.66rem;
+$text-xl: 2rem;
+$text-l: 1.5rem;
+$text-m: 1rem;
+$text-s: 0.75rem;
+$text-xs: 0.66rem;
 
 $text-adjustment: 0.11rem;
 
-$space-lrg: 4.2rem;
-$space-med: 2.1rem;
-$space-sml: 1rem;
-$space-x-sml: 0.5rem;
+$space-l: 4.2rem;
+$space-m: 2.1rem;
+$space-s: 1rem;
+$space-xs: 0.5rem;

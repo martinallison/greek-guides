@@ -1,16 +1,16 @@
 $space-sizes: (
     none: 0,
-    x-sml: $space-x-sml,
-    sml: $space-sml,
-    med: $space-med,
-    lrg: $space-lrg
+    xs: $space-xs,
+    s: $space-s,
+    med: $space-m,
+    l: $space-l
 );
 
 $text-sizes: (
-    x-sml: $text-x-sml,
-    sml: $text-sml,
-    med: $text-med,
-    lrg: $text-lrg
+    xs: $text-xs,
+    s: $text-s,
+    med: $text-m,
+    l: $text-l
 );
 
 @each $size, $var in $space-sizes {
@@ -72,14 +72,36 @@ $text-sizes: (
     border: border();
 }
 
-.sml-only {
-    @include after($media-sml) {
+.s-only {
+    @include m-up {
         display: none;
     }
 }
 
-.lrg-only {
-    @include before($media-med) {
+.m-up {
+    @include s-only {
+        display: none;
+    }
+}
+
+.m-only {
+    @include s-only {
+        display: none;
+    }
+
+    @include l-only {
+        display: none;
+    }
+}
+
+.m-down {
+    @include l-only {
+        display: none;
+    }
+}
+
+.l-only {
+    @include m-down {
         display: none;
     }
 }
