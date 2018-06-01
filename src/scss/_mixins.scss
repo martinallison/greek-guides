@@ -52,6 +52,21 @@
     }
 }
 
+@mixin raised {
+    border: border();
+    box-shadow: shadow();
+}
+
+@mixin rounded {
+    border-radius: 5px;
+}
+
+@mixin circular($radius) {
+    width: 2 * $radius;
+    height: 2 * $radius;
+    border-radius: 100%;
+}
+
 @function border($colour: $colour-border, $width: 1px) {
     @return $width solid #{$colour};
 }

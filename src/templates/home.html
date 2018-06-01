@@ -1,0 +1,33 @@
+{% extends "templates/base.html" %}
+
+{% block title %}{{ super() }}{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Learn Greek!</h1>
+
+        <p>These are a bunch of simple guides to learning Modern Greek written by a native speaker
+            and a learner.</p>
+
+        <p>Where do you want to start?</p>
+    </section>
+
+    <section>
+        <h2>Basics</h2>
+
+        {% for group in sections.by_id.basics.groups() %}
+        <div class="card section">
+            <div>
+                <div class="card-icon {{ group.colour }}">{{ group.emoji }}</div>
+            </div>
+            <div class="card-blurb">
+                <p>{{ group.blurb }}</p>
+            </div>
+            {% if group.has_guides() %}
+                <a href="{{ url('guide', slug=group.guide_ids[0]) }}"
+                   class="card-cta button-primary bright">Go →</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+{% endblock %}

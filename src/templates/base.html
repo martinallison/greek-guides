@@ -2,31 +2,29 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}Learn Greek{% endblock %}</title>
-        <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700,900|Roboto:400,400i,700,900&amp;subset=greek"
+        <title>{% block title %}Learn Greek!{% endblock %}</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700,900|Roboto:400,400i,700,900&amp;subset=greek"
             rel="stylesheet">
-        <link rel="stylesheet" href="{{ url('/main.css') }}">
+        <link rel="stylesheet" href="{{ static('/main.css') }}">
         <meta name="viewport" content="width=device-width">
         <script>
             window.urlPrefix = "{{ url_prefix }}";
         </script>
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
-        <div>
-            <nav class="main-nav"><a href="{{ url('/') }}">LG!</a></nav>
-        <div>
+    <body>
         <div id="content" class="main-col">
         {% block body %}
         {% endblock %}
         </div>
         <footer class="main-col">
             <p><a href="#"><span class="no-underline emoji-icon-left">☝️ </span>to the top</a></p>
-            <a href="{{ url('/') }}">home</a> &middot;
-            <a href="{{ url('/about') }}">about</a> &middot;
+            <a href="{{ url('home') }}">home</a> &middot;
+            <a href="{{ url('about') }}">about</a> &middot;
             <a href="mailto:martinallison@gmail.com">contact</a>
         </footer>
 
-        <script src="{{ url('/js/build.js') }}"></script>
+        <script src="{{ static('/js/build.js') }}"></script>
     </body>
 </html>

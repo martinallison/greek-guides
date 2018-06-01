@@ -1,0 +1,66 @@
+$space-sizes: (
+    none: 0,
+    xs: $space-xs,
+    s: $space-s,
+    med: $space-m,
+    l: $space-l
+);
+
+$text-sizes: (
+    xs: $text-xs,
+    s: $text-s,
+    med: $text-m,
+    l: $text-l
+);
+
+.s-only {
+    @include m-up {
+        display: none;
+    }
+}
+
+.m-up {
+    @include s-only {
+        display: none;
+    }
+}
+
+.m-only {
+    @include s-only {
+        display: none;
+    }
+
+    @include l-only {
+        display: none;
+    }
+}
+
+.m-down {
+    @include l-only {
+        display: none;
+    }
+}
+
+.l-only {
+    @include m-down {
+        display: none;
+    }
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.emoji-icon-left {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.emoji-icon-right {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.text-centered {
+    text-align: center;
+}

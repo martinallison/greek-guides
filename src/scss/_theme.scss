@@ -1,0 +1,55 @@
+$sf: -apple-system, BlinkMacSystemFont;
+
+$font-body: $sf, Roboto, "Helvetica Neue", sans-serif;
+$font-heading: Poppins, $sf, Roboto, "Helvetica Neue", sans-serif;
+
+$colour-dark: #2a3c57;
+$colour-bright: #2f72fb;
+$colour-x-bright: #76f4e1;
+$colour-accent: tomato;
+$colour-ok: #65f9c0;
+$colour-inverse: rgba(white, .9);
+$colour-border: #d1d5da;
+
+$colours: (
+    dark: $colour-dark,
+    bright: $colour-bright,
+    x-bright: $colour-x-bright,
+    accent: $colour-accent,
+    ok: $colour-ok,
+);
+
+@function brightness($color) {
+    @return (
+        (red($color) * .299) +
+        (green($color) * .587) +
+        (blue($color) * .114)
+    ) / 255 * 100%;
+}
+
+@function colour-contrast($colour, $dark: $colour-dark, $light: $colour-inverse) {
+    @if $colour == null {
+        @return null;
+    } @else {
+        $colour-brightness: brightness($colour);  
+        $light-brightness: brightness($light);
+        $dark-brightness: brightness($dark);
+
+        @return if(
+            abs($colour-brightness - $light-brightness) >
+            abs($colour-brightness - $dark-brightness),
+            $light, $dark
+        );
+    }
+}
+
+@mixin colour-variants($property-name) {
+    @each $colour-name, $colour in $colours {
+        &.#{$colour-name} {
+            #{$property-name}: $colour;
+            @if $property-name == background-color {
+                color: colour-contrast($colour);
+            }
+        }
+    }
+}

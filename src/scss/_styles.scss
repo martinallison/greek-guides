@@ -1,0 +1,163 @@
+@import "theme";
+@import "mixins";
+@import "sizes";
+@import "grid";
+
+@import "generics";
+@import "base";
+
+.emoji-header {
+    font-size: $text-l;
+    text-align: center;
+    letter-spacing: 1rem;
+}
+
+.main-col {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    width: 90%;
+}
+
+.abs-container {
+    position: relative;
+
+    .abs-right {
+        position: absolute;
+        right: 0;
+    }
+}
+
+%button {
+    display: inline-block;
+    font-weight: bold;
+    font-size: $text-m;
+    padding: 8px 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include rounded;
+}
+
+.button-primary {
+    @extend %button;
+    @include colour-variants(background-color);
+}
+
+.button-secondary {
+    @extend %button;
+    border: border();
+    @include colour-variants(border-color);
+}
+
+.card {
+    display: flex;
+    position: relative;
+
+    .card-blurb {
+        margin-left: $space-m;
+        margin-right: $space-m;
+    }
+
+    .card-icon {
+        line-height: $space-m * 3;
+        font-size: $text-m * 3;
+        text-align: center;
+
+        @include raised;
+        @include circular($radius: $space-m * 1.5);
+        @include colour-variants(border-color);
+    }
+
+    .card-cta {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.section {
+    margin-top: $space-m;
+    margin-bottom: $space-m;
+}
+
+.faces {
+    display: block;
+    margin: $space-l auto;
+    width: 10rem;
+
+    @include l-only {
+        width: 14em;
+    }
+}
+
+.flex-container {
+    $gutter: $space-s;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -$gutter;
+    margin-top: $space-m;
+    margin-bottom: $space-m - $gutter;
+}
+
+.example {
+    $gutter: $space-s;
+
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $gutter;
+    margin-left: $gutter;
+    min-width: 5rem;
+    width: calc(50% - #{$gutter});
+
+    @include raised;
+
+    @include m-only {
+        width: calc(25% - #{$gutter});
+    }
+
+    @include l-only {
+        width: auto;
+    }
+
+    .example-greek, .example-romanisation, .example-meaning {
+        display: block;
+        text-align: center;
+    }
+
+    .example-greek {
+        padding: $space-s + 0.5rem $space-s 0 $space-s;
+        position: relative;
+    }
+
+    .example-greek, .example-meaning {
+        font-weight: bold;
+    }
+
+    .example-romanisation {
+        font-size: $text-s;
+        margin: $space-xs 0;
+        opacity: 0.6;
+        padding: 0 $space-s;
+    }
+
+    .example-meaning {
+        align-items: center;
+        border-radius: 0 0 4px 4px;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        padding: $space-s;
+    }
+
+    .example-audio {
+        display: inline-block;
+        left: 8px;
+        position: absolute;
+        top: 8px;
+    }
+}

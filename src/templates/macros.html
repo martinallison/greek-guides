@@ -20,7 +20,7 @@
     </thead>
     <tbody>
         {% for letter in letters %}
-        {% set audio = url("/audio/alphabet/" + letter.romanised_name + ".m4a") %}
+        {% set audio = static("/audio/alphabet/" + letter.romanised_name + ".m4a") %}
         <tr>
             <td>
                 {{ letter.upper }} • {{ letter.lower }}
@@ -42,14 +42,14 @@
 {% endmacro %}
 
 
-{% macro example(greek, romanisation, meaning, audio="") %}
+{% macro example(greek, romanisation, meaning, audio=None) %}
     <div class="example shadowed">
         <span class="example-greek">{{ greek }}
             {% if audio %}
-                <gr-listen class="s example-audio" audio-url="{{ url(audio) }}" word="{{ romanisation }}">
+                <gr-listen class="s example-audio" audio-url="{{ static(audio) }}" word="{{ romanisation }}">
             {% endif %}
         </span>
-        <span class="example-romanisation">({{ romanisation }})</span>
+        <span class="example-romanisation">{{ romanisation }}</span>
         <span class="example-meaning">{{ meaning }}</span>
     </div>
 {% endmacro %}

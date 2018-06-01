@@ -1,15 +1,19 @@
-html {
+@mixin nice-underlines {
     -webkit-text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
+    text-decoration-skip: ink;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
     color: $colour-dark;
     font-family: $font-body;
     font-size: 125%;
     margin: 0;
-    text-decoration-skip-ink: auto;
-    text-decoration-skip: ink;
-
-    * {
-        box-sizing: border-box;
-    }
+    @include nice-underlines;
 
     @include m-up {
         font-size: 150%;
@@ -26,26 +30,13 @@ h1 {
     text-align: center;
 }
 
-h1 + p {
-    font-size: $text-l;
-    margin: $space-m 0;
-    text-align: center;
-
-    @include l-only {
-        font-size: $text-xl;
-    }
-
-    &.emoji-heading {
-        letter-spacing: $space-xs;
-    }
-}
-
 h2 {
     font-size: $text-l;
     margin: $space-m 0 $space-s 0;
 }
 
 h3 {
+    font-size: $text-m;
     margin: $space-m 0 $space-s 0;
 }
 
@@ -68,50 +59,48 @@ footer {
 
 table {
     border-spacing: 0;
-    box-sizing: border-box;
     margin: $space-m 0;
 
     @include s-only {
         width: 100%;
     }
-}
 
-thead {
-    border-radius: 5px;
-    box-shadow: shadow();
-}
-
-th {
-    border-top: border();
-    border-bottom: border();
-}
-
-th:first-child {
-    border-left: border();
-    border-radius: 5px 0 0 5px;
-}
-
-th:last-child {
-    border-right: border();
-    border-radius: 0 5px 5px 0;
-}
-
-th, td {
-    box-sizing: border-box;
-    padding: $space-xs $space-xs - 0.11rem;
-    text-align: center;
-
-    @include m-up {
-        padding: $space-s;
+    thead {
+        border-radius: 5px;
+        box-shadow: shadow();
     }
-}
 
-td {
-    max-width: 10rem;
-}
+    th {
+        border-top: border();
+        border-bottom: border();
+    }
 
-tr:last-child td {
-    border-bottom: 0;
+    th:first-child {
+        border-left: border();
+        border-radius: 5px 0 0 5px;
+    }
+
+    th:last-child {
+        border-right: border();
+        border-radius: 0 5px 5px 0;
+    }
+
+    tr:last-child td {
+        border-bottom: 0;
+    }
+
+    th, td {
+        padding: $space-xs $space-xs - 0.11rem;
+        text-align: center;
+
+        @include m-up {
+            padding: $space-s;
+        }
+    }
+
+    td {
+        max-width: 10rem;
+    }
 }
 
 aside {
@@ -128,20 +117,16 @@ aside {
 }
 
 i {
-    border-radius: 5px;
     padding: $text-adjustment $space-xs - $text-adjustment;
     background: rgba($colour-accent, .08);
-}
-
-hr {
-    border: none;
-    border-bottom: border();
-    box-shadow: shadow();
-    width: 10%;
-    margin: $space-m auto
+    @include rounded;
 }
 
 figure {
     margin-left: 0;
     margin-right: 0;
+}
+
+button {
+    border: none;
 }
