@@ -1,7 +1,7 @@
-import py.db
+import db
 
 
 def context(site, slug=None):
     return {
-        "guide": py.db.guides.by_id[slug],
+        "guide": db.guides.by_id[slug],
     }

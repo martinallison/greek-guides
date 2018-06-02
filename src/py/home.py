@@ -1,6 +1,6 @@
-import py.db
+import db
 
 
 context = {
-    "sections": py.db.sections,
+    "sections": db.sections,
 }

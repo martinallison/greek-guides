@@ -18,9 +18,6 @@ def url_factory(site):
 
     def url(name, **kwargs):
         u = site.url(name, **kwargs)
-        if name == "guide":
-            print(kwargs)
-            print(u)
         return url_prefix(site) + u
 
     return url

@@ -82,73 +82,10 @@ def import_python(dotted_path):
     return getattr(module, obj)
 
 
-class Site:
-    """Context for the build of the site"""
-
-    def __init__(self, pages, src, dest, **extra_context):
-        self.pages = pages
-        self.src = src
-        self.dest = dest
-        self.extra_context = extra_context
-
-        loader = jinja2.FileSystemLoader([src])
-        self.engine = jinja2.Environment(loader=loader)
-
-    def _add_global_context(self):
-        globals_ = import_python(self.pages.get("globals"))
-        globals_ = call(globals_, self) or {}
-
-        context = {
-            "site": self,
-            **self.extra_context,
-            **globals_
-        }
-
-        self.engine.globals.update(**context)
-
-    def _render_pages(self):
-        for url, page in self.pages_expanded.items():
-            template = self.engine.get_template(page["template"])
-
-            context = import_python(page.get("context"))
-            context = call(context, self, **page["kwargs"]) or {}
-
-            html = template.render(context)
-            path = os.path.join(self.dest, url.lstrip("/"))
-
-            mkdir_p(path)
-
-            with open(os.path.join(path, "index.html"), "w") as f:
-                f.write(html)
-
-    @property
-    def pages_expanded(self):
-        if not hasattr(self, "_pages_expanded"):
-            ls = list(ls_r(self.src))
-            self._pages_expanded = expand_pages(self.pages, ls)
-        return self._pages_expanded
-
-    def build_pages(self):
-        add_to_python_path(self.src)
-        self._add_global_context()
-        self._render_pages()
-
-    def url(self, name, **kwargs):
-        for url, page in self.pages["urls"].items():
-            if page["name"] == name:
-                return url.format(**kwargs)
-
-        raise ValueError("Can't find URL for name {name}".format(name=name))
-
-
-def build_pages(*args, **kwargs):
-    Site(*args, **kwargs).build_pages()
-
-
-def expand_pages(pages, paths):
+def parse_urls_from_paths(urls, paths):
     expanded = {}
 
-    for url, page in pages["urls"].items():
+    for url, page in urls.items():
         for path in paths:
             result = parse.parse(page["template"], path)
 
@@ -165,49 +102,109 @@ def expand_pages(pages, paths):
     return expanded
 
 
-def main(conf, **kwargs):
-    from_, into = conf["from"], conf["into"]
-    pages = conf["do"]["build_pages"]
-    to_copy = {
-        os.path.join(from_, src): os.path.join(into, dest)
-        for src, dest in copy["do"]["copy"].items()
-    }
+class Site:
+    """Context for the build of the site"""
 
-    empty(into)
-    build_pages(pages, from_, into, **kwargs)
-    copy(to_copy, from_, into)
+    def __init__(self, page_conf, **extra_context):
+        self.urls = page_conf["urls"]
+        self.template_dir = page_conf["templates"]
+        self.python_dir = page_conf.get("python")
+        self.globals_module = page_conf.get("globals")
+        self.dest = page_conf["dest"]
+
+        self.extra_context = extra_context
+
+        loader = jinja2.FileSystemLoader([self.template_dir])
+        self.engine = jinja2.Environment(loader=loader)
+
+    def _add_global_context(self):
+        globals_ = import_python(self.globals_module)
+        globals_ = call(globals_, self) or {}
+
+        context = {
+            "site": self,
+            **self.extra_context,
+            **globals_
+        }
+
+        self.engine.globals.update(**context)
+
+    def _render_pages(self):
+        for url, page in self.parsed_urls.items():
+            template = self.engine.get_template(page["template"])
+
+            context = import_python(page.get("context"))
+            context = call(context, self, **page["kwargs"]) or {}
+
+            html = template.render(context)
+            path = os.path.join(self.dest, url.lstrip("/"))
+
+            mkdir_p(path)
+
+            with open(os.path.join(path, "index.html"), "w") as f:
+                f.write(html)
+
+    @property
+    def parsed_urls(self):
+        if not hasattr(self, "_pages_expanded"):
+            ls = list(ls_r(self.template_dir))
+            self._parsed_urls = parse_urls_from_paths(self.urls, ls)
+        return self._parsed_urls
+
+    def build_pages(self):
+        add_to_python_path(self.python_dir)
+        self._add_global_context()
+        self._render_pages()
+
+    def url(self, name, **kwargs):
+        for url, page in self.urls.items():
+            if page["name"] == name:
+                return url.format(**kwargs)
+
+        raise ValueError("Can't find URL for name {name}".format(name=name))
+
+
+def build_pages(*args, **kwargs):
+    Site(*args, **kwargs).build_pages()
+
+
+def main(conf, **kwargs):
+    empty(conf["empty"])
+    build_pages(conf["build_pages"], **kwargs)
+    copy(conf["copy"])
 
 
 conf = {
-    "from": "src",
-    "into": "docs",
-    "do": {
-        "copy": {
-            "img": "img",
-            "audio": "audio",
-            "templates/404.md": "404.md",
-            "templates/404.html": "404.html",
-        },
-        "build_pages": {
-            "globals": "py.globals.context",
-            "urls": {
-                "/": {
-                    "name": "home",
-                    "template": "templates/home.html",
-                    "context": "py.home.context",
-                },
-                "/about": {
-                    "name": "about",
-                    "template": "templates/about.html",
-                },
-                "/{slug}": {
-                    "name": "guide",
-                    "template": "templates/guides/{slug}.html",
-                    "context": "py.guide.context",
-                }
+    "empty": "docs",
+    "copy": {
+        "src/img": "docs/img",
+        "src/audio": "docs/audio",
+        "src/templates/404.md": "docs/404.md",
+        "src/templates/404.html": "docs/404.html",
+    },
+    "build_pages": {
+        "dest": "docs",
+        "python": "src/py",
+        "templates": "src/templates",
+
+        "globals": "globals.context",
+        "urls": {
+            "/": {
+                "name": "home",
+                "template": "home.html",
+                "context": "home.context",
+            },
+            "/about": {
+                "name": "about",
+                "template": "about.html",
+            },
+            "/{slug}": {
+                "name": "guide",
+                "template": "guides/{slug}.html",
+                "context": "guide.context",
             }
-        },
-    }
+        }
+    },
 }
 
 
