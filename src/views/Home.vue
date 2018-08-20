@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <el-col>
+    <section>
+      <h1 class="text-centered">Learn Greek!</h1>
+
+      <p>
+        These are a bunch of simple guides to learning Modern Greek written by a native speaker
+        and a learner.
+      </p>
+
+      <p>Where do you want to start?</p>
+    </section>
+
+    <section>
+      <h2>Basics</h2>
+
+      <group-item v-for="group in groups" :key="group.id" :group="group" class="section"/>
+    </section>
+  </el-col>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import GroupItem from '../components/GroupItem.vue';
 
 export default {
-  name: 'home',
   components: {
-    HelloWorld,
+    GroupItem,
+  },
+  computed: {
+    groups() {
+      return this.$store.state.groups.all;
+    },
   },
 };
 </script>

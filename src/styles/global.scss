@@ -1,0 +1,169 @@
+@import 'shared';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: $colour-dark;
+  font-family: $font-body;
+  font-size: 125%;
+  margin: 0;
+  @include nice-underlines;
+
+  @include m-up {
+    font-size: 150%;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+}
+
+h1 {
+  font-size: $text-xl;
+  margin: $space-l 0 $space-m 0;
+}
+
+h2 {
+  font-size: $text-l;
+  margin: $space-m 0 $space-s 0;
+}
+
+h3 {
+  font-size: $text-m; margin: $space-m 0 $space-s 0;
+}
+
+p, li, input, textarea {
+  line-height: 1.5;
+}
+
+a {
+  color: $colour-dark;
+
+  &:visited {
+    color: $colour-dark;
+  }
+}
+
+footer {
+  margin: $space-l 0 $space-m 0;
+  text-align: center;
+}
+
+aside {
+  box-sizing: border-box;
+  margin-top: $space-s;
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+i {
+  padding: $text-adjustment $space-xs - $text-adjustment;
+  background: rgba($colour-accent, .08);
+  @include rounded;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.1em;
+}
+
+input, textarea {
+  border: border();
+  font-size: 1rem;
+  padding: $space-s;
+  @include rounded;
+}
+
+textarea {
+  width: 100%
+}
+
+.section {
+    margin-top: $space-m;
+    margin-bottom: $space-m;
+}
+
+@each $size, $var in $text-sizes {
+  .#{$size} {
+    width: $var;
+    height: $var;
+  }
+
+  .margin.margin-#{$size}.margin-top {
+    margin-top: $var;
+  }
+
+  .margin.margin-#{$size}.margin-bottom {
+    margin-bottom: $var;
+  }
+
+  .margin.margin-#{$size}.margin-v {
+    margin-top: $var;
+    margin-bottom: $var;
+  }
+};
+
+.s-only {
+  @include m-up {
+    display: none;
+  }
+}
+
+.m-up {
+  @include s-only {
+    display: none;
+  }
+}
+
+.m-only {
+  @include s-only {
+    display: none;
+  }
+
+  @include l-only {
+    display: none;
+  }
+}
+
+.m-down {
+  @include l-only {
+    display: none;
+  }
+}
+
+.l-only {
+  @include m-down {
+    display: none;
+  }
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.section {
+  margin-top: $space-m;
+  margin-bottom: $space-m;
+}
+
+.clear {
+  overflow: hidden;
+}

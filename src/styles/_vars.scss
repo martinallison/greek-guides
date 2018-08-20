@@ -1,0 +1,52 @@
+$font-body: Rubik, Roboto, Helvetica, sans-serif;
+$font-display: Rubik, Roboto, Helvetica, sans-serif;
+
+$media-m: 780px;
+$media-s: 540px;
+
+$text-xl: 2rem;
+$text-l: 1.5rem;
+$text-m: 1rem;
+$text-s: 0.75rem;
+$text-xs: 0.66rem;
+
+$text-sizes: (
+  xs: $text-xs,
+  s: $text-s,
+  m: $text-m,
+  l: $text-l
+);
+
+$text-adjustment: 0.11rem;
+
+$space-xl: 6rem;
+$space-l: 4.2rem;
+$space-m: 2.1rem;
+$space-s: 1rem;
+$space-xs: 0.5rem;
+
+$space-sizes: (
+  none: 0,
+  xs: $space-xs,
+  s: $space-s,
+  m: $space-m,
+  l: $space-l
+);
+
+$colour-body: #2a3c57;
+$colour-border: #d1d5da;
+$colour-dark: #2a3c57;
+$colour-bright: #2f72fb;
+$colour-x-bright: #76f4e1;
+$colour-accent: tomato;
+$colour-ok: #65f9c0;
+$colour-inverse: rgba(white, .9);
+$colour-border: #d1d5da;
+
+$colours: (
+  dark: $colour-dark,
+  bright: $colour-bright,
+  x-bright: $colour-x-bright,
+  accent: $colour-accent,
+  ok: $colour-ok,
+);
