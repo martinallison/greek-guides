@@ -8,3 +8,5 @@ Vue.component("gr-listen", Listen);
 const app = new Vue({
     el: "#content",
 });
+
+window.app = app;

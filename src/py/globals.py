@@ -1,5 +1,7 @@
 import mistune
 
+import db
+
 
 def markdown(text, fragment=False, **kwargs):
     m = mistune.markdown(text, **kwargs)
@@ -33,13 +35,14 @@ def static_factory(site):
 
 _context = {
     "markdown": markdown,
+    "letters": db.letters,
 }
 
 
 def context(site):
-    _context.update(
-        url=url_factory(site),
-        static=static_factory(site),
-        url_prefix=url_prefix(site),
-    )
-    return _context
+    return {
+        "url": url_factory(site),
+        "static": static_factory(site),
+        "url_prefix": url_prefix(site),
+        **_context,
+    }

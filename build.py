@@ -2,6 +2,7 @@
 
 import errno
 import importlib
+import logging
 import os
 import shutil
 import subprocess
@@ -11,6 +12,10 @@ import click
 import jinja2
 import mistune
 import parse
+
+
+class BuildException(Exception):
+    pass
 
 
 # Utils
@@ -132,13 +137,19 @@ class Site:
     def _render_pages(self):
         for url, page in self.parsed_urls.items():
             template = self.engine.get_template(page["template"])
-
             context = import_python(page.get("context"))
-            context = call(context, self, **page["kwargs"]) or {}
 
-            html = template.render(context)
+            try:
+                context = call(context, self, **page["kwargs"]) or {}
+                html = template.render(context)
+            except Exception as e:
+                logging.error(
+                    "Error when building page: {url}: {template}.\n\n"
+                    .format(url=url, template=page["template"])
+                )
+                raise
+
             path = os.path.join(self.dest, url.lstrip("/"))
-
             mkdir_p(path)
 
             with open(os.path.join(path, "index.html"), "w") as f:

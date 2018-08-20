@@ -19,8 +19,8 @@
     const Listen = {
         name: "gr-listen",
         props: {
-            "word": String,
-            "audioUrl": String,
+            word: String,
+            audioUrl: String,
         },
         data() {
             return {
@@ -30,7 +30,7 @@
         },
         mounted() {
             this.$nextTick(() => {
-                this.height = this.$refs.container.clientHeight;
+                this.height = this.getHeight();
             });
         },
         computed: {
@@ -48,12 +48,27 @@
                 };
             },
         },
+        methods: {
+            getHeight() {
+                const height = this.$refs.container.clientHeight;
+                const style = window.getComputedStyle(this.$refs.container);
+                const padding = {
+                    top: parseInt(style.getPropertyValue("padding-top")),
+                    bottom: parseInt(style.getPropertyValue("padding-bottom")),
+                }
+                return height - padding.top - padding.bottom;
+            },
+        },
     };
 
     export default Listen;
 </script>
 
-<style>
+<style scoped lang="scss">
+    .gr-listen {
+        cursor: pointer;
+    }
+
     .gr-play-button, .gr-play-icon, .gr-playing-icon {
         display: block;
         height: 100%;
@@ -62,5 +77,13 @@
 
     .gr-playing-icon {
         line-height: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .gr-listen {
+        background: #76f4e1;
+        padding: 6px;
+        border-radius: 100%;
     }
 </style>

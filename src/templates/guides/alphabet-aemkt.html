@@ -1,0 +1,41 @@
+{% extends "guide_base.html" %}
+{% import "macros.html" as macros %}
+
+{% block guide %}
+    <section>
+        <h1>α ε κ μ τ</h1>
+
+        <p>Let’s start with the easy letters. They’re basically just English ones dressed up in a
+            different skin (though, since the English—or Latin—alphabet comes from Greek, these are
+            actually the originals).</p>
+
+        {% set letters = [
+            letters.by_id.alpha,
+            letters.by_id.epsilon,
+            letters.by_id.kappa,
+            letters.by_id.my,
+            letters.by_id.taf,
+        ] %}
+
+        {% for letter in letters %}
+        <div class="section">
+            {{ macros.letter_card(letter) }}
+        </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Words</h2>
+
+        <p>With just those letters, you can already say a (slightly random) selection of Greek
+            words:</p>
+
+        <div class="section flex-row">
+        {% for ex in guide.examples %}
+            <div class="flex-item">
+            {{ macros.example(ex.greek, ex.latin, ex.meaning, audio=ex.audio) }}
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+{% endblock %}

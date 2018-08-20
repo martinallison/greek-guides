@@ -15,26 +15,26 @@
     <thead>
         <th>Letter</th>
         <th class="l-only">Name</th>
-        <th aria-label="Romanisation"></th>
-        <th aria-label="Pronunciation" colspan="2"></th>
+        <th aria-label="Romanisation">English</th>
+        <th aria-label="Pronunciation" colspan="2">Sound</th>
     </thead>
     <tbody>
         {% for letter in letters %}
-        {% set audio = static("/audio/alphabet/" + letter.romanised_name + ".m4a") %}
+        {% set audio = static("/audio/alphabet/" + letter.english_name + ".m4a") %}
         <tr>
             <td>
                 {{ letter.upper }} • {{ letter.lower }}
                 <div class="collapsed-letter-name m-down">
-                    {{ letter.name }} ({{ letter.romanised_name }})
+                    {{ letter.name }} ({{ letter.english_name }})
                 </div>
             </td>
-            <td class="l-only">{{ letter.name }} ({{ letter.romanised_name }})</td>
-            <td>{{ letter.romanisation }}</td>
+            <td class="l-only">{{ letter.name }} ({{ letter.english_name }})</td>
+            <td>{{ letter.english }}</td>
             <td{% if letter.pronunciation|length > 25 %} class="text-s"{% endif %}>
                 {{ markdown(letter.pronunciation, fragment=True) }}
             </td>
             <td>
-                <gr-listen class="s" word="{{ letter.romanised_name }}" audio-url="{{ audio }}">
+                <gr-listen class="s" word="{{ letter.english_name }}" audio-url="{{ audio }}">
             </td>
         </tr>
         {% endfor %}
@@ -42,14 +42,31 @@
 {% endmacro %}
 
 
-{% macro example(greek, romanisation, meaning, audio=None) %}
-    <div class="example shadowed">
-        <span class="example-greek">{{ greek }}
-            {% if audio %}
-                <gr-listen class="s example-audio" audio-url="{{ static(audio) }}" word="{{ romanisation }}">
-            {% endif %}
-        </span>
-        <span class="example-romanisation">{{ romanisation }}</span>
-        <span class="example-meaning">{{ meaning }}</span>
+{% macro example(greek, latin, meaning, audio=None) %}
+    <div class="eg">
+        {% if audio %}
+            <gr-listen class="s eg-audio" audio-url="{{ static(audio) }}" word="{{ latin }}">
+        {% endif %}
+        <span class="eg-el">{{ greek }}</span>
+        <span class="eg-latin">{{ latin }}</span>
+        <span class="eg-meaning">{{ meaning }}</span>
+    </div>
+{% endmacro %}
+
+
+{% macro letter_card(letter, audio=None) %}
+    <div class="flex-row letter-card">
+        <div class="flex-item eg eg-letter">
+            {% set audio = "/audio/alphabet/" + letter.id + ".m4a" %}
+            <gr-listen class="eg-audio" audio-url="{{ static(audio) }}" word="{{ romanisation }}">
+            </gr-listen>
+            <span class="eg-el">{{ letter.upper }} • {{ letter.lower }}</span>
+            <span class="eg-meaning">{{ letter.name }}</span>
+            <span class="eg-latin">{{ letter.english_name }}</span>
+        </div>
+        <div class="flex-item">
+            <p>{{ markdown(letter.explanation, fragment=True) }}</p>
+            <p><strong>English equivalent:</strong> {{ letter.english }}</p>
+        </div>
     </div>
 {% endmacro %}

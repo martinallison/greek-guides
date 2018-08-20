@@ -2,16 +2,23 @@ $space-sizes: (
     none: 0,
     xs: $space-xs,
     s: $space-s,
-    med: $space-m,
+    m: $space-m,
     l: $space-l
 );
 
 $text-sizes: (
     xs: $text-xs,
     s: $text-s,
-    med: $text-m,
+    m: $text-m,
     l: $text-l
 );
+
+@each $size, $var in $text-sizes {
+    .#{$size} {
+        width: $var;
+        height: $var;
+    }
+};
 
 .s-only {
     @include m-up {
@@ -63,4 +70,24 @@ $text-sizes: (
 
 .text-centered {
     text-align: center;
+}
+
+.float-container {
+    overflow: hidden;
+}
+
+.col {
+    margin-left: $space-xs;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
 }

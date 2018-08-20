@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ super() }} • {{ guide.title }}{% endblock %}
+
+{% block body %}
+
+    {% block guide %}
+    {% endblock %}
+
+    <section class="float-container">
+        <div class="right">
+        {% if guide.prev_id %}
+            <a href="{{ url('guide', slug=guide.prev_id) }}"
+                class="col left button-secondary x-bright">Prev</a>
+        {% endif %}
+
+        {% if guide.next_id %}
+            <a href="{{ url('guide', slug=guide.next_id) }}"
+                class="col left button-primary x-bright">Next</a>
+        {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

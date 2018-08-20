@@ -1,0 +1,34 @@
+{% extends "guide_base.html" %}
+{% import "macros.html" as macros %}
+
+{% block guide %}
+    <section>
+        <h1>β ζ ι λ ο</h1>
+
+        {% set letters = [
+            letters.by_id.vita,
+            letters.by_id.zita,
+            letters.by_id.iota,
+            letters.by_id.lamda,
+            letters.by_id.omikron,
+        ] %}
+
+        {% for letter in letters %}
+        <div class="section">
+            {{ macros.letter_card(letter) }}
+        </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Words</h2>
+
+        <div class="section flex-row">
+        {% for ex in guide.examples %}
+            <div class="flex-item">
+            {{ macros.example(ex.greek, ex.latin, ex.meaning, audio=ex.audio) }}
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+{% endblock %}

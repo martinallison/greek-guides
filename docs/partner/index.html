@@ -1,9 +1,25 @@
-{% extends "guide_base.html" %}
-{% import "macros.html" as macros %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Learn Greek! • Greek partner</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700,900|Roboto:400,400i,700,900&amp;subset=greek"
+            rel="stylesheet">
+        <link rel="stylesheet" href="/main.css">
+        <meta name="viewport" content="width=device-width">
+        <script>
+            window.urlPrefix = "";
+        </script>
+    </head>
 
-{% block guide %}
+    <body>
+        <div id="content" class="main-col">
+        
+
+    
     <section>
-        <h1>{{ guide.title }}</h1>
+        <h1>Greek partner</h1>
 
         <p class="emoji-header">🏩 ❤️</p>
 
@@ -13,9 +29,16 @@
         <p>Let’s start big:</p>
 
         <div class="section flex-row">
-            {% set example = guide.examples.by_id.i_love_you %}
+            
             <div class="flex-item">
-                {{ macros.example(example.greek, example.latin, example.meaning) }}
+                
+    <div class="eg">
+        
+        <span class="eg-el">σ’αγαπώ</span>
+        <span class="eg-latin">s'agapo</span>
+        <span class="eg-meaning">I love you</span>
+    </div>
+
             </div>
         </div>
 
@@ -35,14 +58,28 @@
             which means <i>‘I love you too’</i>.</p>
 
         <div class="section flex-row">
-            {% set example = guide.examples.by_id.my_love %}
+            
             <div class="flex-item">
-                {{ macros.example(example.greek, example.latin, example.meaning) }}
+                
+    <div class="eg">
+        
+        <span class="eg-el">αγάπη μου</span>
+        <span class="eg-latin">agapi mou</span>
+        <span class="eg-meaning">my love</span>
+    </div>
+
             </div>
 
-            {% set example = guide.examples.by_id.babe %}
+            
             <div class="flex-item">
-                {{ macros.example(example.greek, example.latin, example.meaning) }}
+                
+    <div class="eg">
+        
+        <span class="eg-el">μωρό μου</span>
+        <span class="eg-latin">moro mou</span>
+        <span class="eg-meaning">babe</span>
+    </div>
+
             </div>
         </div>
 
@@ -56,4 +93,28 @@
             <i>ε μορώ</i> on its own too, from sleazy guys in bars (or the street, even) if
             you’re an attractive woman.</p>
     </section>
-{% endblock %}
+
+
+    <section class="float-container">
+        <div class="right">
+        
+
+        
+            <a href="/partner-2"
+                class="col left button-primary x-bright">Next</a>
+        
+        </div>
+    </section>
+
+
+        </div>
+        <footer class="main-col">
+            <p><a href="#"><span class="no-underline emoji-icon-left">☝️ </span>to the top</a></p>
+            <a href="/">home</a> &middot;
+            <a href="/about">about</a> &middot;
+            <a href="mailto:martinallison@gmail.com">contact</a>
+        </footer>
+
+        <script src="/js/build.js"></script>
+    </body>
+</html>
