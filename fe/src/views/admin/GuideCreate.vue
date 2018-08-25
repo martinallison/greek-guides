@@ -35,8 +35,7 @@ export default {
   },
   data() {
     return {
-      initial: {},
-      data_: null, 
+      initial: null,
       id: this.guideId,
       editing: false,
     };
@@ -55,6 +54,10 @@ export default {
     ]),
     data: {
       get() {
+        if (this.initial) {
+          return Object.assign({}, this.initial);
+        }
+
         return Object.assign({}, this.initial, this.guide);
       },
       set(value) {
