@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     isDefault() {
-      return this.primary === undefined && this.secondary === undefined;
+      return !this.primary && !this.secondary;
     },
     isRouterLink() {
       return this.to !== undefined;

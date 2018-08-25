@@ -6,7 +6,7 @@
 
     <component v-if="contentComponent" :is="contentComponent"></component>
 
-    <div class="clear section">
+    <div v-if="links.prev || links.next" class="clear section">
       <el-button v-if="links.next" primary class="guide-next x-bright" :to="links.next">
         Next
       </el-button>
@@ -25,7 +25,6 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
     },
     emoji: {
       type: String,

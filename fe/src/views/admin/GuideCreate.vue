@@ -1,14 +1,11 @@
 <template>
   <div class="clear">
-    <p v-if="requesting">REQUESTING</p>
-    <p v-if="error">ERROR: {{ error }}</p>
-
-    <div v-if="!editing || guide" class="editor">
+    <div class="editor">
       <el-guide-form v-model="data" :editing="editing" />
       <el-button @click.prevent="save()" class="x-bright">Save</el-button>
     </div>
     <div class="preview">
-      <el-guide :title="data.title" :content-component="contentComponent" />
+      <el-guide v-bind="preview" />
     </div>
   </div>
 </template>
@@ -38,11 +35,15 @@ export default {
   },
   data() {
     return {
-      data_: null,
+      initial: {},
+      data_: null, 
+      id: this.guideId,
+      editing: false,
     };
   },
   created() {
-    if (this.editing) {
+    if (this.id) {
+      this.editing = true;
       this.detail(this.guideId);
     }
   },
@@ -52,29 +53,45 @@ export default {
       'error',
       'byId',
     ]),
-    editing() {
-      return !!this.guide;
-    },
     data: {
       get() {
-        return this.data_ || this.initialData;
+        return Object.assign({}, this.initial, this.guide);
       },
       set(value) {
-        this.data_ = { ...value };
+        this.initial = value;
       },
     },
-    initialData() {
-      return this.editing ? Object.assign({}, this.guide) : {};
-    },
+    // data: {
+    //   get() {
+    //     if (this.data_) {
+    //       return this.data_;
+    //     }
+
+    //     if (this.id) {
+    //       return Object.assign({}, this.initial, this.guide);
+    //     } else {
+    //       return Object.assign({}, this.initial);
+    //     }
+    //   },
+    //   set(value) {
+    //     this.data_ = value;
+    //   },
+    // },
     guide() {
-      return this.byId[this.guideId];
+      return this.byId[this.id];
     },
     contentComponent() {
-      const content = this.data.content || '';
+      const content = this.data ? this.data.content :'';
       return {
         template: `<div>${content}</div>`,
       };
     },
+    preview() {
+      return {
+        title: this.data ? this.data.title : '',
+        contentComponent: this.contentComponent,
+      };
+    }
   },
   methods: {
     ...mapActions([
@@ -86,7 +103,10 @@ export default {
       if (this.editing) {
         this.update(this.data);
       } else {
-        this.create(this.data);
+        this.create(this.data).then(() => {
+          this.id = this.data.id;
+          this.editing = true;
+        });
       }
     },
   },

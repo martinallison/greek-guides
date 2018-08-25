@@ -1,0 +1,32 @@
+{
+  "guides": [
+    {
+      "id": "aekmt",
+      "title": "α ε κ μ τ",
+      "content": "<section>\n   <p>Let’s start with the easy letters. They’re basically just English ones dressed up in a different skin (though, since the English—or Latin—alphabet comes from Greek, these are actually the originals).</p>\n</section>\n<section>\n  <h2>Words</h2>\n  <p>With just those letters, you can already say a (slightly random) selection of Greek words:</p>\n</section>\n\nDoes this work?\n\nYens?"
+    },
+    {
+      "id": "vzilo",
+      "title": "β ζ ι λ ο"
+    },
+    {
+      "id": "this-is-a-various-thing",
+      "title": "This is a various thing?",
+      "content": "Londis"
+    },
+    {
+      "id": "this-is-ok-now-maybe-ffs",
+      "title": "This is ok now maybe FFS?",
+      "content": "fsfsasfasfdsfafdsafsfsfs\n\nTHINGS"
+    },
+    {
+      "id": "fdsfasfdsa",
+      "title": "fdsfasfdsa",
+      "content": "ADSODOASPKDPAS"
+    },
+    {
+      "id": "this-works-no-wayyy",
+      "title": "THIS WORKS?! NO WAYYYY"
+    }
+  ]
+}

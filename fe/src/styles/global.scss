@@ -85,7 +85,7 @@ input, textarea {
   border: border();
   font-size: 1rem;
   padding: $space-s;
-  @include rounded;
+  @include rounded(20px);
 }
 
 textarea {

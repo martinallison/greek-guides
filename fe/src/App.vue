@@ -18,7 +18,7 @@ export default {
   },
   created() {
     this.$store.dispatch('groups/all');
-    this.$store.dispatch('guides/all');
+    // this.$store.dispatch('guides/all');
   },
 };
 </script>

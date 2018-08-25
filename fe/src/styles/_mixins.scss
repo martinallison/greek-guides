@@ -63,8 +63,8 @@
   box-shadow: shadow();
 }
 
-@mixin rounded {
-  border-radius: 5px;
+@mixin rounded($radius: 5px) {
+  border-radius: $radius;
 }
 
 @mixin circular($radius) {

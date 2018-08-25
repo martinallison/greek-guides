@@ -26,5 +26,6 @@ const table = [
 ];
 
 export default {
-  all: f => f([].concat(table)),
+  create: f => f(),
+  list: f => f([].concat(table)),
 };
