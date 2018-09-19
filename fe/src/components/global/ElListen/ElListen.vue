@@ -18,7 +18,7 @@
 <script>
 import Vue from 'vue';
 
-const playIconSrc = require('../../assets/img/play.svg');
+const playIconSrc = require('@/assets/img/play.svg');
 
 export default {
   props: {

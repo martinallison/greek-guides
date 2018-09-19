@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import { mutations } from './mutations';
+
 import groups from './modules/groups';
 import guides from './modules/guides';
 
@@ -14,5 +16,6 @@ export default new Vuex.Store({
     groups,
     guides,
   },
+  mutations,
   strict: debug,
 });

@@ -14,10 +14,7 @@ export default {
       type: Object,
       required: true,
     },
-    audio: {
-      type: Object,
-      required: false,
-    },
+    audio: Object,
   },
 };
 </script>

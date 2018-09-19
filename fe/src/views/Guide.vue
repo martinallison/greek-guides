@@ -1,61 +1,47 @@
 <template>
-  <div class="guide">
-    <h1 class="text-centered">{{ title }}</h1>
-
-    <p v-if="emoji" class="guide-emoji text-centered">{{ emoji }}</p>
-
-    <component v-if="contentComponent" :is="contentComponent"></component>
-
-    <div v-if="links.prev || links.next" class="clear section">
-      <el-button v-if="links.next" primary class="guide-next x-bright" :to="links.next">
-        Next
-      </el-button>
-
-      <el-button v-if="links.prev" secondary class="guide-prev x-bright" :to="links.prev">
-        Prev
-      </el-button>
+  <el-col>
+    <div class="relative" v-if="guide && guide.group">
+      <el-link class="guide-edit" :to="editLink">Edit</el-link>
+      <el-article v-bind="article"/>
     </div>
-  </div>
+  </el-col>
 </template>
 
 <script>
-import Vue from 'vue';
+import { guideMixin } from '../mixins/state';
+
 
 export default {
+  mixins: [guideMixin({ idProp: 'guideId' })],
   props: {
-    title: {
-      type: String,
+    guideId: String,
+  },
+  computed: {
+    article() {
+      return {
+        title: this.guide.title,
+        emoji: this.guide.emoji,
+        content: this.guide.renderedContent,
+        nav: this.nav,
+      };
     },
-    emoji: {
-      type: String,
+    nav() {
+      const { prevId: prev, nextId: next } = this.guide;
+      return {
+        prev: prev ? this.link('guide', { guideId: prev }) : null,
+        next: next ? this.link('guide', { guideId: next }) : null,
+      };
     },
-    content: {
-      type: String,
-    },
-    contentComponent: {
-      type: Object,
-    },
-    links: {
-      type: Object,
-      default() {
-        return { prev: null, next: null };
-      },
+    editLink() {
+      return this.link('guide-edit', { guideId: this.guide.id });
     },
   },
 };
 </script>
 
 <style lang="scss">
-.guide-emoji {
-  font-size: $text-l;
-}
-
-.guide-next,
-.guide-prev {
-  float: right;
-}
-
-.guide-next {
-  margin-left: $space-xs;
+.guide-edit {
+  position: absolute;
+  right: 0;
 }
 </style>

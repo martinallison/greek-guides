@@ -1,9 +1,11 @@
 <template>
-  <div :class="classes">
+  <div class="button" :class="classes">
     <router-link v-if="isRouterLink" :to="to">
       <slot></slot>
     </router-link>
-    <a href="#" @click.prevent="$emit('click', $event)" v-else><slot></slot></a>
+    <a href="#" @click.prevent="$emit('click', $event)" v-else>
+      <slot></slot>
+    </a>
   </div>
 </template>
 
@@ -17,7 +19,7 @@ export default {
       type: Boolean,
     },
     to: {
-      type: Object,
+      type: [Object, String],
     },
   },
   computed: {
@@ -29,7 +31,6 @@ export default {
     },
     classes() {
       return {
-        button: true,
         'button-primary': this.primary || this.isDefault,
         'button-secondary': this.secondary,
       };

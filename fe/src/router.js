@@ -2,10 +2,10 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from './views/Home.vue';
-import Group from './views/Group.vue';
+import Guide from './views/Guide.vue';
 
-import GuideCreate from './views/admin/GuideCreate.vue';
-import EditGuide from './views/admin/EditGuide.vue';
+import GuideEdit from './views/admin/GuideEdit.vue';
+import Form from './views/admin/Form.vue';
 
 
 Vue.use(Router);
@@ -20,26 +20,25 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/form',
+      name: 'form-test',
+      component: Form,
+    },
+    {
+      path: '/:guideId',
+      name: 'guide',
+      component: Guide,
+      props: true,
+    },
+    {
       path: '/admin/guide/add',
       name: 'guide-add',
-      component: GuideCreate,
+      component: GuideEdit,
     },
     {
       path: '/admin/guide/:guideId/edit',
       name: 'guide-edit',
-      component: GuideCreate,
-      props: true,
-    },
-    {
-      path: '/:id-:guideId',
-      name: 'guide',
-      component: Group,
-      props: true,
-    },
-    {
-      path: '/:id',
-      name: 'group',
-      component: Group,
+      component: GuideEdit,
       props: true,
     },
   ],

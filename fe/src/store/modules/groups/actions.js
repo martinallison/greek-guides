@@ -1,17 +1,17 @@
-import api from '@/data/guides';
+import api from '@/data/groups';
 import action from '../base';
 import { types } from './mutations';
 
 
 const mutations = {
   one: {
-    request: types.REQUEST_GUIDES,
-    receive: types.RECEIVE_GUIDE,
+    request: types.REQUEST_GROUPS,
+    receive: types.RECEIVE_GROUP,
     error: types.RECEIVE_ERROR,
   },
   many: {
-    request: types.REQUEST_GUIDES,
-    receive: types.RECEIVE_GUIDES,
+    request: types.REQUEST_GROUPS,
+    receive: types.RECEIVE_GROUPS,
     error: types.RECEIVE_ERROR,
   },
 };

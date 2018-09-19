@@ -8,7 +8,7 @@ const detailUrl = id => `${API_URL}${id}`;
 
 
 export default {
-  detail(id) {
+  detail({ id }) {
     return axios.get(detailUrl(id));
   },
 
@@ -20,7 +20,7 @@ export default {
     return axios.post(listUrl(), body);
   },
 
-  update(id, body) {
+  update({ id, ...body }) {
     return axios.put(detailUrl(id), body);
   },
 };

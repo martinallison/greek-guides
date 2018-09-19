@@ -21,11 +21,34 @@ const table = [
     emoji: '💪',
     colour: 'bright',
     blurb: 'I want to learn how to read and pronounce the weird Greek letters properly',
-    guideIds: ['aekmt', 'vzilo'],
+    guideIds: ['alphabet', 'alphabet-aekmt', 'alphabet-vzilo'],
   },
 ];
 
 export default {
-  create: f => f(),
-  list: f => f([].concat(table)),
+  detail({ id }) {
+    return new Promise((resolve, reject) => {
+      const obj = table.find(o => o.id === id);
+
+      if (obj) {
+        resolve({ obj });
+      } else {
+        reject();
+      }
+    });
+  },
+
+  list() {
+    return new Promise((resolve) => {
+      resolve({ data: [].concat(table) });
+    });
+  },
+
+  create() {
+    throw new Error('Not implemented');
+  },
+
+  update() {
+    throw new Error('Not implemented');
+  },
 };

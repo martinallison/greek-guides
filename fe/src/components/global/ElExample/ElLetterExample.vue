@@ -19,7 +19,7 @@ export default {
       },
       audio: {
         word: this.letter.englishName,
-        src: require(`../../assets/audio/alphabet/${this.letter.englishName}.m4a`),
+        src: require(`@/assets/audio/alphabet/${this.letter.englishName}.m4a`),
       },
     };
   },

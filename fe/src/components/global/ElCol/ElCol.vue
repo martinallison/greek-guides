@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <div class="col">
     <slot></slot>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main {
+.col {
   margin-left: auto;
   margin-right: auto;
   max-width: 600px;

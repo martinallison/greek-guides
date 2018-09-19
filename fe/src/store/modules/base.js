@@ -1,56 +1,23 @@
-import Vue from 'vue';
+import { types as rootMutations } from '../mutations';
 
 
-export default (api) => {
-  const state = {
-    all: [],
-    byId: {},
+export default function action(apiCall, mutations) {
+  return ({ commit }, ...params) => {
+    commit(rootMutations.REQUEST, null, { root: true });
+    commit(mutations.request);
+
+    return new Promise((resolve, reject) => {
+      apiCall(...params)
+        .then((r) => {
+          commit(mutations.receive, r.data);
+          commit(rootMutations.RECEIVE_SUCCESS, r, { root: true });
+          resolve();
+        })
+        .catch((r) => {
+          commit(mutations.error, r.data);
+          commit(rootMutations.RECEIVE_ERROR, r, { root: true });
+          reject();
+        });
+    });
   };
-
-  const getters = {
-    byId(st) {
-      return id => st.byId[id];
-    },
-  };
-
-  const actions = {
-    all({ commit }) {
-      api.list((r) => {
-        commit('setAll', r);
-      });
-    },
-
-    add({ commit }, payload) {
-      api.create(payload, (r) => {
-        commit('setById', r);
-      });
-    },
-
-    update({ commit }, payload) {
-      api.update(payload, (r) => {
-        commit('setById', r);
-      });
-    },
-  };
-
-  const mutations = {
-    setAll(st, objects) {
-      st.all = objects;
-      objects.forEach((o) => {
-        Vue.set(st.byId, o.id, o);
-      });
-    },
-
-    setById(st, o) {
-      Vue.set(st.byId, o.id, o);
-    },
-  };
-
-  return {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations,
-  };
-};
+}

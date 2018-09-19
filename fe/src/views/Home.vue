@@ -14,22 +14,18 @@
     <section>
       <h2>Basics</h2>
 
-      <group-item v-for="group in groups" :key="group.id" :group="group" class="section"/>
+      <el-group-item v-emojify class="section"
+        v-for="group in groups" :key="group.id" :group="group"/>
     </section>
   </el-col>
 </template>
 
 <script>
-import GroupItem from '../components/GroupItem.vue';
+import { groupMixin } from '@/mixins/state';
 
 export default {
-  components: {
-    GroupItem,
-  },
-  computed: {
-    groups() {
-      return this.$store.state.groups.all;
-    },
-  },
+  mixins: [
+    groupMixin(),
+  ],
 };
 </script>

@@ -1,32 +1,67 @@
 {
   "guides": [
     {
-      "id": "aekmt",
+      "id": "alphabet-aekmt",
       "title": "α ε κ μ τ",
-      "content": "<section>\n   <p>Let’s start with the easy letters. They’re basically just English ones dressed up in a different skin (though, since the English—or Latin—alphabet comes from Greek, these are actually the originals).</p>\n</section>\n<section>\n  <h2>Words</h2>\n  <p>With just those letters, you can already say a (slightly random) selection of Greek words:</p>\n</section>\n\nDoes this work?\n\nYens?"
+      "sourceContent": "Let’s start with the easy letters. They’re basically just English ones dressed up in a different skin (though, since the English—or Latin—alphabet comes from Greek, these are actually the originals).\n\n## Words\n\nWith just those letters, you can already say a (slightly random) selection of Greek words:",
+      "renderedContent": ""
     },
     {
-      "id": "vzilo",
-      "title": "β ζ ι λ ο"
+      "id": "alphabet-vzilo",
+      "title": "β ζ ι λ ο",
+      "sourceContent": "I can't remember!",
+      "renderedContent": ""
     },
     {
-      "id": "this-is-a-various-thing",
-      "title": "This is a various thing?",
-      "content": "Londis"
+      "id": "alphabet",
+      "title": "Alphabet",
+      "sourceContent": "If you’ve read the other guides so far, you might already have picked up some idea about which Greek letters are which.\n\nThere are only 24 letters in the Greek alphabet, so it’s even less to learn than English, and a bunch of them make the same sound as each other and their English counterparts.\n\nHere’s the whole alphabet:\n\n<el-alphabet class=\"section\" />\n\nSome are familiar: Α, Ε, Ζ, Ι, etc., but others totally not. What on earth is a Ξ, or a Ψ? We’ll plumb the murky alphabetical depths in small groups of letters to find out.\n",
+      "renderedContent": "<p>If you’ve read the other guides so far, you might already have picked up some idea about which Greek letters are which.</p>\n<p>There are only 24 letters in the Greek alphabet, so it’s even less to learn than English, and a bunch of them make the same sound as each other and their English counterparts.</p>\n<p>Here’s the whole alphabet:</p>\n<el-alphabet class=\"section\" />\n\n<p>Some are familiar: Α, Ε, Ζ, Ι, etc., but others totally not. What on earth is a Ξ, or a Ψ? We’ll plumb the murky alphabetical depths in small groups of letters to find out.</p>\n"
     },
     {
-      "id": "this-is-ok-now-maybe-ffs",
-      "title": "This is ok now maybe FFS?",
-      "content": "fsfsasfasfdsfafdsafsfsfs\n\nTHINGS"
+      "id": "to-be",
+      "title": "είμαι/to be",
+      "sourceContent": "This is a quick guide about the verb 'to be'.\n\nIn Greek, 'to be' is 'είμαι'. That doesn't look like any other verbs we've seen so far, right? Why does it end in 'μαι' instead of 'ω'?\n\nEtc.",
+      "renderedContent": "<p>This is a quick guide about the verb &#39;to be&#39;.</p>\n<p>In Greek, &#39;to be&#39; is &#39;είμαι&#39;. That doesn&#39;t look like any other verbs we&#39;ve seen so far, right? Why does it end in &#39;μαι&#39; instead of &#39;ω&#39;?</p>\n<p>Etc.</p>\n"
     },
     {
-      "id": "fdsfasfdsa",
-      "title": "fdsfasfdsa",
-      "content": "ADSODOASPKDPAS"
+      "id": "whats-happening",
+      "title": "What's happening",
+      "sourceContent": "When we do this?",
+      "renderedContent": "<p>When we do this?</p>\n"
     },
     {
-      "id": "this-works-no-wayyy",
-      "title": "THIS WORKS?! NO WAYYYY"
+      "id": "that-was-a-bug",
+      "title": "that was a bug",
+      "sourceContent": "Wasn't it",
+      "renderedContent": "<p>Wasn&#39;t it</p>\n"
+    },
+    {
+      "id": "ok-benefit-of-the-doubt-mayb",
+      "title": "OK, benefit of the doubt maybe",
+      "renderedContent": ""
+    },
+    {
+      "id": "changed",
+      "title": "Changed?",
+      "renderedContent": ""
+    },
+    {
+      "id": "this-will-only-work-if-theyve-all-got-a-value",
+      "title": "This will only work if they've all got a value?",
+      "renderedContent": "<p>Maybe?</p>\n"
+    },
+    {
+      "id": "fdsafdsfs",
+      "title": "fdsafdsfsa",
+      "renderedContent": "<p>content yet? what about now?</p>\n",
+      "sourceContent": "content yet? what about now?"
+    },
+    {
+      "id": "its-still-not-gonna-work",
+      "title": "it's still not gonna work?",
+      "sourceContent": "IS IT",
+      "renderedContent": "<p>IS IT</p>\n"
     }
   ]
 }

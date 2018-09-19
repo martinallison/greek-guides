@@ -26,7 +26,6 @@ const resource = {
       return http.badRequest(ctx)
     }
 
-    // bug: this returns all guides
     db.get('guides').push({ id, ...body}).write()
     return http.created(ctx, this.detail(ctx, id));
   },

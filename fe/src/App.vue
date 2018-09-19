@@ -2,23 +2,23 @@
   <div id="app">
     <router-view/>
     <el-col>
-      <footer>home • about • contact</footer>
+      <footer>
+        <el-link to="home">home</el-link> •
+        <el-link to="home">about</el-link> •
+        <el-link to="home">contact</el-link>
+      </footer>
     </el-col>
   </div>
 </template>
 
 <script>
-import emojify from './directives/emojify';
-
-import './mixins/url';
+import '@/directives/emojify';
+import '@/mixins/url';
 
 export default {
-  directives: {
-    emojify,
-  },
   created() {
-    this.$store.dispatch('groups/all');
-    // this.$store.dispatch('guides/all');
+    this.$store.dispatch('groups/list');
+    this.$store.dispatch('guides/list');
   },
 };
 </script>

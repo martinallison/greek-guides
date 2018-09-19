@@ -6,7 +6,7 @@
     <div class="group-item-blurb">
       <p>{{ group.blurb }}</p>
     </div>
-    <el-button primary :to="link('group', {id: group.id})" class="group-item-cta bright">
+    <el-button primary class="group-item-cta bright" :to="guideLink">
       Go →
     </el-button>
   </div>
@@ -19,6 +19,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      guideLink: this.link('guide', { guideId: this.group.guideIds[0] }),
+    };
   },
 };
 </script>
