@@ -1,14 +1,3 @@
-<template>
-  <div class="button" :class="classes">
-    <router-link v-if="isRouterLink" :to="to">
-      <slot></slot>
-    </router-link>
-    <a href="#" @click.prevent="$emit('click', $event)" v-else>
-      <slot></slot>
-    </a>
-  </div>
-</template>
-
 <script>
 export default {
   props: {
@@ -21,50 +10,84 @@ export default {
     to: {
       type: [Object, String],
     },
+    href: {
+      type: String,
+    },
+    type: {
+      type: String,
+    },
   },
   computed: {
-    isDefault() {
-      return !this.primary && !this.secondary;
+    buttonClass() {
+      if (this.primary) {
+        return 'el-button--primary';
+      }
+
+      return 'el-button--secondary';
     },
-    isRouterLink() {
-      return this.to !== undefined;
-    },
-    classes() {
-      return {
-        'button-primary': this.primary || this.isDefault,
-        'button-secondary': this.secondary,
-      };
-    },
+  },
+  render(h) {
+    const content = this.$slots.default;
+
+    const attrs = {
+      ...this.$attrs,
+      disabled: this.disabled,
+    };
+    const props = {
+      ...this.$props,
+    };
+
+    let tag;
+
+    if (this.href) {
+      tag = 'a';
+      attrs.href = this.href;
+    } else if (this.to) {
+      tag = 'el-link';
+      props.to = this.to;
+    } else {
+      tag = 'button';
+      attrs.type = this.type || 'button';
+    }
+
+    const data = {
+      attrs,
+      props,
+      staticClass: 'el-button',
+      class: [this.buttonClass],
+      on: { ...this.$listeners },
+    };
+
+    return h(tag, data, content);
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.button {
+a {
+  text-decoration: none;
+}
+
+a, a:visited {
+  color: inherit;
+}
+
+.el-button {
   display: inline-block;
   font-weight: bold;
+  padding: 8px 12px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
 
   @include rounded;
-
-  a {
-    padding: 8px 12px;
-    display: block;
-    text-decoration: none;
-  }
-
-  a, a:visited {
-    color: inherit;
-  }
 }
 
-.button-primary {
+.el-button--primary {
   @include colour-variants(background-color);
 }
 
-.button-secondary {
+.el-button--secondary {
   border: border();
   @include colour-variants(border-color);
 }
