@@ -13,7 +13,7 @@
 import '@/directives/emojify';
 import '@/mixins/url';
 
-import '@/components/framework';
+import '@/components';
 
 
 export default {

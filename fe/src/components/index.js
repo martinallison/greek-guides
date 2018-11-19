@@ -1,9 +1,7 @@
 import './ElAlphabet';
 import './ElArticle';
 import './ElButton';
-import './ElCard';
-import './ElCol';
 import './ElExample';
-import './ElGroupItem';
+import './ElSubjectItem';
 import './ElLink';
 import './ElListen';
