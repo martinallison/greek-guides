@@ -1,13 +1,10 @@
 import Vue from 'vue';
 
-const url = {
+
+Vue.mixin({
   methods: {
     link(name, params) {
       return { name, params };
     },
   },
-};
-
-Vue.mixin(url);
-
-export default url;
+});

@@ -1,12 +1,12 @@
-import guides from '@/data/guides';
+import subjects from '@/data/subjects';
 
 import getters from './getters';
 
 
 const state = {
-  all: guides,
-  byId: guides.reduce((d, g) => {
-    d[g.id] = g;
+  all: subjects,
+  byId: subjects.reduce((d, s) => {
+    d[s.id] = s;
     return d;
   }, {}),
 };

@@ -1,26 +1,14 @@
-import axios from 'axios';
+/* eslint-disable global-require */
 
-
-const API_URL = 'http://localhost:3000/guides/';
-
-const listUrl = () => API_URL;
-const detailUrl = id => `${API_URL}${id}`;
-
-
-export default {
-  detail({ id }) {
-    return axios.get(detailUrl(id));
+export default [
+  {
+    id: 'alphabet',
+    title: 'Alphabet',
+    content: require('@/guides/alphabet.html'),
   },
-
-  list() {
-    return axios.get(listUrl());
+  {
+    id: 'alphabet-aekmt',
+    title: 'α ε κ μ τ',
+    content: require('@/guides/alphabet-aekmt.html'),
   },
-
-  create(body) {
-    return axios.post(listUrl(), body);
-  },
-
-  update({ id, ...body }) {
-    return axios.put(detailUrl(id), body);
-  },
-};
+];

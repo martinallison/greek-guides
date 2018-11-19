@@ -11,6 +11,7 @@ const getDb = () => {
 
   db.defaults({
     guides: [],
+    groups: [],
   });
 
   return db

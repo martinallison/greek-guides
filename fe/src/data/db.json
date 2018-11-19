@@ -4,7 +4,7 @@
       "id": "alphabet-aekmt",
       "title": "α ε κ μ τ",
       "sourceContent": "Let’s start with the easy letters. They’re basically just English ones dressed up in a different skin (though, since the English—or Latin—alphabet comes from Greek, these are actually the originals).\n\n## Words\n\nWith just those letters, you can already say a (slightly random) selection of Greek words:",
-      "renderedContent": ""
+      "renderedContent": "<p>Let’s start with the easy letters. They’re basically just English ones dressed up in a different skin (though, since the English—or Latin—alphabet comes from Greek, these are actually the originals).</p>\n<h2 id=\"words\">Words</h2>\n<p>With just those letters, you can already say a (slightly random) selection of Greek words:</p>\n"
     },
     {
       "id": "alphabet-vzilo",
@@ -62,6 +62,12 @@
       "title": "it's still not gonna work?",
       "sourceContent": "IS IT",
       "renderedContent": "<p>IS IT</p>\n"
+    },
+    {
+      "id": "this-is-a-greek-guide",
+      "title": "This is a Greek guide",
+      "sourceContent": "This is some content for a Greek guide. I've now saved the Greek guide.",
+      "renderedContent": "<p>This is some content for a Greek guide. I&#39;ve now saved the Greek guide.</p>\n"
     }
   ]
 }
