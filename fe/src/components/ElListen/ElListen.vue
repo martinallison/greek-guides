@@ -1,16 +1,11 @@
 <template>
-  <div class='listen' ref='container'>
-    <audio
-      ref='audio'
-      :src='src'
-      @playing='playing = true'
-      @ended='playing = false'>
-    </audio>
+  <div class="el-listen" ref="container">
+    <audio ref="audio" :src="src" @playing="playing = true" @ended="playing = false"/>
 
-    <span class='listen-icon-playing' :style='styles.emoji' v-show='playing'>👂</span>
+    <span class="el-listen__icon--playing" :style="emojiStyles" v-show="playing">👂</span>
 
-    <a class='listen-button-play' v-if='!playing' @click.prevent='$refs.audio.play()'>
-      <img class='listen-icon-play' v-bind='playIcon'>
+    <a class="el-listen__button" v-if="!playing" @click.prevent="$refs.audio.play()">
+      <img class="el-listen__icon--play" :src="icon" :alt="this.$attrs.title">
     </a>
   </div>
 </template>
@@ -18,14 +13,11 @@
 <script>
 import Vue from 'vue';
 
-const playIconSrc = require('@/assets/img/play.svg');
+import PlayIcon from '@/assets/img/play.svg';
+
 
 export default {
   props: {
-    word: {
-      type: String,
-      required: true,
-    },
     src: {
       type: String,
       required: true,
@@ -35,6 +27,7 @@ export default {
     return {
       height: 0,
       playing: false,
+      icon: PlayIcon,
     };
   },
   mounted() {
@@ -43,17 +36,9 @@ export default {
     });
   },
   computed: {
-    playIcon() {
+    emojiStyles() {
       return {
-        src: playIconSrc,
-        alt: `Listen to the pronunciation of ${this.word}`,
-      };
-    },
-    styles() {
-      return {
-        emoji: {
-          'font-size': `${this.height}px`,
-        },
+        'font-size': `${this.height}px`,
       };
     },
   },
@@ -72,21 +57,21 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.listen {
+.el-listen {
   cursor: pointer;
-  background: #76f4e1;
+  background: $colour-x-bright;
   padding: 6px;
   border-radius: 100%;
 
-  .listen-button-play,
-  .listen-icon-play,
-  .listen-icon-playing {
+  .el-listen__button,
+  .el-listen__icon--play,
+  .el-listen__icon--playing {
     display: block;
     height: 100%;
     width: 100%;
   }
 
-  .listen-icon-playing {
+  .el-listen__icon--playing {
     line-height: 1;
     margin: 0;
     padding: 0;

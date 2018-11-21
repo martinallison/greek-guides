@@ -1,5 +1,5 @@
 <template>
-  <figure class="alphabet card">
+  <figure class="el-alphabet card">
     <p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω</p>
     <p>α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ,ς τ υ φ χ ψ ω</p>
   </figure>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.alphabet {
+.el-alphabet {
   font-family: $font-greek;
   font-weight: bold;
   padding: $space-s $space-s;

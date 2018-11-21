@@ -7,6 +7,9 @@ export default {
     secondary: {
       type: Boolean,
     },
+    compact: {
+      type: Boolean,
+    },
     to: {
       type: [Object, String],
     },
@@ -19,11 +22,19 @@ export default {
   },
   computed: {
     buttonClass() {
-      if (this.primary) {
-        return 'el-button--primary';
+      const classes = [];
+
+      if (this.compact) {
+        classes.push('el-button--compact');
       }
 
-      return 'el-button--secondary';
+      if (this.primary) {
+        classes.push('el-button--primary');
+      } else {
+        classes.push('el-button--secondary');
+      }
+
+      return classes;
     },
   },
   render(h) {
@@ -90,5 +101,9 @@ a, a:visited {
 .el-button--secondary {
   border: border();
   @include colour-variants(border-color);
+}
+
+.el-button--compact {
+  font-size: $text-s;
 }
 </style>

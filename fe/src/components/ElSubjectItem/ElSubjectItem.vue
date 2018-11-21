@@ -13,14 +13,6 @@
 </template>
 
 <script>
-/**
- * TODO:
- * 
- *    - Grid instead of manually spacing
- *    - Do something about this stupid component (generic `image-blurb-cta-card` or something)
- *    - Fix button being a div
- *    - etc.
- */
 export default {
   props: {
     subject: {

@@ -1,42 +1,41 @@
 <template>
-  <el-article
-    :title="guide.title"
-    :emoji="guide.emoji"
-    :content="guide.content"
-    :nav="nav"
-    class="main-col"/>
+  <main class="main-col">
+    <el-guide v-bind="guide" :prev="prevGuide" :next="nextGuide"/>
+  </main>
 </template>
 
 <script>
-import { Guide } from '@/utils/presenters';
-
-
 export default {
   props: {
     guideId: {
       required: true,
       type: String,
-    }
+    },
   },
   computed: {
-    guide() {
-      const guide = this.$store.state.guides.byId[this.guideId];
-      return guide ? Guide(guide) : undefined;
+    subjects() {
+      return this.$store.state.subjects;
     },
-    nav() {
-      const { prevId: prev, nextId: next } = this.guide;
-      return {
-        prev: prev ? this.link('guide', { guideId: prev }) : null,
-        next: next ? this.link('guide', { guideId: next }) : null,
-      };
+    guides() {
+      return this.$store.state.guides;
+    },
+    subject() {
+      return this.subjects.all.find(s => s.guideIds.includes(this.guideId));
+    },
+    index() {
+      return this.subject.guideIds.indexOf(this.guideId);
+    },
+    guide() {
+      return this.guides.byId[this.guideId];
+    },
+    prevGuide() {
+      const id = this.subject.guideIds[this.index - 1];
+      return id && this.guides.byId[id];
+    },
+    nextGuide() {
+      const id = this.subject.guideIds[this.index + 1];
+      return id && this.guides.byId[id];
     },
   },
 };
 </script>
-
-<style lang="scss">
-.guide-edit {
-  position: absolute;
-  right: 0;
-}
-</style>

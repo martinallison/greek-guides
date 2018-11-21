@@ -5,12 +5,14 @@
 <script>
 export default {
   props: {
-    html: String,
+    html: {
+      type: String,
+    },
   },
   computed: {
     content() {
       return {
-        template: `<article>${this.html}</article>`,
+        template: `<div>${this.html}</div>`,
       };
     },
   },
