@@ -2,11 +2,10 @@
   <div class="el-listen" ref="container">
     <audio ref="audio" :src="src" @playing="playing = true" @ended="playing = false"/>
 
-    <span class="el-listen__icon--playing" :style="emojiStyles" v-show="playing">👂</span>
-
-    <a class="el-listen__button" v-if="!playing" @click.prevent="$refs.audio.play()">
-      <img class="el-listen__icon--play" :src="icon" :alt="this.$attrs.title">
+    <a class="el-listen-button" v-if="!playing" @click.prevent="$refs.audio.play()">
+      <img class="el-listen-icon-play" :src="icon" :alt="this.$attrs.title">
     </a>
+    <span class="el-listen-icon-playing" :style="emojiStyles" v-show="playing">👂</span>
   </div>
 </template>
 
@@ -58,20 +57,20 @@ export default {
 
 <style scoped lang='scss'>
 .el-listen {
-  cursor: pointer;
   background: $colour-x-bright;
-  padding: 6px;
   border-radius: 100%;
+  cursor: pointer;
+  padding: 6px;
 
-  .el-listen__button,
-  .el-listen__icon--play,
-  .el-listen__icon--playing {
+  .el-listen-button,
+  .el-listen-icon-play,
+  .el-listen-icon-playing {
     display: block;
     height: 100%;
     width: 100%;
   }
 
-  .el-listen__icon--playing {
+  .el-listen-icon-playing {
     line-height: 1;
     margin: 0;
     padding: 0;

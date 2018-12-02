@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="23px" viewBox="0 0 22 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+<svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
     <title>audio-solid</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Desktop-HD-Copy-4" transform="translate(-1085.000000, -885.000000)" fill="#000000">
-            <g id="audio-solid" transform="translate(1085.000000, 885.000000)">
-                <rect id="Rectangle-6" x="0" y="7" width="5" height="9"></rect>
-                <polygon id="Rectangle-7" points="7 7 16 0 16 23 7 16"></polygon>
-                <path d="M18,15.5 C20.6666667,15.5 22,14.1666667 22,11.5 C22,8.83333333 20.6666667,7.5 18,7.5 L18,15.5 Z" id="Oval-2"></path>
+        <g id="Desktop-HD-Copy-9" transform="translate(-432.000000, -1501.000000)" fill="#1C2B42">
+            <g id="Group" transform="translate(426.000000, 1495.000000)">
+                <g id="audio-solid" transform="translate(6.000000, 5.000000)">
+                    <rect id="Rectangle-6" x="0" y="5.72727273" width="4.09090909" height="7.36363636" rx="1"></rect>
+                    <path d="M6.11333211,5.42700432 L11.4769685,1.25528714 C11.9129157,0.916217106 12.5411913,0.994751556 12.8802613,1.43069875 C13.0167869,1.60623163 13.0909091,1.8222635 13.0909091,2.04463936 L13.0909091,16.7735425 C13.0909091,17.3258272 12.6431938,17.7735425 12.0909091,17.7735425 C11.8685332,17.7735425 11.6525014,17.6994202 11.4769685,17.5628947 L6.11333211,13.3911775 C5.86974557,13.2017213 5.72727273,12.9104157 5.72727273,12.6018253 L5.72727273,6.21635653 C5.72727273,5.9077661 5.86974557,5.61646052 6.11333211,5.42700432 Z" id="Rectangle-7"></path>
+                    <path d="M15.994665,12.5273931 C17.331555,12.156404 18,11.11697 18,9.40909091 C18,7.70120148 17.3315469,6.66176516 15.9946407,6.29078195 L15.9946348,6.29080305 C15.4624713,6.14313096 14.9113556,6.45482287 14.7636835,6.98698641 C14.7395211,7.07405987 14.7272727,7.16400665 14.7272727,7.25437039 L14.7272895,11.5638228 C14.7272895,12.1160983 15.1749973,12.563806 15.7272727,12.563806 C15.8176393,12.563806 15.907589,12.5515569 15.994665,12.5273931 Z" id="Oval-2"></path>
+                </g>
             </g>
         </g>
     </g>

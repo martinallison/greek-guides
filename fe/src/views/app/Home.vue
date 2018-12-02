@@ -1,44 +1,52 @@
 <template>
   <main class="main-col">
     <section>
-      <h1 class="text-centered">Learn Greek!</h1>
+      <h1 class="text-centre">Greek Guides</h1>
 
       <p>
-        These are some guides to learning Modern Greek (not the ancient stuff) written by Maggie,
-        a Greek native, and Martin, someone learning Greek.
+        Come on in and learn about Modern Greek! These guides to the language (and Greek
+        culture in general) are written by a Greek native and someone learning the language
+        (slowly and lazily).
       </p>
-
-      <p>Where do you want to start?</p>
     </section>
 
     <section>
-      <h2>Basics</h2>
-
-      <ul>
-        <li v-for="subject in subjects" :key="subject.id" v-emojify>
-          <el-subject-item :subject="subject"/>
-        </li>
-      </ul>
+      <el-intro-card/>
     </section>
+
+    <section>
+      <h2>{{ basics.title }}</h2>
+      <p>
+        Learn enough to impress some Greeks on holiday or make your Greek partner weak at
+        the knees.
+      </p>
+
+      <el-row>
+        <el-subject-card
+          v-for="subject in subjects"
+          :key="subject.id"
+          :subject="subject"
+          class="el-col s-6 l-4 margin-top-s"
+        />
+      </el-row>
+    </section>
+
   </main>
 </template>
 
 <script>
+import chapters from '@/data/chapters';
+
+
 export default {
   computed: {
+    basics() {
+      return chapters.find(c => c.id === 'basics');
+    },
     subjects() {
-      return this.$store.state.subjects.all;
+      const subjects = this.$store.state.subjects.byId;
+      return this.basics.subjectIds.map(id => subjects[id]);
     },
   },
 };
 </script>
-
-<style lang="scss">
-ul {
-  padding-left: 0;
-
-  li {
-    list-style-type: none;
-  }
-}
-</style>

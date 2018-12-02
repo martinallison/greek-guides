@@ -1,8 +1,11 @@
 import './ElAlphabet';
 import './ElButton';
 import './ElContent';
-import './ElExample';
+import './ElDismissable';
+import './ElGreek';
+import './ElGrid';
 import './ElGuide';
+import './ElIntroCard';
 import './ElLink';
 import './ElListen';
-import './ElSubjectItem';
+import './ElSubjectCard';

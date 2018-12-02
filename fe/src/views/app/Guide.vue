@@ -1,6 +1,6 @@
 <template>
   <main class="main-col">
-    <el-guide v-bind="guide" :prev="prevGuide" :next="nextGuide"/>
+    <el-guide v-bind="guide" :emoji="emoji" :prev="prev" :next="next"/>
   </main>
 </template>
 
@@ -28,11 +28,24 @@ export default {
     guide() {
       return this.guides.byId[this.guideId];
     },
-    prevGuide() {
-      const id = this.subject.guideIds[this.index - 1];
-      return id && this.guides.byId[id];
+    emoji() {
+      return this.index === 0 ? this.subject.emoji : '';
     },
-    nextGuide() {
+    prev() {
+      const prevIndex = this.index - 1;
+      const id = this.subject.guideIds[prevIndex];
+      const prevGuide = id && this.guides.byId[id];
+
+      if (prevIndex === 0) {
+        return {
+          ...prevGuide,
+          title: 'Intro',
+        };
+      }
+
+      return prevGuide;
+    },
+    next() {
       const id = this.subject.guideIds[this.index + 1];
       return id && this.guides.byId[id];
     },

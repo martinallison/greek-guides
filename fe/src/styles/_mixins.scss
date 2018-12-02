@@ -1,76 +1,14 @@
+$border: 1px solid $colour-border;
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+$google-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 3px 1px -2px rgba(0, 0, 0, 0.12),
+                0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+
 @mixin nice-underlines {
   -webkit-text-decoration-skip: ink;
   text-decoration-skip-ink: auto;
   text-decoration-skip: ink;
-}
-
-@mixin retina {
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-    @content;
-  }
-}
-
-@mixin before($dim) {
-  @media only screen and (max-width: $dim) {
-    @content;
-  }
-}
-
-@mixin between($dim_1, $dim_2) {
-  @media only screen and (min-width: $dim_1 + 1) and (max-width: $dim_2 - 1) {
-    @content;
-  }
-}
-
-@mixin after($dim) {
-  @media only screen and (min-width: $dim) {
-    @content;
-  }
-}
-
-@mixin s-only {
-  @include before($media-s) {
-    @content;
-  }
-}
-
-@mixin m-down {
-  @include before($media-m) {
-    @content;
-  }
-}
-
-@mixin m-only {
-  @include between($media-s, $media-m) {
-    @content;
-  }
-}
-
-@mixin m-up {
-  @include after($media-s) {
-    @content;
-  }
-}
-
-@mixin l-only {
-  @include after($media-m) {
-    @content;
-  }
-}
-
-@mixin raised {
-  border: border();
-  box-shadow: shadow();
-}
-
-@mixin rounded($radius: 5px) {
-  border-radius: $radius;
-}
-
-@mixin circular($radius) {
-  width: 2 * $radius;
-  height: 2 * $radius;
-  border-radius: 100%;
 }
 
 @mixin colour-variants($property-name) {
@@ -84,40 +22,49 @@
   }
 }
 
-@function border($colour: $colour-border, $width: 1px) {
-  @return $width solid #{$colour}5f;
+@mixin bordered {
+  border: $border;
 }
 
-@function google-shadow() {
-  @return 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12),
-    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+@mixin shadowed {
+  box-shadow: $shadow;
 }
 
-@function shadow() {
-  @return 0 2px 4px rgba(0, 0, 0, 0.1);
+@mixin rounded($radius: $radius-default) {
+  border-radius: $radius;
 }
 
-@function brightness($color) {
-  @return (
-    (red($color) * .299) +
-    (green($color) * .587) +
-    (blue($color) * .114)
-  ) / 255 * 100%;
+@mixin circular($radius) {
+  width: 2 * $radius;
+  height: 2 * $radius;
+  @include rounded(100%);
 }
 
-@function colour-contrast($colour, $dark: $colour-dark, $light: $colour-inverse) {
-  @if $colour == null {
-    @return null;
+@mixin raised {
+  @include bordered;
+  @include shadowed;
+}
+
+@mixin card {
+  padding: $space-s;
+  @include rounded;
+  @include raised;
+
+  > :first-child {
+    margin-top: 0;
   }
 
-  $colour-brightness: brightness($colour);  
-  $light-brightness: brightness($light);
-  $dark-brightness: brightness($dark);
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
 
-  @return if(
-    abs($colour-brightness - $light-brightness) >
-    abs($colour-brightness - $dark-brightness),
-    $light, $dark
-  );
+@mixin clear {
+  &:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
 }

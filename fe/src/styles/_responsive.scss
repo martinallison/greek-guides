@@ -1,0 +1,53 @@
+@mixin retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    @content;
+  }
+}
+
+@mixin before($dim) {
+  @media only screen and (max-width: $dim) {
+    @content;
+  }
+}
+
+@mixin between($dim-1, $dim-2) {
+  @media only screen and (min-width: $dim-1 + 1) and (max-width: $dim-2 - 1) {
+    @content;
+  }
+}
+
+@mixin after($dim) {
+  @media only screen and (min-width: $dim) {
+    @content;
+  }
+}
+
+@mixin s-only {
+  @include before($media-s) {
+    @content;
+  }
+}
+
+@mixin m-down {
+  @include before($media-m) {
+    @content;
+  }
+}
+
+@mixin m-only {
+  @include between($media-s, $media-m) {
+    @content;
+  }
+}
+
+@mixin m-up {
+  @include after($media-s) {
+    @content;
+  }
+}
+
+@mixin l-only {
+  @include after($media-m) {
+    @content;
+  }
+}

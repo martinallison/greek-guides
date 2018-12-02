@@ -1,24 +1,23 @@
 $font-body: 'Work Sans', Roboto, Helvetica, sans-serif;
 $font-display: 'Work Sans', Roboto, Helvetica, sans-serif;
-$font-greek: Roboto, Helvetica, sans-serif;
+$font-greek: effra, Helvetica, sans-serif;
 
-$media-m: 780px;
 $media-s: 540px;
+$media-m: 780px;
 
 $text-xl: 2rem;
 $text-l: 1.5rem;
 $text-m: 1rem;
-$text-s: 0.75rem;
-$text-xs: 0.66rem;
+$text-s: 0.88rem;
+$text-xs: 0.75rem;
 
 $text-sizes: (
   xs: $text-xs,
   s: $text-s,
   m: $text-m,
-  l: $text-l
+  l: $text-l,
+  xl: $text-xl
 );
-
-$text-adjustment: 0.11rem;
 
 $space-xl: 6rem;
 $space-l: 4.2rem;
@@ -27,19 +26,21 @@ $space-s: 1rem;
 $space-xs: 0.5rem;
 
 $space-sizes: (
-  none: 0,
+  none: 0px,
   xs: $space-xs,
   s: $space-s,
   m: $space-m,
-  l: $space-l
+  l: $space-l,
+  xl: $space-xl
 );
 
-$colour-body: #2a3c57;
-$colour-border: #d1d5da;
+$size-adjust: 0.11rem;
+
+$colour-border: #eeeff1;
 $colour-dark: #2a3c57;
 $colour-bright: #2f72fb;
-$colour-x-bright: #76f4e1;
-$colour-accent: tomato;
+$colour-x-bright: #d3fff8;
+$colour-accent: #ff7676;
 $colour-ok: #65f9c0;
 $colour-inverse: rgba(white, .9);
 
@@ -50,3 +51,5 @@ $colours: (
   accent: $colour-accent,
   ok: $colour-ok,
 );
+
+$radius-default: 8px;

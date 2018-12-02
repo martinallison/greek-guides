@@ -36,11 +36,20 @@ h2 {
 }
 
 h3 {
-  font-size: $text-m; margin: $space-m 0 $space-s 0;
+  font-size: $text-m;
+  margin: $space-m 0 $space-s 0;
 }
 
-p, li, input, textarea {
+section {
+  margin-top: $space-l;
+}
+
+p, span, li, input, textarea {
   line-height: 1.5;
+}
+
+p {
+  line-height: 1.75;
 }
 
 a {
@@ -56,21 +65,8 @@ footer {
   text-align: center;
 }
 
-aside {
-  box-sizing: border-box;
-  margin-top: $space-s;
-
-  *:first-child {
-    margin-top: 0;
-  }
-
-  *:last-child {
-    margin-bottom: 0;
-  }
-}
-
 i {
-  padding: $text-adjustment $space-xs - $text-adjustment;
+  padding: $size-adjust $space-xs - $size-adjust;
   background: rgba($colour-accent, .08);
   @include rounded;
 }
@@ -86,44 +82,65 @@ img.emoji {
   vertical-align: -0.1em;
 }
 
-input, textarea {
-  border: border();
-  font-family: $font-body;
-  font-size: 1rem;
-  padding: $space-s;
-  @include rounded(20px);
+ul {
+  padding-left: 0;
+
+  li {
+    list-style-type: none;
+  }
 }
 
-textarea {
-  width: 100%
-}
-
-.section {
-    margin-top: $space-m;
-    margin-bottom: $space-m;
+[lang=el] {
+  font-family: $font-greek;
 }
 
 @each $size, $var in $text-sizes {
-  .#{$size} {
-    width: $var;
-    height: $var;
-  }
-
   .text-#{$size} {
     font-size: $var;
   }
+}
 
-  .margin.margin-#{$size}.margin-top {
+@each $size, $var in $space-sizes {
+  .margin-top-#{$size} {
     margin-top: $var;
   }
+}
 
-  .margin.margin-#{$size}.margin-bottom {
+@each $size, $var in $space-sizes {
+  .margin-bottom-#{$size} {
     margin-bottom: $var;
   }
+}
 
-  .margin.margin-#{$size}.margin-v {
+@each $size, $var in $space-sizes {
+  .margin-v-#{$size} {
     margin-top: $var;
     margin-bottom: $var;
+  }
+};
+
+@each $size, $var in $space-sizes {
+  .margin-#{$size} {
+    margin: $var;
+  }
+};
+
+@each $size, $var in $space-sizes {
+  .padding-top-#{$size} {
+    padding-top: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .padding-bottom-#{$size} {
+    padding-bottom: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .padding-v-#{$size} {
+    padding-top: $var;
+    padding-bottom: $var;
   }
 };
 
@@ -161,17 +178,12 @@ textarea {
   }
 }
 
-.no-underline {
-  text-decoration: none;
-}
-
-.text-centered {
+.text-centre {
   text-align: center;
 }
 
-.section {
-  margin-top: $space-m;
-  margin-bottom: $space-m;
+.text-right {
+  text-align: right;
 }
 
 .left {
@@ -183,25 +195,7 @@ textarea {
 }
 
 .clear {
-  overflow: hidden;
-}
-
-.relative {
-  position: relative;
-}
-
-.card {
-  padding: $space-s + 0.5rem;
-  @include rounded;
-  @include raised;
-
-  > :first-child {
-    margin-top: 0;
-  }
-
-  > :last-child {
-    margin-bottom: 0;
-  }
+  @include clear;
 }
 
 .main-col {
@@ -214,6 +208,10 @@ textarea {
   }
 
   @include l-only {
-    width: 650px;
+    width: 30rem;
   }
+}
+
+.card {
+  @include card;
 }

@@ -1,6 +1,6 @@
 <template>
   <router-link v-bind="attrs" :to="route">
-    <slot></slot>
+    <slot/>
   </router-link>
 </template>
 

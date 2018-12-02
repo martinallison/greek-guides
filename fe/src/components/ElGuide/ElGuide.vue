@@ -1,18 +1,18 @@
 <template>
   <article class="el-guide" v-emojify>
     <header>
-      <h1 class="text-centered" v-html="title"/>
-      <p v-if="emoji" class="text-l text-centered">{{ emoji }}</p>
+      <h1 class="text-centre" v-html="title"/>
+      <p v-if="emoji" class="text-l text-centre">{{ emoji }}</p>
     </header>
 
     <el-content :html="content"/>
 
-    <nav class="clear">
-      <el-button secondary compact v-if="nav.prev" v-bind="nav.prev" class="x-bright">
+    <nav class="clear margin-top-m">
+      <el-button v-if="nav.prev" v-bind="nav.prev">
         ← {{ nav.prev.title }}
       </el-button>
 
-      <el-button primary compact v-if="nav.next" v-bind="nav.next" class="right x-bright">
+      <el-button primary v-if="nav.next" v-bind="nav.next" class="right x-bright">
         {{ nav.next.title }} →
       </el-button>
     </nav>

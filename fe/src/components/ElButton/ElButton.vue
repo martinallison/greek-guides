@@ -4,10 +4,10 @@ export default {
     primary: {
       type: Boolean,
     },
-    secondary: {
+    knockout: {
       type: Boolean,
     },
-    compact: {
+    empty: {
       type: Boolean,
     },
     to: {
@@ -24,14 +24,16 @@ export default {
     buttonClass() {
       const classes = [];
 
-      if (this.compact) {
-        classes.push('el-button--compact');
+      if (this.primary) {
+        classes.push('el-button-primary');
       }
 
-      if (this.primary) {
-        classes.push('el-button--primary');
-      } else {
-        classes.push('el-button--secondary');
+      if (this.knockout) {
+        classes.push('el-button-knockout');
+      }
+
+      if (this.empty) {
+        classes.push('el-button-empty');
       }
 
       return classes;
@@ -74,36 +76,34 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
-
-a, a:visited {
-  color: inherit;
-}
-
+<style lang="scss">
 .el-button {
+  cursor: pointer;
+  background-color: #fff;
   display: inline-block;
-  font-weight: bold;
-  padding: 8px 12px;
+  font-size: $text-xs;
+  font-weight: 500;
+  padding: $space-xs $space-s;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-
-  @include rounded;
+  @include bordered;
+  @include rounded(50px);
 }
 
-.el-button--primary {
+.el-button-primary {
+  border: none;
   @include colour-variants(background-color);
 }
 
-.el-button--secondary {
-  border: border();
-  @include colour-variants(border-color);
+.el-button-knockout {
+  border: none;
+  @include shadowed;
 }
 
-.el-button--compact {
-  font-size: $text-s;
+.el-button-empty {
+  background-color: unset;
+  border: none;
+  padding: 0;
 }
 </style>
