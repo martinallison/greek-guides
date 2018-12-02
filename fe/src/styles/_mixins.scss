@@ -1,0 +1,70 @@
+$border: 1px solid $colour-border;
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+$google-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 3px 1px -2px rgba(0, 0, 0, 0.12),
+                0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+
+@mixin nice-underlines {
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+  text-decoration-skip: ink;
+}
+
+@mixin colour-variants($property-name) {
+  @each $colour-name, $colour in $colours {
+    &.#{$colour-name} {
+      #{$property-name}: $colour;
+      @if $property-name == background-color {
+        color: colour-contrast($colour);
+      }
+    }
+  }
+}
+
+@mixin bordered {
+  border: $border;
+}
+
+@mixin shadowed {
+  box-shadow: $shadow;
+}
+
+@mixin rounded($radius: $radius-default) {
+  border-radius: $radius;
+}
+
+@mixin circular($radius) {
+  width: 2 * $radius;
+  height: 2 * $radius;
+  @include rounded(100%);
+}
+
+@mixin raised {
+  @include bordered;
+  @include shadowed;
+}
+
+@mixin card {
+  padding: $space-s;
+  @include rounded;
+  @include raised;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin clear {
+  &:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+}

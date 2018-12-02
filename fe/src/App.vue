@@ -1,0 +1,23 @@
+<template>
+  <div id="app">
+    <router-view/>
+    <footer class="main-col">
+      <el-link to="home">home</el-link>
+    </footer>
+  </div>
+</template>
+
+<script>
+import '@/directives/emojify';
+import '@/mixins/url';
+
+import '@/components';
+
+
+export default {
+};
+</script>
+
+<style lang="scss">
+@import 'styles/global.scss';
+</style>

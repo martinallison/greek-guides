@@ -1,0 +1,42 @@
+export default [
+  {
+    id: 'intro',
+    title: 'Intro to Greek',
+    emoji: '🤔',
+    colour: 'x-bright',
+    blurb: 'Don’t even know if you’re interested in learning Greek? Start here.',
+    guideIds: ['intro', 'intro-alphabet', 'intro-done'],
+  },
+  {
+    id: 'alphabet',
+    title: 'Alphabet',
+    emoji: '💪',
+    colour: 'x-bright',
+    blurb: 'What on earth is a Ψ?',
+    guideIds: ['alphabet', 'alphabet-aekmt'],
+  },
+  {
+    id: 'lovers',
+    title: 'Greek partner',
+    emoji: '🏩',
+    colour: 'bright',
+    blurb: 'Learn how to love (or hate) in Greek',
+    guideIds: [],
+  },
+  {
+    id: 'cafe',
+    title: 'Cafe life',
+    emoji: '☕',
+    colour: 'dark',
+    blurb: 'Eat and drink like a native',
+    guideIds: [],
+  },
+  {
+    id: 'basics',
+    title: 'Basics',
+    emoji: '🏖️',
+    colour: 'accent',
+    blurb: 'The usual language basics',
+    guideIds: [],
+  },
+];

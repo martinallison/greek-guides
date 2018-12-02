@@ -1,0 +1,217 @@
+@import 'shared';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: $colour-dark;
+  font-family: $font-body;
+  font-size: 125%;
+  margin: 0;
+  @include nice-underlines;
+
+  @include m-up {
+    font-size: 150%;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+}
+
+h1 {
+  font-size: $text-xl;
+  margin: $space-l 0 $space-m 0;
+}
+
+h2 {
+  font-size: $text-l;
+  margin: $space-m 0 $space-s 0;
+}
+
+h3 {
+  font-size: $text-m;
+  margin: $space-m 0 $space-s 0;
+}
+
+section {
+  margin-top: $space-l;
+}
+
+p, span, li, input, textarea {
+  line-height: 1.5;
+}
+
+p {
+  line-height: 1.75;
+}
+
+a {
+  color: $colour-dark;
+
+  &:visited {
+    color: $colour-dark;
+  }
+}
+
+footer {
+  margin: $space-l 0 $space-m 0;
+  text-align: center;
+}
+
+i {
+  padding: $size-adjust $space-xs - $size-adjust;
+  background: rgba($colour-accent, .08);
+  @include rounded;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.1em;
+}
+
+ul {
+  padding-left: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+[lang=el] {
+  font-family: $font-greek;
+}
+
+@each $size, $var in $text-sizes {
+  .text-#{$size} {
+    font-size: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .margin-top-#{$size} {
+    margin-top: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .margin-bottom-#{$size} {
+    margin-bottom: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .margin-v-#{$size} {
+    margin-top: $var;
+    margin-bottom: $var;
+  }
+};
+
+@each $size, $var in $space-sizes {
+  .margin-#{$size} {
+    margin: $var;
+  }
+};
+
+@each $size, $var in $space-sizes {
+  .padding-top-#{$size} {
+    padding-top: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .padding-bottom-#{$size} {
+    padding-bottom: $var;
+  }
+}
+
+@each $size, $var in $space-sizes {
+  .padding-v-#{$size} {
+    padding-top: $var;
+    padding-bottom: $var;
+  }
+};
+
+.s-only {
+  @include m-up {
+    display: none;
+  }
+}
+
+.m-up {
+  @include s-only {
+    display: none;
+  }
+}
+
+.m-only {
+  @include s-only {
+    display: none;
+  }
+
+  @include l-only {
+    display: none;
+  }
+}
+
+.m-down {
+  @include l-only {
+    display: none;
+  }
+}
+
+.l-only {
+  @include m-down {
+    display: none;
+  }
+}
+
+.text-centre {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  @include clear;
+}
+
+.main-col {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+
+  @include m-only {
+    width: 75%;
+  }
+
+  @include l-only {
+    width: 30rem;
+  }
+}
+
+.card {
+  @include card;
+}

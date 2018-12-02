@@ -1,0 +1,55 @@
+$font-body: 'Work Sans', Roboto, Helvetica, sans-serif;
+$font-display: 'Work Sans', Roboto, Helvetica, sans-serif;
+$font-greek: effra, Helvetica, sans-serif;
+
+$media-s: 540px;
+$media-m: 780px;
+
+$text-xl: 2rem;
+$text-l: 1.5rem;
+$text-m: 1rem;
+$text-s: 0.88rem;
+$text-xs: 0.75rem;
+
+$text-sizes: (
+  xs: $text-xs,
+  s: $text-s,
+  m: $text-m,
+  l: $text-l,
+  xl: $text-xl
+);
+
+$space-xl: 6rem;
+$space-l: 4.2rem;
+$space-m: 2.1rem;
+$space-s: 1rem;
+$space-xs: 0.5rem;
+
+$space-sizes: (
+  none: 0px,
+  xs: $space-xs,
+  s: $space-s,
+  m: $space-m,
+  l: $space-l,
+  xl: $space-xl
+);
+
+$size-adjust: 0.11rem;
+
+$colour-border: #eeeff1;
+$colour-dark: #2a3c57;
+$colour-bright: #2f72fb;
+$colour-x-bright: #d3fff8;
+$colour-accent: #ff7676;
+$colour-ok: #65f9c0;
+$colour-inverse: rgba(white, .9);
+
+$colours: (
+  dark: $colour-dark,
+  bright: $colour-bright,
+  x-bright: $colour-x-bright,
+  accent: $colour-accent,
+  ok: $colour-ok,
+);
+
+$radius-default: 8px;

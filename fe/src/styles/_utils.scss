@@ -1,0 +1,23 @@
+@function brightness($color) {
+  @return (
+    (red($color) * .299) +
+    (green($color) * .587) +
+    (blue($color) * .114)
+  ) / 255 * 100%;
+}
+
+@function colour-contrast($colour, $dark: $colour-dark, $light: $colour-inverse) {
+  @if $colour == null {
+    @return null;
+  }
+
+  $colour-brightness: brightness($colour);  
+  $light-brightness: brightness($light);
+  $dark-brightness: brightness($dark);
+
+  @return if(
+    abs($colour-brightness - $light-brightness) >
+    abs($colour-brightness - $dark-brightness),
+    $light, $dark
+  );
+}
