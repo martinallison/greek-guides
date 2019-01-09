@@ -7,14 +7,14 @@ export default [
     content: require('@/guides/intro.html'),
   },
   {
-    id: 'intro-alphabet',
+    id: 'intro-look-and-sound',
     title: 'OK! I’m in',
-    content: require('@/guides/intro-alphabet.html'),
+    content: require('@/guides/intro-look-and-sound.vue').default,
   },
   {
     id: 'intro-done',
     title: 'Sounds great! What next?',
-    content: require('@/guides/intro-alphabet.html'),
+    content: require('@/guides/intro-done.html'),
   },
   {
     id: 'alphabet',

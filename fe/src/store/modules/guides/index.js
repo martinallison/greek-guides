@@ -1,7 +1,5 @@
 import guides from '@/data/guides';
 
-import getters from './getters';
-
 
 const state = {
   all: guides,
@@ -15,5 +13,4 @@ const state = {
 export default {
   namespaced: true,
   state,
-  getters,
 };

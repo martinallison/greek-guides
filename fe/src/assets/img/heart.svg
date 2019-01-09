@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>heart</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy" transform="translate(-711.000000, -449.000000)" fill="#2A3C57" fill-rule="nonzero">
+            <g id="Group-5" transform="translate(662.000000, 436.000000)">
+                <g id="heart" transform="translate(49.000000, 13.000000)">
+                    <path d="M16.5089966,15.638009 C19.2228603,15.638009 17.4024302,7.41725202 17.4024302,4.77828054 C17.4024302,2.13930907 15.2024091,0 12.4885454,0 C9.77468179,0 7.57466063,2.13930907 7.57466063,4.77828054 C7.57466063,7.41725202 13.795133,15.638009 16.5089966,15.638009 Z" id="Oval-3" transform="translate(12.787330, 7.819005) scale(-1, 1) translate(-12.787330, -7.819005) "></path>
+                    <path d="M8.93433599,15.638009 C11.6481996,15.638009 9.82776959,7.41725202 9.82776959,4.77828054 C9.82776959,2.13930907 7.62774843,0 4.9138848,0 C2.20002116,0 0,2.13930907 0,4.77828054 C0,7.41725202 6.22047236,15.638009 8.93433599,15.638009 Z" id="Oval-3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from './views/app/Home.vue';
-import Guide from './views/app/Guide.vue';
+import Home from './views/Home.vue';
+import Crossword from './views/Crossword.vue';
+import Guide from './views/Guide.vue';
 
 
 Vue.use(Router);
@@ -11,6 +12,11 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/w',
+      name: 'wordscapades',
+      component: Crossword,
+    },
     {
       path: '/',
       name: 'home',

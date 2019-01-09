@@ -8,12 +8,6 @@
 </template>
 
 <script>
-import '@/directives/emojify';
-import '@/mixins/url';
-
-import '@/components';
-
-
 export default {
 };
 </script>

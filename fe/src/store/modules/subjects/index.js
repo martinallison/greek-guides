@@ -1,7 +1,5 @@
 import subjects from '@/data/subjects';
 
-import getters from './getters';
-
 
 const state = {
   all: subjects,
@@ -15,5 +13,4 @@ const state = {
 export default {
   namespaced: true,
   state,
-  getters,
 };

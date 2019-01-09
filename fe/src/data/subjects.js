@@ -1,11 +1,11 @@
 export default [
   {
     id: 'intro',
-    title: 'Intro to Greek',
+    title: 'What? Why?',
     emoji: '🤔',
     colour: 'x-bright',
-    blurb: 'Don’t even know if you’re interested in learning Greek? Start here.',
-    guideIds: ['intro', 'intro-alphabet', 'intro-done'],
+    blurb: 'Don’t know anything about Greek, or why you might be interested in learning Greek? Start here.',
+    guideIds: ['intro', 'intro-look-and-sound', 'intro-done'],
   },
   {
     id: 'alphabet',

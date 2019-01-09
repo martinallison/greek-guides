@@ -32,16 +32,26 @@ h1 {
 
 h2 {
   font-size: $text-l;
+  font-weight: 500;
   margin: $space-m 0 $space-s 0;
 }
 
 h3 {
   font-size: $text-m;
+  font-weight: 500;
   margin: $space-m 0 $space-s 0;
 }
 
-section {
-  margin-top: $space-l;
+section:not(:last-child) {
+  margin-bottom: $space-m;
+}
+
+ul {
+  padding: 0 $space-m;
+
+  li {
+    margin-top: $space-xs;
+  }
 }
 
 p, span, li, input, textarea {
@@ -49,7 +59,7 @@ p, span, li, input, textarea {
 }
 
 p {
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 a {
@@ -82,14 +92,6 @@ img.emoji {
   vertical-align: -0.1em;
 }
 
-ul {
-  padding-left: 0;
-
-  li {
-    list-style-type: none;
-  }
-}
-
 [lang=el] {
   font-family: $font-greek;
 }
@@ -113,7 +115,7 @@ ul {
 }
 
 @each $size, $var in $space-sizes {
-  .margin-v-#{$size} {
+  .margin-y-#{$size} {
     margin-top: $var;
     margin-bottom: $var;
   }
@@ -214,4 +216,29 @@ ul {
 
 .card {
   @include card;
+}
+
+.no-bullets {
+  padding-left: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.text-faded {
+  opacity: 0.7;
+}
+
+.bordered {
+  @include bordered;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
 }
