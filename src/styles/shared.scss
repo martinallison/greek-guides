@@ -1,0 +1,29 @@
+@import './responsive.scss';
+
+@function in-rems($n, $base: 16) {
+  @return ($n / $base) * 1rem;
+};
+
+$colour-accent: #ff7676;
+$colour-primary: #2f72fb;
+$colour-light: #f8faff;
+$colour-body: #000;
+$colour-inverse: rgba(#fff, 5%);
+
+$font-body: quasimoda, effra, sans-serif;
+$font-headings: azo-sans-web, effra, sans-serif;
+$font-btns: azo-sans-web, effra, sans-serif;
+
+$text-s: in-rems(14);
+$text-m: in-rems(18);
+$text-l: in-rems(24);
+$text-xl: in-rems(48);
+
+$size-s: in-rems(20);
+$size-m: in-rems(30);
+$size-xl: in-rems(60);
+$size-xxl: in-rems(100);
+
+$size-main-col-w: in-rems(960);
+$size-btn-padding-h: in-rems(10);
+$size-btn-padding-v: in-rems(12);

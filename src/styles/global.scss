@@ -1,0 +1,107 @@
+@import './shared.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $colour-body;
+  font-family: $font-body;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-headings;
+}
+
+h1 {
+  font-size: $text-xl;
+}
+
+h2 {
+  font-size: $text-l;
+}
+
+a {
+  color: $colour-primary;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: $colour-body
+  }
+
+  &.router-link-exact-active {
+    color: $colour-accent;
+  }
+}
+
+p {
+  line-height: 1.5;
+}
+
+.contain-margin {
+  overflow: auto;
+}
+
+.grid-halves {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: $size-s;
+}
+
+.flex {
+  display: flex;
+
+  &.flex-centre,
+  &.flex-centre-v {
+    align-items: center;
+  }
+
+  &.flex-centre,
+  &.flex-centre-h {
+    justify-content: center;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  font-family: $font-btns;
+  font-size: $text-s;
+  font-weight: bold;
+  padding: $size-btn-padding-v $size-btn-padding-h;
+  text-decoration: none;
+  display: inline-block;
+
+  &.btn-primary {
+    border: none;
+    background-color: $colour-primary;
+    color: $colour-inverse;
+  }
+
+  &.btn-secondary {
+    border: 1px solid $colour-primary;
+    color: $colour-primary;
+  }
+}
+
+#app {
+  font-size: $text-m;
+}
+
+.main-col {
+  width: $size-main-col-w;
+  margin-right: auto;
+  margin-left: auto;
+}
