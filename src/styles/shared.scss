@@ -8,17 +8,20 @@ $colour-accent: #ff7676;
 $colour-primary: #2f72fb;
 $colour-light: #f8faff;
 $colour-body: #000;
+$colour-body-light: #5e6975;
 $colour-inverse: rgba(#fff, 5%);
 
 $font-body: quasimoda, effra, sans-serif;
 $font-headings: azo-sans-web, effra, sans-serif;
 $font-btns: azo-sans-web, effra, sans-serif;
 
-$text-s: in-rems(14);
-$text-m: in-rems(18);
-$text-l: in-rems(24);
-$text-xl: in-rems(48);
+$size-label: in-rems(18);
+$size-body: in-rems(20);
+$size-h3: in-rems(20);
+$size-h2: in-rems(36);
+$size-h1: in-rems(48);
 
+$size-xs: in-rems(10);
 $size-s: in-rems(20);
 $size-m: in-rems(30);
 $size-xl: in-rems(60);

@@ -13,7 +13,6 @@
 <script>
 import AppNav from './AppNav.vue';
 
-
 export default {
   components: {
     AppNav,
@@ -22,7 +21,16 @@ export default {
 </script>
 
 <style lang="scss">
+.app-view {
+  padding-bottom: $size-xl;
+}
+
 .app-nav {
-  margin-top: $size-m;
+  margin-top: $size-s;
+
+  @include m-down {
+    margin-top: $size-xs;
+    overflow-x: scroll;
+  }
 }
 </style>

@@ -1,3 +1,6 @@
+$media-s: 540px;
+$media-l: 780px;
+
 @mixin retina {
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
     @content;
@@ -29,13 +32,13 @@
 }
 
 @mixin m-down {
-  @include before($media-m) {
+  @include before($media-l) {
     @content;
   }
 }
 
 @mixin m-only {
-  @include between($media-s, $media-m) {
+  @include between($media-s, $media-l) {
     @content;
   }
 }
@@ -47,7 +50,7 @@
 }
 
 @mixin l-only {
-  @include after($media-m) {
+  @include after($media-l) {
     @content;
   }
 }
