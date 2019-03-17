@@ -1,7 +1,7 @@
 <template>
   <div class="app-view">
     <slot name="nav">
-      <div class="app-nav-container contain-margin">
+      <div class="app-nav-container">
         <app-nav class="main-col"/>
       </div>
     </slot>
@@ -26,11 +26,24 @@ export default {
 }
 
 .app-nav {
-  margin-top: $size-s;
-
   @include m-down {
-    margin-top: $size-xs;
+    white-space: nowrap;
     overflow-x: scroll;
   }
+
+  a {
+    @include m-down {
+      margin-left: $size-xs;
+    }
+  }
+
+  .app-nav-title {
+    padding-right: $size-xs;
+  }
+}
+
+.app-nav-container {
+  padding-top: $size-s;
+  padding-bottom: $size-s;
 }
 </style>

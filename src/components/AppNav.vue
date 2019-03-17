@@ -1,28 +1,48 @@
 <template>
   <nav class="app-nav">
-    <router-link to="/">Home</router-link>
-    <router-link to="/intro">Greek in 5 minutes</router-link>
-    <router-link to="/guides">Guides</router-link>
+    <router-link
+      v-for="item in items"
+      :key="item.name"
+      :to="item"
+      class="app-nav-item"
+    >
+      {{ item.label }}
+    </router-link>
   </nav>
 </template>
 
+<script>
+export default {
+  computed: {
+    items() {
+      return [
+        { name: 'home', label: 'Greek Guides'},
+      ];
+    },
+  },
+};
+</script>
+
 <style lang="scss">
 .app-nav {
-  a {
+  font-size: $size-label;
+
+  .app-nav-item {
     display: inline-block;
     border: none;
     color: $colour-body;
     font-size: $size-label;
     font-weight: bold;
-    margin-right: $size-m;
     text-decoration: none;
+    line-height: 1;
+    margin-left: $size-s;
 
     &:hover {
       color: $colour-primary;
     }
 
-    &:last-child {
-      margin-right: 0;
+    &:first-child {
+      margin-left: 0;
     }
   }
 }

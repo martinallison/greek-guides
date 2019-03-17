@@ -16,7 +16,7 @@ html, body {
   margin: 0;
 
   @include m-down {
-    font-size: 96%;
+    font-size: 90%;
   }
 }
 
@@ -31,12 +31,12 @@ h6 {
 
 h1 {
   font-size: $size-h1;
-  font-weight: normal;
 }
 
 h2 {
   font-size: $size-h2;
-  font-weight: normal;
+  margin-top: $size-xl;
+  margin-bottom: $size-m;
 }
 
 h3 {
@@ -56,7 +56,8 @@ a {
   }
 
   &:visited {
-    color: $colour-body
+    color: $colour-body;
+    border-color: $colour-body;
   }
 
   &.router-link-exact-active {
@@ -65,12 +66,7 @@ a {
 }
 
 p {
-  line-height: 1.5;
-}
-
-figcaption {
-  color: $colour-body-light;
-  font-weight: bold;
+  margin-top: $size-m;
 }
 
 #app {
@@ -82,43 +78,39 @@ figcaption {
   margin-right: auto;
   margin-left: auto;
 
-  @include before($size-main-col-w) {
+  @include m-down {
     width: 85%;
   }
 }
 
-.contain-margin {
-  overflow: auto;
+.subtitle {
+  font-size: $size-subtitle;
 }
 
-.align-centre {
-  text-align: center;
-}
-
-.natural-margins {
-  p:first-of-type {
-    margin-top: 0;
+.grid-2 {
+  @include m-up {
+    display: grid;
+    grid-template-columns: [left] 1fr [right] 1fr [end];
+    grid-auto-flow: column;
   }
 
-  p:last-of-type {
-    margin-bottom: 0;
+  .grid-left {
+    grid-column: left;
   }
-}
 
-.s-hide {
-  @include s-only {
-    display: none;
+  .grid-right {
+    grid-column: right;
   }
 }
 
 .btn {
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 100px;
   font-family: $font-btns;
   font-size: $size-label;
   font-weight: bold;
   line-height: 1;
-  padding: $size-btn-padding-v $size-btn-padding-h;
+  padding: $size-btn-padding;
   text-decoration: none;
 
   &.btn-primary {
@@ -138,4 +130,37 @@ figcaption {
   .app-listen-icon-playing {
     vertical-align: top;
   }
+}
+
+.list-plain {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-emoji li {
+  display: flex;
+  align-items: flex-start;
+  margin-top: $size-s;
+
+  span:first-child {
+    background: $colour-light;
+    border-radius: 100px;
+    font-size: $size-s;
+    padding: 2px 8px;
+    margin-right: $size-s;
+  }
+}
+
+.align-centre {
+  text-align: center;
+}
+
+.card {
+  border: 1px solid $colour-primary-light;
+  border-radius: 5px;
+}
+
+.margin-v-xl {
+  margin-top: $size-xl;
+  margin-bottom: $size-xl;
 }

@@ -1,5 +1,5 @@
 <template>
-  <span ref="container" class="app-listen">
+  <span class="app-listen">
     <audio
       ref="audio"
       :src="src"
@@ -8,18 +8,16 @@
     />
 
     <button
-      v-if="!playing"
       :aria-label="`Play audio for ${title}`"
       type="button"
       class="app-listen-button"
       @click.prevent="play"
     >
-      <img :src="icon" alt="" class="app-listen-icon-play">
+      <img v-if="!playing" :src="icon" alt="">
+      <span v-else class="app-listen-icon-playing">
+        👂
+      </span>
     </button>
-
-    <span v-show="playing" class="app-listen-icon-playing">
-      👂
-    </span>
   </span>
 </template>
 
@@ -44,7 +42,9 @@ export default {
   },
   methods: {
     play() {
-      this.$refs.audio.play();
+      if (!this.playing) {
+        this.$refs.audio.play();
+      }
     },
   },
 };
@@ -53,22 +53,16 @@ export default {
 <style lang='scss'>
 .app-listen {
   line-height: 1;
+}
 
-  .app-listen-button {
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-  }
-
-  .app-listen-icon-play {
-    height: $size-body;
-  }
-
-  .app-listen-icon-playing {
-    font-size: $size-body;
-    line-height: 1;
-    padding: 0;
-  }
+.app-listen-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: $size-listen;
+  line-height: 1;
+  padding: 0;
+  height: $size-listen;
+  width: $size-listen;
 }
 </style>
