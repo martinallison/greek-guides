@@ -4,8 +4,20 @@
   @return ($n / $base) * 1rem;
 };
 
-$colour-accent: #ff7676;
-$colour-primary: #2f72fb;
+@function colour($key) {
+  @return map-get($colours, $key);
+}
+
+$colours: (
+  blue-bright: #2f72fb,
+  blue-light: #e5e9f3,
+  blue-faint: #f8faff,
+  grey-dark: #2a3c57,
+  grey-light: #66758D,
+);
+
+
+$colour-primary: colour(blue-bright);
 $colour-primary-light: #e5e9f3;
 $colour-light: #f8faff;
 $colour-body: #2a3c57; 
@@ -19,7 +31,6 @@ $font-btns: azo-sans-web, effra, quasimoda, sans-serif;
 $size-label: in-rems(14);
 $size-listen: in-rems(18);
 $size-body: in-rems(24);
-$size-subtitle: in-rems(24);
 $size-h3: in-rems(24);
 $size-h2: in-rems(36);
 $size-h1: in-rems(48);

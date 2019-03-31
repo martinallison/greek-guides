@@ -14,9 +14,7 @@
       @click.prevent="play"
     >
       <img v-if="!playing" :src="icon" alt="">
-      <span v-else class="app-listen-icon-playing">
-        👂
-      </span>
+      <span v-else>👂</span>
     </button>
   </span>
 </template>

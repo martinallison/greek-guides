@@ -4,7 +4,7 @@
       v-for="item in items"
       :key="item.name"
       :to="item"
-      class="app-nav-item"
+      class="app-nav-item link-plain"
     >
       {{ item.label }}
     </router-link>
@@ -29,11 +29,8 @@ export default {
 
   .app-nav-item {
     display: inline-block;
-    border: none;
-    color: $colour-body;
     font-size: $size-label;
     font-weight: bold;
-    text-decoration: none;
     line-height: 1;
     margin-left: $size-s;
 

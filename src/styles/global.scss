@@ -61,7 +61,12 @@ a {
   }
 
   &.router-link-exact-active {
-    color: $colour-accent;
+    color: $colour-primary;
+  }
+
+  &.link-plain {
+    border-bottom: none;
+    color: $colour-body;
   }
 }
 
@@ -83,23 +88,29 @@ p {
   }
 }
 
-.subtitle {
-  font-size: $size-subtitle;
+.main-col-inset {
+  margin-left: auto;
+  margin-right: auto;
+
+  @include m-up {
+    width: 65%;
+  }
 }
 
-.grid-2 {
-  @include m-up {
-    display: grid;
-    grid-template-columns: [left] 1fr [right] 1fr [end];
-    grid-auto-flow: column;
+.main-col-outset {
+  padding: $size-m;
+
+  @include l-only {
+    border-radius: 5px;
   }
 
-  .grid-left {
-    grid-column: left;
-  }
-
-  .grid-right {
-    grid-column: right;
+  @include m-down {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
 }
 
@@ -137,17 +148,18 @@ p {
   padding-left: 0;
 }
 
-.list-emoji li {
-  display: flex;
-  align-items: flex-start;
-  margin-top: $size-s;
+.audio-with-avatar {
+  overflow: auto;
 
-  span:first-child {
-    background: $colour-light;
-    border-radius: 100px;
-    font-size: $size-s;
-    padding: 2px 8px;
+  .app-face {
+    border: 2px solid $colour-primary;
     margin-right: $size-s;
+    float: left;
+    height: 57px;
+
+    @include m-down {
+      height: 52px;
+    }
   }
 }
 
@@ -160,7 +172,16 @@ p {
   border-radius: 5px;
 }
 
-.margin-v-xl {
+.sectioning-margin {
   margin-top: $size-xl;
   margin-bottom: $size-xl;
+}
+
+.bg-light {
+  background: $colour-light;
+}
+
+.guide-nav {
+  display: flex;
+  justify-content: space-between;
 }
